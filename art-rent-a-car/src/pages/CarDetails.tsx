@@ -23,7 +23,12 @@ export default function CarDetails() {
             component="img"
             src={car.image}
             alt={car.name}
-            sx={{ width: "100%", borderRadius: 2 }}
+            sx={{
+              width: "100%",
+              borderRadius: 2,
+              background: "#f5f5f5",
+              p: 3,
+            }}
           />
         </Grid>
 
@@ -52,6 +57,7 @@ export default function CarDetails() {
               variant="contained"
               color="success"
               href="https://wa.me/38975400462"
+              target="_blank"
             >
               Reserve via WhatsApp
             </Button>

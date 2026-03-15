@@ -1,16 +1,46 @@
-import { Box, Container, Typography, Button, Stack } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Button,
+  Stack,
+  Paper,
+  TextField,
+  MenuItem,
+} from "@mui/material";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FeaturedCars from "../components/FeaturedCars";
 
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
+import dayjs from "dayjs";
+import { useState } from "react";
+
 const Home = () => {
+  const navigate = useNavigate();
+
+  const [pickupDate, setPickupDate] = useState(dayjs());
+  const [returnDate, setReturnDate] = useState(dayjs().add(1, "day"));
+  const [transmission, setTransmission] = useState("");
+
+  const handleSearch = () => {
+    navigate(
+      `/fleet?transmission=${transmission}&pickup=${pickupDate.format(
+        "YYYY-MM-DD",
+      )}&return=${returnDate.format("YYYY-MM-DD")}`,
+    );
+  };
+
   return (
     <Box>
       {/* HERO SECTION */}
       <Box
         sx={{
-          height: "90vh",
-          backgroundImage: "url('images/hero.jpg')",
+          minHeight: "90vh",
+          backgroundImage: "url('/images/hero.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           position: "relative",
@@ -28,58 +58,139 @@ const Home = () => {
           }}
         />
 
-        <Container sx={{ position: "relative", zIndex: 2 }}>
+        <Container
+          sx={{
+            position: "relative",
+            zIndex: 2,
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 6,
+          }}
+        >
+          {/* LEFT SIDE TEXT */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Typography variant="h1" sx={{ maxWidth: 700 }}>
-              Premium Rent a Car Skopje Airport
-            </Typography>
+            <Box sx={{ maxWidth: 650 }}>
+              <Typography variant="h1">
+                Premium Rent a Car Skopje Airport
+              </Typography>
 
-            <Typography variant="h6" sx={{ mt: 3, maxWidth: 600 }}>
-              Fast airport delivery. No hidden fees. 24/7 support.
-            </Typography>
+              <Typography variant="h6" sx={{ mt: 3 }}>
+                Fast airport delivery. No hidden fees. 24/7 support.
+              </Typography>
 
-            <Stack direction="row" spacing={3} sx={{ mt: 5 }}>
-              <Button
-                variant="contained"
-                color="secondary"
-                size="large"
-                component={Link}
-                to="/fleet"
-              >
-                View Fleet
-              </Button>
+              <Stack direction="row" spacing={3} sx={{ mt: 5 }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  size="large"
+                  component={Link}
+                  to="/fleet"
+                >
+                  View Fleet
+                </Button>
 
-              <Button
-                variant="outlined"
-                size="large"
-                sx={{
-                  borderColor: "#fff",
-                  color: "#fff",
-                  "&:hover": { borderColor: "#C9A227" },
-                }}
-                href="tel:+38975400462"
-              >
-                Call Now
-              </Button>
-            </Stack>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  sx={{
+                    borderColor: "#fff",
+                    color: "#fff",
+                    "&:hover": { borderColor: "#C9A227" },
+                  }}
+                  href="tel:+38975400462"
+                >
+                  Call Now
+                </Button>
+              </Stack>
+            </Box>
           </motion.div>
+
+          {/* RIGHT BOOKING CARD */}
+          <Paper
+            elevation={10}
+            sx={{
+              p: 4,
+              width: 340,
+              backdropFilter: "blur(10px)",
+              background: "rgba(255,255,255,0.12)",
+              border: "1px solid rgba(255,255,255,0.25)",
+              color: "white",
+            }}
+          >
+            <Typography variant="h6">Book Your Car</Typography>
+
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                label="Pickup Date"
+                value={pickupDate}
+                onChange={(newValue) => setPickupDate(newValue)}
+                slotProps={{
+                  textField: {
+                    sx: {
+                      input: { color: "white" },
+                      label: { color: "white" },
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderColor: "rgba(255,255,255,0.5)",
+                        },
+                      },
+                    },
+                  },
+                }}
+              />
+
+              <DatePicker
+                label="Return Date"
+                value={returnDate}
+                onChange={(newValue) => setReturnDate(newValue)}
+                slotProps={{
+                  textField: {
+                    sx: {
+                      input: { color: "white" },
+                      label: { color: "white" },
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderColor: "rgba(255,255,255,0.5)",
+                        },
+                      },
+                    },
+                  },
+                }}
+              />
+            </LocalizationProvider>
+
+            <TextField
+              select
+              label="Transmission"
+              value={transmission}
+              onChange={(e) => setTransmission(e.target.value)}
+            >
+              <MenuItem value="">Any</MenuItem>
+              <MenuItem value="Manual">Manual</MenuItem>
+              <MenuItem value="Automatic">Automatic</MenuItem>
+            </TextField>
+
+            <Button
+              variant="contained"
+              size="large"
+              fullWidth
+              onClick={handleSearch}
+            >
+              Search Cars
+            </Button>
+          </Paper>
         </Container>
       </Box>
 
+      {/* FEATURED CARS */}
       <FeaturedCars />
 
-      {/* BELOW HERO CONTENT */}
-      <Container sx={{ py: 10 }}>
-        <Typography variant="h2">Why Choose ART RENT A CAR?</Typography>
-
-        <Typography sx={{ mt: 3 }}>
-          Airport focused. Tourist friendly. Transparent pricing.
-        </Typography>
-      </Container>
       {/* WHY CHOOSE US */}
       <Container sx={{ py: 12 }}>
         <Typography variant="h2" textAlign="center">
@@ -97,8 +208,7 @@ const Home = () => {
           <Box>
             <Typography variant="h5">✈ Airport Delivery</Typography>
             <Typography sx={{ mt: 2 }}>
-              We deliver directly to Skopje International Airport. No waiting.
-              No stress.
+              We deliver directly to Skopje International Airport.
             </Typography>
           </Box>
 
@@ -117,7 +227,8 @@ const Home = () => {
           </Box>
         </Box>
       </Container>
-      {/* SEO AIRPORT SECTION */}
+
+      {/* SEO SECTION */}
       <Box sx={{ bgcolor: "#111", color: "#fff", py: 12 }}>
         <Container>
           <Typography variant="h2">
@@ -127,29 +238,10 @@ const Home = () => {
           <Typography sx={{ mt: 4, maxWidth: 800 }}>
             Looking for a reliable rent a car in Skopje Airport? ART RENT A CAR
             provides premium vehicles with fast airport delivery, flexible
-            rental periods and competitive pricing. Perfect for tourists
-            visiting Macedonia and business travelers.
+            rental periods and competitive pricing.
           </Typography>
         </Container>
       </Box>
-      {/* GOOGLE MAP */}
-      <Container sx={{ py: 12 }}>
-        <Typography variant="h2" textAlign="center">
-          Find Us
-        </Typography>
-
-        <Box sx={{ mt: 6 }}>
-          <iframe
-            title="Skopje Airport Location"
-            width="100%"
-            height="400"
-            style={{ border: 0 }}
-            loading="lazy"
-            allowFullScreen
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.207912281876!2d21.621381!3d41.961745"
-          />
-        </Box>
-      </Container>
     </Box>
   );
 };
