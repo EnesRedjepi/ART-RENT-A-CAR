@@ -1,57 +1,51 @@
 import { useParams } from "react-router-dom";
 import { cars } from "../data/cars";
-import { Container, Grid, Typography, Box, Button } from "@mui/material";
+import { Container, Typography, Grid, Box, Button } from "@mui/material";
 
 export default function CarDetails() {
   const { slug } = useParams();
-  const car = cars.find((c) => c.slug === slug);
-  const [days, setDays] = useState(1);
 
-  if (!car) return null;
+  const car = cars.find((c) => c.slug === slug);
+
+  if (!car) {
+    return (
+      <Container sx={{ py: 10 }}>
+        <Typography variant="h4">Car not found</Typography>
+      </Container>
+    );
+  }
 
   return (
-    <Container sx={{ py: 10 }}>
+    <Container sx={{ py: 8 }}>
       <Grid container spacing={6}>
         <Grid item md={6}>
           <Box
             component="img"
             src={car.image}
-            sx={{
-              width: "100%",
-              borderRadius: 3,
-            }}
+            alt={car.name}
+            sx={{ width: "100%", borderRadius: 2 }}
           />
         </Grid>
 
         <Grid item md={6}>
-          <Typography variant="h3" fontWeight="bold">
-            {car.name}
-          </Typography>
+          <Typography variant="h3">{car.name}</Typography>
+
+          <Typography sx={{ mt: 2 }}>{car.description}</Typography>
 
           <Box sx={{ mt: 3 }}>
             <Typography>⚙ Transmission: {car.transmission}</Typography>
-
-            <Typography>👤 Seats: {car.seats}</Typography>
-
             <Typography>⛽ Fuel: {car.fuel}</Typography>
-
+            <Typography>👤 Seats: {car.seats}</Typography>
             <Typography>🧳 Luggage: {car.luggage}</Typography>
+            <Typography>
+              ❄ Air Conditioning: {car.airConditioning ? "Yes" : "No"}
+            </Typography>
+            <Typography>📅 Year: {car.year}</Typography>
           </Box>
 
           <Typography variant="h4" sx={{ mt: 3 }}>
-            €{car.price} / day
+            €{car.pricePerDay} / day
           </Typography>
-
-          <Typography sx={{ mt: 2 }}>
-            Total Price: €{days * car.price}
-          </Typography>
-          <TextField
-            type="number"
-            label="Days"
-            value={days}
-            onChange={(e) => setDays(e.target.value)}
-            sx={{ mt: 2 }}
-          />
 
           <Box sx={{ display: "flex", gap: 2, mt: 4 }}>
             <Button

@@ -1,13 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
 
-import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Fleet from "./pages/Fleet";
 import CarDetails from "./pages/CarDetails";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Navbar />
 
       <Routes>
@@ -15,7 +15,7 @@ function App() {
         <Route path="/fleet" element={<Fleet />} />
         <Route path="/fleet/:slug" element={<CarDetails />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

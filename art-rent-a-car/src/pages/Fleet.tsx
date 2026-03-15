@@ -1,6 +1,7 @@
 import {
   Container,
   Typography,
+  Grid,
   Card,
   CardMedia,
   CardContent,
@@ -39,7 +40,7 @@ export default function Fleet() {
 
       <Grid container spacing={4}>
         {filteredCars.map((car) => (
-          <Grid item xs={12} sm={6} md={4} key={car.id}>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={car.id}>
             <Card sx={{ borderRadius: 3 }}>
               <CardMedia
                 component="img"
@@ -58,7 +59,7 @@ export default function Fleet() {
                 </Typography>
 
                 <Typography variant="h6" sx={{ mt: 1 }}>
-                  €{car.price} / day
+                  €{car.pricePerDay} / day
                 </Typography>
 
                 <Button

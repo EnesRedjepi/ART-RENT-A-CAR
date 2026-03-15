@@ -3,35 +3,33 @@ import {
   Typography,
   Grid,
   Card,
-  CardContent,
   CardMedia,
+  CardContent,
   Box,
+  Button,
 } from "@mui/material";
-
 import { Link } from "react-router-dom";
 import { cars } from "../data/cars";
 
 export default function FeaturedCars() {
   return (
-    <Container sx={{ py: 10 }}>
-      <Typography variant="h3" textAlign="center" fontWeight="bold" mb={6}>
+    <Container sx={{ py: 8 }}>
+      <Typography variant="h4" align="center" gutterBottom>
         Featured Cars
       </Typography>
 
-      <Grid container spacing={4} justifyContent="center">
+      <Grid container spacing={4}>
         {cars.map((car) => (
-          <Grid key={car.id} xs={12} sm={6} md={4} lg={3}>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={car.id}>
             <Card
-              component={Link}
-              to={`/fleet/${car.slug}`}
               sx={{
-                textDecoration: "none",
-                borderRadius: 4,
-                overflow: "hidden",
-                transition: "all 0.3s ease",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                transition: "0.3s",
                 "&:hover": {
-                  transform: "translateY(-8px)",
-                  boxShadow: 8,
+                  transform: "translateY(-6px)",
+                  boxShadow: 6,
                 },
               }}
             >
@@ -47,34 +45,33 @@ export default function FeaturedCars() {
                 }}
               />
 
-              <CardContent>
-                <Typography variant="h6" fontWeight="bold">
-                  {car.name}
-                </Typography>
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography variant="h6">{car.name}</Typography>
 
-                <Box
-                  sx={{
-                    display: "flex",
-                    gap: 2,
-                    mt: 1,
-                    color: "#666",
-                    fontSize: 14,
-                  }}
-                >
-                  ⚙ {car.transmission}
-                  👤 {car.seats}
+                <Box sx={{ fontSize: 14, color: "#777", mt: 1 }}>
+                  ⚙ {car.transmission} &nbsp; | &nbsp; ⛽ {car.fuel} &nbsp; |
+                  &nbsp; 👤 {car.seats}
                 </Box>
 
-                <Typography
-                  sx={{
-                    mt: 2,
-                    fontSize: 20,
-                    fontWeight: "bold",
-                    color: "#1976d2",
-                  }}
-                >
-                  €{car.price} / day
+                <Typography variant="h6" sx={{ mt: 1 }}>
+                  €{car.pricePerDay} / day
                 </Typography>
+
+                {!car.available && (
+                  <Typography color="error" sx={{ mt: 1 }}>
+                    Not Available
+                  </Typography>
+                )}
+
+                <Button
+                  component={Link}
+                  to={`/fleet/${car.slug}`}
+                  variant="contained"
+                  fullWidth
+                  sx={{ mt: 2 }}
+                >
+                  View Details
+                </Button>
               </CardContent>
             </Card>
           </Grid>
