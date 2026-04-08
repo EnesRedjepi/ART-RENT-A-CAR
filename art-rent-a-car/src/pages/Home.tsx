@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import FeaturedCars from "../components/FeaturedCars";
+import { FeaturedCars } from "../components/FeaturedCars";
 
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
