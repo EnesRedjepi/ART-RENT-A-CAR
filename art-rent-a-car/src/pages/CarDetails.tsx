@@ -1,77 +1,154 @@
+import { Box, Container, Typography, Button, TextField } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { cars } from "../data/cars";
-import { Container, Typography, Grid, Box, Button } from "@mui/material";
+import { useState, useEffect } from "react";
+import dayjs from "dayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-export default function CarDetails() {
+const CarDetails = () => {
   const { slug } = useParams();
-
   const car = cars.find((c) => c.slug === slug);
 
-  if (!car) {
-    return (
-      <Container sx={{ py: 10 }}>
-        <Typography variant="h4">Car not found</Typography>
-      </Container>
-    );
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+
+  // ✅ DEFINE FIRST
+  const [pickupDate, setPickupDate] = useState(null);
+  const [returnDate, setReturnDate] = useState(null);
+
+  useEffect(() => {
+    if (pickupDate) {
+      localStorage.setItem("pickupDate", pickupDate.format("YYYY-MM-DD"));
+    }
+    if (returnDate) {
+      localStorage.setItem("returnDate", returnDate.format("YYYY-MM-DD"));
+    }
+  }, [pickupDate, returnDate]);
+
+  if (!car) return <Typography>Car not found</Typography>;
+
+  // ✅ CALCULATE AFTER
+  let totalDays = 1;
+
+  if (pickupDate && returnDate) {
+    const diff = returnDate.diff(pickupDate, "day");
+    totalDays = diff > 0 ? diff : 1;
   }
 
+  const totalPrice = totalDays * car.pricePerDay;
+
+  const handleReserve = () => {
+    // ✅ NOW SAFE TO USE
+    if (!pickupDate || !returnDate) {
+      alert("Please select dates first");
+      return;
+    }
+
+    if (!name || !phone) {
+      alert("Please enter name and phone");
+      return;
+    }
+
+    const booking = {
+      carId: car.id,
+      carName: car.name,
+      customerName: name,
+      customerPhone: phone,
+      pickupDate: pickup,
+      returnDate: dropoff,
+      totalPrice,
+    };
+
+    const existing = JSON.parse(localStorage.getItem("bookings") || "[]");
+
+    localStorage.setItem("bookings", JSON.stringify([...existing, booking]));
+
+    const message = `
+Car: ${car.name}
+Name: ${name}
+Phone: ${phone}
+Pickup: ${pickupDate?.format("YYYY-MM-DD")}
+Return: ${returnDate?.format("YYYY-MM-DD")}
+Total: €${totalPrice}
+    `;
+
+    window.open(
+      "https://wa.me/38975400462?text=" + encodeURIComponent(message),
+    );
+  };
+
   return (
-    <Container sx={{ py: 8 }}>
-      <Grid container spacing={6}>
-        <Grid item md={6}>
-          <Box
-            component="img"
-            src={car.image}
-            alt={car.name}
-            sx={{
-              width: "100%",
-              borderRadius: 2,
-              background: "#f5f5f5",
-              p: 3,
-            }}
+    <Container sx={{ py: 6 }}>
+      <img src={car.image} style={{ width: "100%" }} />
+
+      <Typography variant="h3" mt={3}>
+        {car.name}
+      </Typography>
+
+      <Typography mt={2}>
+        {car.transmission} • {car.fuel}
+      </Typography>
+
+      <Typography mt={1}>
+        {car.seats} seats • {car.luggage} bags
+      </Typography>
+
+      <Typography mt={2} fontWeight={600}>
+        €{car.pricePerDay} / day
+      </Typography>
+
+      {/* ✅ DATE PICKERS HERE */}
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Box mt={3} sx={{ maxWidth: 400 }}>
+          <DatePicker
+            label="Pickup Date"
+            value={pickupDate}
+            onChange={(v) => setPickupDate(v)}
+            sx={{ mb: 2, width: "100%" }}
           />
-        </Grid>
 
-        <Grid item md={6}>
-          <Typography variant="h3">{car.name}</Typography>
+          <DatePicker
+            label="Return Date"
+            value={returnDate}
+            onChange={(v) => setReturnDate(v)}
+            sx={{ mb: 2, width: "100%" }}
+          />
+        </Box>
+      </LocalizationProvider>
 
-          <Typography sx={{ mt: 2 }}>{car.description}</Typography>
+      {/* ✅ SHOW DATES */}
+      {pickupDate && returnDate && (
+        <Typography mt={2} fontWeight={600}>
+          Total: €{totalPrice}
+        </Typography>
+      )}
 
-          <Box sx={{ mt: 3 }}>
-            <Typography>⚙ Transmission: {car.transmission}</Typography>
-            <Typography>⛽ Fuel: {car.fuel}</Typography>
-            <Typography>👤 Seats: {car.seats}</Typography>
-            <Typography>🧳 Luggage: {car.luggage}</Typography>
-            <Typography>
-              ❄ Air Conditioning: {car.airConditioning ? "Yes" : "No"}
-            </Typography>
-            <Typography>📅 Year: {car.year}</Typography>
-          </Box>
+      {/* FORM */}
+      <Box mt={4} sx={{ maxWidth: 400 }}>
+        <TextField
+          fullWidth
+          label="Your Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          sx={{ mb: 2 }}
+        />
 
-          <Typography variant="h4" sx={{ mt: 3 }}>
-            €{car.pricePerDay} / day
-          </Typography>
+        <TextField
+          fullWidth
+          label="Phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          sx={{ mb: 2 }}
+        />
 
-          <Box sx={{ display: "flex", gap: 2, mt: 4 }}>
-            <Button
-              variant="contained"
-              color="success"
-              href="https://wa.me/38975400462"
-              target="_blank"
-            >
-              Reserve via WhatsApp
-            </Button>
-
-            <Button
-              variant="contained"
-              color="secondary"
-              href="viber://chat?number=%2B38975400462"
-            >
-              Reserve via Viber
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
+        <Button variant="contained" fullWidth onClick={handleReserve}>
+          Reserve Now
+        </Button>
+      </Box>
     </Container>
   );
-}
+};
+
+export default CarDetails;

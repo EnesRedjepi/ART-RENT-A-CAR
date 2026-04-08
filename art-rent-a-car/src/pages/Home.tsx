@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { FeaturedCars } from "../components/FeaturedCars";
+import FeaturedCars from "../components/FeaturedCars";
 
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -58,15 +58,98 @@ const Home = () => {
           }}
         />
 
+        {/* RIGHT BOOKING CARD — fixed to right edge, vertically centered */}
+        <Paper
+          elevation={0}
+          sx={{
+            position: "absolute",
+            right: 0,
+            top: "50%",
+            transform: "translateY(-50%)",
+            zIndex: 3,
+            p: 3,
+            width: 300,
+            background: "rgba(255,255,255,0.08)",
+            backdropFilter: "blur(14px)",
+            border: "1px solid rgba(255,255,255,0.18)",
+            borderRight: "none",
+            borderRadius: "16px 0 0 16px",
+            color: "white",
+            display: { xs: "none", md: "block" },
+          }}
+        >
+          <Typography variant="h6" sx={{ mb: 2 }}>Book Your Car</Typography>
+
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label="Pickup Date"
+              value={pickupDate}
+              onChange={(newValue) => setPickupDate(newValue)}
+              slotProps={{
+                textField: {
+                  fullWidth: true,
+                  size: "small",
+                  sx: {
+                    mb: 2,
+                    input: { color: "white" },
+                    label: { color: "rgba(255,255,255,0.7)" },
+                    "& .MuiOutlinedInput-root fieldset": { borderColor: "rgba(255,255,255,0.3)" },
+                    "& .MuiSvgIcon-root": { color: "white" },
+                  },
+                },
+              }}
+            />
+            <DatePicker
+              label="Return Date"
+              value={returnDate}
+              onChange={(newValue) => setReturnDate(newValue)}
+              slotProps={{
+                textField: {
+                  fullWidth: true,
+                  size: "small",
+                  sx: {
+                    mb: 2,
+                    input: { color: "white" },
+                    label: { color: "rgba(255,255,255,0.7)" },
+                    "& .MuiOutlinedInput-root fieldset": { borderColor: "rgba(255,255,255,0.3)" },
+                    "& .MuiSvgIcon-root": { color: "white" },
+                  },
+                },
+              }}
+            />
+          </LocalizationProvider>
+
+          <TextField
+            select
+            label="Transmission"
+            value={transmission}
+            onChange={(e) => setTransmission(e.target.value)}
+            fullWidth
+            size="small"
+            sx={{
+              mb: 2,
+              label: { color: "rgba(255,255,255,0.7)" },
+              "& .MuiOutlinedInput-root": { color: "white" },
+              "& .MuiOutlinedInput-root fieldset": { borderColor: "rgba(255,255,255,0.3)" },
+              "& .MuiSvgIcon-root": { color: "white" },
+            }}
+          >
+            <MenuItem value="">Any</MenuItem>
+            <MenuItem value="Manual">Manual</MenuItem>
+            <MenuItem value="Automatic">Automatic</MenuItem>
+          </TextField>
+
+          <Button variant="contained" size="large" fullWidth onClick={handleSearch}>
+            Search Cars
+          </Button>
+        </Paper>
+
         <Container
           sx={{
             position: "relative",
             zIndex: 2,
             display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
             alignItems: "center",
-            gap: 6,
           }}
         >
           {/* LEFT SIDE TEXT */}
@@ -110,81 +193,6 @@ const Home = () => {
               </Stack>
             </Box>
           </motion.div>
-
-          {/* RIGHT BOOKING CARD */}
-          <Paper
-            elevation={10}
-            sx={{
-              p: 4,
-              width: 340,
-              backdropFilter: "blur(10px)",
-              background: "rgba(255,255,255,0.12)",
-              border: "1px solid rgba(255,255,255,0.25)",
-              color: "white",
-            }}
-          >
-            <Typography variant="h6">Book Your Car</Typography>
-
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                label="Pickup Date"
-                value={pickupDate}
-                onChange={(newValue) => setPickupDate(newValue)}
-                slotProps={{
-                  textField: {
-                    sx: {
-                      input: { color: "white" },
-                      label: { color: "white" },
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          borderColor: "rgba(255,255,255,0.5)",
-                        },
-                      },
-                    },
-                  },
-                }}
-              />
-
-              <DatePicker
-                label="Return Date"
-                value={returnDate}
-                onChange={(newValue) => setReturnDate(newValue)}
-                slotProps={{
-                  textField: {
-                    sx: {
-                      input: { color: "white" },
-                      label: { color: "white" },
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          borderColor: "rgba(255,255,255,0.5)",
-                        },
-                      },
-                    },
-                  },
-                }}
-              />
-            </LocalizationProvider>
-
-            <TextField
-              select
-              label="Transmission"
-              value={transmission}
-              onChange={(e) => setTransmission(e.target.value)}
-            >
-              <MenuItem value="">Any</MenuItem>
-              <MenuItem value="Manual">Manual</MenuItem>
-              <MenuItem value="Automatic">Automatic</MenuItem>
-            </TextField>
-
-            <Button
-              variant="contained"
-              size="large"
-              fullWidth
-              onClick={handleSearch}
-            >
-              Search Cars
-            </Button>
-          </Paper>
         </Container>
       </Box>
 

@@ -1,76 +1,103 @@
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Box,
-  Button,
-  Chip,
-} from "@mui/material";
-import { Link } from "react-router-dom";
+import { Card, CardContent, Typography, Button, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-type Car = {
-  id: number;
-  name: string;
-  slug: string;
-  image: string;
-  pricePerDay: number;
-  transmission: string;
-  fuel: string;
-  seats: number;
-  available: boolean;
-};
+const CarCard = ({ car }: any) => {
+  const navigate = useNavigate();
 
-export default function CarCard({ car }: { car: Car }) {
   return (
     <Card
       sx={{
+        borderRadius: 4,
+        cursor: "pointer",
+        transition: "0.3s",
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        transition: "0.3s",
         "&:hover": {
-          transform: "translateY(-6px)",
-          boxShadow: 6,
+          transform: "translateY(-5px)",
+          boxShadow: "0 12px 30px rgba(0,0,0,0.15)",
         },
       }}
     >
-      <CardMedia
-        component="img"
-        image={car.image}
-        alt={car.name}
+      {/* IMAGE */}
+      <Box
         sx={{
-          height: 180,
-          objectFit: "contain",
-          background: "#f5f5f5",
-          p: 2,
+          height: 160,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          bgcolor: "#f5f5f5",
+          borderTopLeftRadius: 16,
+          borderTopRightRadius: 16,
         }}
-      />
+      >
+        <img
+          src={car.image}
+          style={{
+            maxHeight: "120px",
+            objectFit: "contain",
+            mixBlendMode: "multiply",
+          }}
+        />
+      </Box>
 
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography variant="h6">{car.name}</Typography>
+      {/* CONTENT */}
+      <CardContent
+        sx={{
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        <Box>
+          <Typography variant="h6">{car.name}</Typography>
 
-        <Box sx={{ fontSize: 14, color: "#777", mt: 1 }}>
-          ⚙ {car.transmission} | ⛽ {car.fuel} | 👤 {car.seats}
+          <Typography variant="body2" color="text.secondary">
+            {car.transmission} • {car.fuel}
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary">
+            {car.seats} seats • {car.luggage} bags
+          </Typography>
+
+          <Typography sx={{ mt: 2, fontWeight: 600 }}>
+            €{car.pricePerDay} / day
+          </Typography>
         </Box>
 
-        <Typography variant="h6" sx={{ mt: 1 }}>
-          €{car.pricePerDay} / day
-        </Typography>
-
-        {!car.available && <Typography color="error">Not Available</Typography>}
-        <Button disabled={!car.available}>Reserve</Button>
-
-        <Button
-          component={Link}
-          to={`/fleet/${car.slug}`}
-          variant="contained"
-          fullWidth
-          sx={{ mt: 2 }}
+        {/* BUTTONS */}
+        <Box
+          sx={{
+            mt: 2,
+            display: "flex",
+            gap: 1,
+          }}
         >
-          View Details
-        </Button>
+          <Button
+            fullWidth
+            variant="contained"
+            onClick={() => navigate(`/fleet/${car.slug}`)}
+          >
+            Details
+          </Button>
+
+          <Button
+            fullWidth
+            variant="outlined"
+            onClick={() => {
+              const msg = `Hello, I'm interested in ${car.name}`;
+              window.open(
+                "https://wa.me/38975400462?text=" + encodeURIComponent(msg),
+              );
+            }}
+          >
+            WhatsApp
+          </Button>
+        </Box>
       </CardContent>
     </Card>
   );
-}
+};
+
+export default CarCard;
