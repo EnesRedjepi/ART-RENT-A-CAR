@@ -40,43 +40,38 @@ const CarDetails = () => {
   const totalPrice = totalDays * car.pricePerDay;
 
   const handleReserve = () => {
-    // ✅ NOW SAFE TO USE
     if (!pickupDate || !returnDate) {
       alert("Please select dates first");
       return;
     }
 
     if (!name || !phone) {
-      alert("Please enter name and phone");
+      alert("Please fill all fields");
       return;
     }
 
-    const booking = {
-      carId: car.id,
-      carName: car.name,
-      customerName: name,
-      customerPhone: phone,
-      pickupDate: pickup,
-      returnDate: dropoff,
-      totalPrice,
-    };
+    const days = returnDate.diff(pickupDate, "day");
 
-    const existing = JSON.parse(localStorage.getItem("bookings") || "[]");
+    if (days <= 0) {
+      alert("Return date must be after pickup date");
+      return;
+    }
 
-    localStorage.setItem("bookings", JSON.stringify([...existing, booking]));
+    const totalPrice = days * car.pricePerDay;
 
     const message = `
 Car: ${car.name}
+Pickup: ${pickupDate.format("YYYY-MM-DD")}
+Return: ${returnDate.format("YYYY-MM-DD")}
+Days: ${days}
+Total: €${totalPrice}
 Name: ${name}
 Phone: ${phone}
-Pickup: ${pickupDate?.format("YYYY-MM-DD")}
-Return: ${returnDate?.format("YYYY-MM-DD")}
-Total: €${totalPrice}
-    `;
+`;
 
-    window.open(
-      "https://wa.me/38975400462?text=" + encodeURIComponent(message),
-    );
+    const whatsappUrl = `https://wa.me/38975400462?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
