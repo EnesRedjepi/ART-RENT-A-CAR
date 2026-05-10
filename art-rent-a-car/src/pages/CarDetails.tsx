@@ -1,8 +1,8 @@
-import { Box, Container, Typography, Button, TextField } from "@mui/material";
+import { Box, Container, Typography, Button, TextField, Chip } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { cars } from "../data/cars";
-import { useState, useEffect } from "react";
-import dayjs from "dayjs";
+import { useState } from "react";
+import dayjs, { Dayjs } from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -11,135 +11,131 @@ const CarDetails = () => {
   const { slug } = useParams();
   const car = cars.find((c) => c.slug === slug);
 
+  const [pickupDate, setPickupDate] = useState<Dayjs | null>(null);
+  const [returnDate, setReturnDate] = useState<Dayjs | null>(null);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
-  // ✅ DEFINE FIRST
-  const [pickupDate, setPickupDate] = useState(null);
-  const [returnDate, setReturnDate] = useState(null);
-
-  useEffect(() => {
-    if (pickupDate) {
-      localStorage.setItem("pickupDate", pickupDate.format("YYYY-MM-DD"));
-    }
-    if (returnDate) {
-      localStorage.setItem("returnDate", returnDate.format("YYYY-MM-DD"));
-    }
-  }, [pickupDate, returnDate]);
-
-  if (!car) return <Typography>Car not found</Typography>;
-
-  // ✅ CALCULATE AFTER
-  let totalDays = 1;
-
-  if (pickupDate && returnDate) {
-    const diff = returnDate.diff(pickupDate, "day");
-    totalDays = diff > 0 ? diff : 1;
+  if (!car) {
+    return (
+      <Container sx={{ py: 6 }}>
+        <Typography variant="h5">Car not found.</Typography>
+      </Container>
+    );
   }
 
-  const totalPrice = totalDays * car.pricePerDay;
+  const days = pickupDate && returnDate ? returnDate.diff(pickupDate, "day") : 0;
+  const totalPrice = days > 0 ? days * car.pricePerDay : 0;
 
   const handleReserve = () => {
     if (!pickupDate || !returnDate) {
       alert("Please select dates first");
       return;
     }
-
+    if (days <= 0) {
+      alert("Return date must be after pickup date");
+      return;
+    }
     if (!name || !phone) {
       alert("Please fill all fields");
       return;
     }
 
-    const days = returnDate.diff(pickupDate, "day");
+    const message =
+      `Car: ${car.name}\n` +
+      `Pickup: ${pickupDate.format("YYYY-MM-DD")}\n` +
+      `Return: ${returnDate.format("YYYY-MM-DD")}\n` +
+      `Days: ${days}\n` +
+      `Total: €${totalPrice}\n` +
+      `Name: ${name}\n` +
+      `Phone: ${phone}`;
 
-    if (days <= 0) {
-      alert("Return date must be after pickup date");
-      return;
-    }
-
-    const totalPrice = days * car.pricePerDay;
-
-    const message = `
-Car: ${car.name}
-Pickup: ${pickupDate.format("YYYY-MM-DD")}
-Return: ${returnDate.format("YYYY-MM-DD")}
-Days: ${days}
-Total: €${totalPrice}
-Name: ${name}
-Phone: ${phone}
-`;
-
-    const whatsappUrl = `https://wa.me/38975400462?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappUrl, "_blank");
+    window.open(
+      "https://wa.me/+38975400462?text=" + encodeURIComponent(message),
+      "_blank",
+    );
   };
 
   return (
-    <Container sx={{ py: 6 }}>
-      <img src={car.image} style={{ width: "100%" }} />
+    <Container sx={{ py: 6, maxWidth: "md" }}>
+      {/* IMAGE */}
+      <Box
+        sx={{
+          width: "100%",
+          height: 340,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          bgcolor: "grey.100",
+          borderRadius: 4,
+          overflow: "hidden",
+          mb: 4,
+        }}
+      >
+        <img
+          src={car.image}
+          alt={car.name}
+          style={{ maxHeight: "300px", maxWidth: "100%", objectFit: "contain" }}
+        />
+      </Box>
 
-      <Typography variant="h3" mt={3}>
-        {car.name}
+      {/* CAR INFO */}
+      <Typography variant="h3" fontWeight={700}>{car.name}</Typography>
+      <Typography color="text.secondary" mt={1} mb={2}>{car.description}</Typography>
+
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 3 }}>
+        <Chip label={car.transmission} />
+        <Chip label={car.fuel} />
+        <Chip label={`${car.seats} seats`} />
+        <Chip label={`${car.luggage} bags`} />
+        <Chip label={car.year.toString()} />
+        {car.airConditioning && <Chip label="A/C" />}
+      </Box>
+
+      <Typography variant="h4" fontWeight={700} color="primary" mb={4}>
+        €{car.pricePerDay} <Typography component="span" variant="body1" color="text.secondary">/ day</Typography>
       </Typography>
 
-      <Typography mt={2}>
-        {car.transmission} • {car.fuel}
-      </Typography>
-
-      <Typography mt={1}>
-        {car.seats} seats • {car.luggage} bags
-      </Typography>
-
-      <Typography mt={2} fontWeight={600}>
-        €{car.pricePerDay} / day
-      </Typography>
-
-      {/* ✅ DATE PICKERS HERE */}
+      {/* DATE PICKERS */}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Box mt={3} sx={{ maxWidth: 400 }}>
+        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mb: 3 }}>
           <DatePicker
             label="Pickup Date"
             value={pickupDate}
             onChange={(v) => setPickupDate(v)}
-            sx={{ mb: 2, width: "100%" }}
+            sx={{ flex: 1, minWidth: 200 }}
           />
-
           <DatePicker
             label="Return Date"
             value={returnDate}
             onChange={(v) => setReturnDate(v)}
-            sx={{ mb: 2, width: "100%" }}
+            sx={{ flex: 1, minWidth: 200 }}
           />
         </Box>
       </LocalizationProvider>
 
-      {/* ✅ SHOW DATES */}
-      {pickupDate && returnDate && (
-        <Typography mt={2} fontWeight={600}>
-          Total: €{totalPrice}
+      {days > 0 && (
+        <Typography variant="h6" fontWeight={600} mb={3}>
+          {days} day{days > 1 ? "s" : ""} — Total: €{totalPrice}
         </Typography>
       )}
 
       {/* FORM */}
-      <Box mt={4} sx={{ maxWidth: 400 }}>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 2, maxWidth: 500 }}>
         <TextField
           fullWidth
           label="Your Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          sx={{ mb: 2 }}
         />
-
         <TextField
           fullWidth
           label="Phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          sx={{ mb: 2 }}
         />
-
-        <Button variant="contained" fullWidth onClick={handleReserve}>
-          Reserve Now
+        <Button variant="contained" size="large" fullWidth onClick={handleReserve}>
+          Reserve via WhatsApp
         </Button>
       </Box>
     </Container>

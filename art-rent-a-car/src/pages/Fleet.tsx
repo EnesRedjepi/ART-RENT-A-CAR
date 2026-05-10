@@ -12,7 +12,7 @@ const Fleet = () => {
 
   // FILTER LOGIC
   const filteredCars = cars.filter((car) => {
-    if (!transmission || transmission === "") return true;
+    if (!transmission) return true;
     return car.transmission === transmission;
   });
 
@@ -31,7 +31,7 @@ const Fleet = () => {
 
       <Grid container spacing={4}>
         {filteredCars.map((car) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={car.id}>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={car.id}>
             <CarCard car={car} />
           </Grid>
         ))}
