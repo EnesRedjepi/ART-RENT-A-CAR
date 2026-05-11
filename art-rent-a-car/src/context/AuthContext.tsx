@@ -2,7 +2,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  login: (password: string) => boolean;
+  login: (username: string, password: string) => boolean;
   logout: () => void;
 }
 
@@ -13,8 +13,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.getItem("adminAuth") === "true",
   );
 
-  const login = (password: string) => {
-    if (password === "admin123") {
+  const login = (username: string, password: string) => {
+    if (username === "admin" && password === "admin123") {
       localStorage.setItem("adminAuth", "true");
       setIsAuthenticated(true);
       return true;

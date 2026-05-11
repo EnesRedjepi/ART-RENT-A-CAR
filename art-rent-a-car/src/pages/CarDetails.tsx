@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Button, TextField, Chip } from "@mui/material";
+import { Box, Container, Typography, Button, TextField, Chip, Dialog, DialogContent, DialogActions } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { cars } from "../data/cars";
 import { useState } from "react";
@@ -6,6 +6,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const CarDetails = () => {
   const { slug } = useParams();
@@ -15,6 +16,8 @@ const CarDetails = () => {
   const [returnDate, setReturnDate] = useState<Dayjs | null>(null);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+
+  const [successOpen, setSuccessOpen] = useState(false);
 
   if (!car) {
     return (
@@ -27,37 +30,70 @@ const CarDetails = () => {
   const days = pickupDate && returnDate ? returnDate.diff(pickupDate, "day") : 0;
   const totalPrice = days > 0 ? days * car.pricePerDay : 0;
 
-  const handleReserve = () => {
-    if (!pickupDate || !returnDate) {
-      alert("Please select dates first");
-      return;
-    }
-    if (days <= 0) {
-      alert("Return date must be after pickup date");
-      return;
-    }
-    if (!name || !phone) {
-      alert("Please fill all fields");
-      return;
-    }
+  const buildMessage = () =>
+    `Car: ${car.name}\n` +
+    `Pickup: ${pickupDate!.format("YYYY-MM-DD")}\n` +
+    `Return: ${returnDate!.format("YYYY-MM-DD")}\n` +
+    `Days: ${days}\n` +
+    `Total: €${totalPrice}\n` +
+    `Name: ${name}\n` +
+    `Phone: ${phone}`;
 
-    const message =
-      `Car: ${car.name}\n` +
-      `Pickup: ${pickupDate.format("YYYY-MM-DD")}\n` +
-      `Return: ${returnDate.format("YYYY-MM-DD")}\n` +
-      `Days: ${days}\n` +
-      `Total: €${totalPrice}\n` +
-      `Name: ${name}\n` +
-      `Phone: ${phone}`;
+  const validate = () => {
+    if (!pickupDate || !returnDate) { alert("Please select dates first"); return false; }
+    if (days <= 0) { alert("Return date must be after pickup date"); return false; }
+    if (!name || !phone) { alert("Please fill all fields"); return false; }
+    return true;
+  };
 
-    window.open(
-      "https://wa.me/+38975400462?text=" + encodeURIComponent(message),
-      "_blank",
-    );
+  const saveBooking = () => {
+    const booking = {
+      carId: car.id,
+      carName: car.name,
+      customerName: name,
+      customerPhone: phone,
+      pickupDate: pickupDate!.format("YYYY-MM-DD"),
+      returnDate: returnDate!.format("YYYY-MM-DD"),
+      totalPrice,
+      days,
+      createdAt: new Date().toISOString(),
+    };
+    const existing = JSON.parse(localStorage.getItem("bookings") || "[]");
+    existing.push(booking);
+    localStorage.setItem("bookings", JSON.stringify(existing));
+  };
+
+  const handleWhatsApp = () => {
+    if (!validate()) return;
+    saveBooking();
+    setSuccessOpen(true);
+    window.open("https://wa.me/+38975400462?text=" + encodeURIComponent(buildMessage()), "_blank");
+  };
+
+  const handleViber = () => {
+    if (!validate()) return;
+    saveBooking();
+    setSuccessOpen(true);
+    window.open("viber://chat?number=%2B38975400462&text=" + encodeURIComponent(buildMessage()), "_blank");
   };
 
   return (
     <Container sx={{ py: 6, maxWidth: "md" }}>
+      {/* SUCCESS DIALOG */}
+      <Dialog open={successOpen} onClose={() => setSuccessOpen(false)} PaperProps={{ sx: { borderRadius: 4, p: 2, textAlign: "center" } }}>
+        <DialogContent>
+          <CheckCircleOutlineIcon sx={{ fontSize: 64, color: "#25D366", mb: 2 }} />
+          <Typography variant="h5" fontWeight={700} mb={1}>Reservation Confirmed!</Typography>
+          <Typography color="text.secondary" mb={1}>Your reservation for <strong>{car.name}</strong> has been submitted successfully.</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {pickupDate?.format("DD MMM YYYY")} → {returnDate?.format("DD MMM YYYY")} • {days} day{days > 1 ? "s" : ""} • <strong>€{totalPrice}</strong>
+          </Typography>
+        </DialogContent>
+        <DialogActions sx={{ justifyContent: "center", pb: 2 }}>
+          <Button variant="contained" onClick={() => setSuccessOpen(false)}>Close</Button>
+        </DialogActions>
+      </Dialog>
+
       {/* IMAGE */}
       <Box
         sx={{
@@ -66,7 +102,7 @@ const CarDetails = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          bgcolor: "grey.100",
+          bgcolor: "#ffffff",
           borderRadius: 4,
           overflow: "hidden",
           mb: 4,
@@ -75,7 +111,7 @@ const CarDetails = () => {
         <img
           src={car.image}
           alt={car.name}
-          style={{ maxHeight: "300px", maxWidth: "100%", objectFit: "contain" }}
+          style={{ maxHeight: "300px", maxWidth: "100%", objectFit: "contain", mixBlendMode: "multiply" }}
         />
       </Box>
 
@@ -134,8 +170,15 @@ const CarDetails = () => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
-        <Button variant="contained" size="large" fullWidth onClick={handleReserve}>
+        <Button variant="contained" size="large" fullWidth onClick={handleWhatsApp}
+          sx={{ bgcolor: "#25D366", "&:hover": { bgcolor: "#1ebe57" } }}
+        >
           Reserve via WhatsApp
+        </Button>
+        <Button variant="contained" size="large" fullWidth onClick={handleViber}
+          sx={{ bgcolor: "#7360F2", "&:hover": { bgcolor: "#5b4ac4" } }}
+        >
+          Reserve via Viber
         </Button>
       </Box>
     </Container>

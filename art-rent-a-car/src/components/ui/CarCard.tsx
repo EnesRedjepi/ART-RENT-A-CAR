@@ -29,7 +29,7 @@ const CarCard = ({ car }: any) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          bgcolor: "grey.100",
+          bgcolor: "#ffffff",
           borderTopLeftRadius: 16,
           borderTopRightRadius: 16,
           overflow: "hidden",
@@ -81,7 +81,7 @@ const CarCard = ({ car }: any) => {
         </Box>
 
         {/* BUTTONS */}
-        <Box sx={{ mt: 3, display: "flex", gap: 1.5 }}>
+        <Box sx={{ mt: 3 }}>
           <Button
             fullWidth
             variant="contained"
@@ -91,30 +91,57 @@ const CarCard = ({ car }: any) => {
             View Details
           </Button>
 
-          <Button
-            fullWidth
-            variant="outlined"
-            size="large"
-            onClick={() => {
-              const days =
-                pickup && dropoff
-                  ? Math.round(
-                      (new Date(dropoff).getTime() - new Date(pickup).getTime()) /
-                        (1000 * 60 * 60 * 24),
-                    )
-                  : 0;
-              const total = days > 0 ? days * car.pricePerDay : null;
-              const msg = pickup && dropoff && total
-                ? `New Reservation\n\nCar: ${car.name}\nPickup: ${pickup}\nReturn: ${dropoff}\nDays: ${days}\nTotal: €${total}`
-                : `Hello, I'm interested in renting the ${car.name}`;
-              window.open(
-                "https://wa.me/+38975400462?text=" + encodeURIComponent(msg),
-                "_blank",
-              );
-            }}
-          >
-            WhatsApp
-          </Button>
+          <Box sx={{ mt: 1.5, display: "flex", gap: 1.5 }}>
+            <Button
+              variant="outlined"
+              size="large"
+              sx={{ flex: 1 }}
+              onClick={() => {
+                const days =
+                  pickup && dropoff
+                    ? Math.round(
+                        (new Date(dropoff).getTime() - new Date(pickup).getTime()) /
+                          (1000 * 60 * 60 * 24),
+                      )
+                    : 0;
+                const total = days > 0 ? days * car.pricePerDay : null;
+                const msg = pickup && dropoff && total
+                  ? `New Reservation\n\nCar: ${car.name}\nPickup: ${pickup}\nReturn: ${dropoff}\nDays: ${days}\nTotal: €${total}`
+                  : `Hello, I'm interested in renting the ${car.name}`;
+                window.open(
+                  "https://wa.me/+38975400462?text=" + encodeURIComponent(msg),
+                  "_blank",
+                );
+              }}
+            >
+              WhatsApp
+            </Button>
+
+            <Button
+              variant="outlined"
+              size="large"
+              sx={{ flex: 1 }}
+              onClick={() => {
+                const days =
+                  pickup && dropoff
+                    ? Math.round(
+                        (new Date(dropoff).getTime() - new Date(pickup).getTime()) /
+                          (1000 * 60 * 60 * 24),
+                      )
+                    : 0;
+                const total = days > 0 ? days * car.pricePerDay : null;
+                const msg = pickup && dropoff && total
+                  ? `New Reservation\n\nCar: ${car.name}\nPickup: ${pickup}\nReturn: ${dropoff}\nDays: ${days}\nTotal: €${total}`
+                  : `Hello, I'm interested in renting the ${car.name}`;
+                window.open(
+                  "viber://chat?number=%2B38975400462&text=" + encodeURIComponent(msg),
+                  "_blank",
+                );
+              }}
+            >
+              Viber
+            </Button>
+          </Box>
         </Box>
       </CardContent>
     </Card>

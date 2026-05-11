@@ -3,6 +3,8 @@ import CarCard from "../components/ui/CarCard";
 import { cars } from "../data/cars";
 
 const FeaturedCars = () => {
+  const featured = cars.slice(0, 3);
+
   return (
     <Container sx={{ py: 8 }}>
       <Typography variant="h4" sx={{ mb: 4 }}>
@@ -10,8 +12,8 @@ const FeaturedCars = () => {
       </Typography>
 
       <Grid container spacing={4}>
-        {cars.map((car) => (
-          <Grid item xs={12} sm={6} md={3} key={car.id}>
+        {featured.map((car) => (
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={car.id}>
             <CarCard car={car} />
           </Grid>
         ))}

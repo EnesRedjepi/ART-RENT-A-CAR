@@ -52,7 +52,7 @@ const Navbar = () => {
 
           <Button
             component={Link}
-            to="/admin/bookings"
+            to="/admin/login"
             color="inherit"
             sx={{ textTransform: "none" }}
           >
