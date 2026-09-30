@@ -1,6 +1,6 @@
 import type { Car } from "../types/Car";
 
-export const cars = [
+export const cars: Car[] = [
   {
     id: 1,
     name: "Citroen C3",

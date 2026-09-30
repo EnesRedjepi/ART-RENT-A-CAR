@@ -39,13 +39,16 @@ const Home = () => {
       {/* HERO SECTION */}
       <Box
         sx={{
-          minHeight: "90vh",
+          minHeight: { xs: "auto", md: "min(780px, calc(100vh - 64px))" },
           backgroundImage: "url('/images/hero.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           position: "relative",
           display: "flex",
+          flexDirection: { xs: "column-reverse", md: "row" },
           alignItems: "center",
+          justifyContent: "center",
+          gap: { xs: 3, md: 0 },
           color: "#fff",
         }}
       >
@@ -54,7 +57,8 @@ const Home = () => {
           sx={{
             position: "absolute",
             inset: 0,
-            backgroundColor: "rgba(0,0,0,0.6)",
+            background:
+              "linear-gradient(90deg, rgba(9,17,15,0.86), rgba(9,17,15,0.5))",
           }}
         />
 
@@ -62,29 +66,33 @@ const Home = () => {
         <Paper
           elevation={0}
           sx={{
-            position: "absolute",
-            right: 0,
-            top: "50%",
-            transform: "translateY(-50%)",
+            position: { xs: "relative", md: "absolute" },
+            right: { xs: "auto", md: 0 },
+            top: { xs: "auto", md: "50%" },
+            transform: { xs: "none", md: "translateY(-50%)" },
             zIndex: 3,
-            p: 3,
-            width: 300,
-            background: "rgba(255,255,255,0.08)",
+            p: { xs: 2.5, sm: 3 },
+            width: { xs: "calc(100% - 32px)", md: 320 },
+            maxWidth: 440,
+            background: "rgba(15,24,21,0.88)",
             backdropFilter: "blur(14px)",
             border: "1px solid rgba(255,255,255,0.18)",
-            borderRight: "none",
-            borderRadius: "16px 0 0 16px",
+            borderRadius: 2,
             color: "white",
-            display: { xs: "none", md: "block" },
+            mx: { xs: "auto", md: 0 },
           }}
         >
-          <Typography variant="h6" sx={{ mb: 2 }}>Book Your Car</Typography>
+          <Typography variant="h6" sx={{ mb: 2 }}>
+            Book Your Car
+          </Typography>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               label="Pickup Date"
               value={pickupDate}
-              onChange={(newValue) => setPickupDate(newValue)}
+              onChange={(newValue) => {
+                if (newValue) setPickupDate(newValue);
+              }}
               slotProps={{
                 textField: {
                   fullWidth: true,
@@ -93,7 +101,9 @@ const Home = () => {
                     mb: 2,
                     input: { color: "white" },
                     label: { color: "rgba(255,255,255,0.7)" },
-                    "& .MuiOutlinedInput-root fieldset": { borderColor: "rgba(255,255,255,0.3)" },
+                    "& .MuiOutlinedInput-root fieldset": {
+                      borderColor: "rgba(255,255,255,0.3)",
+                    },
                     "& .MuiSvgIcon-root": { color: "white" },
                   },
                 },
@@ -102,7 +112,9 @@ const Home = () => {
             <DatePicker
               label="Return Date"
               value={returnDate}
-              onChange={(newValue) => setReturnDate(newValue)}
+              onChange={(newValue) => {
+                if (newValue) setReturnDate(newValue);
+              }}
               slotProps={{
                 textField: {
                   fullWidth: true,
@@ -111,7 +123,9 @@ const Home = () => {
                     mb: 2,
                     input: { color: "white" },
                     label: { color: "rgba(255,255,255,0.7)" },
-                    "& .MuiOutlinedInput-root fieldset": { borderColor: "rgba(255,255,255,0.3)" },
+                    "& .MuiOutlinedInput-root fieldset": {
+                      borderColor: "rgba(255,255,255,0.3)",
+                    },
                     "& .MuiSvgIcon-root": { color: "white" },
                   },
                 },
@@ -130,7 +144,9 @@ const Home = () => {
               mb: 2,
               label: { color: "rgba(255,255,255,0.7)" },
               "& .MuiOutlinedInput-root": { color: "white" },
-              "& .MuiOutlinedInput-root fieldset": { borderColor: "rgba(255,255,255,0.3)" },
+              "& .MuiOutlinedInput-root fieldset": {
+                borderColor: "rgba(255,255,255,0.3)",
+              },
               "& .MuiSvgIcon-root": { color: "white" },
             }}
           >
@@ -139,7 +155,12 @@ const Home = () => {
             <MenuItem value="Automatic">Automatic</MenuItem>
           </TextField>
 
-          <Button variant="contained" size="large" fullWidth onClick={handleSearch}>
+          <Button
+            variant="contained"
+            size="large"
+            fullWidth
+            onClick={handleSearch}
+          >
             Search Cars
           </Button>
         </Paper>
@@ -159,15 +180,26 @@ const Home = () => {
             transition={{ duration: 0.8 }}
           >
             <Box sx={{ maxWidth: 650 }}>
-              <Typography variant="h1">
-                Premium Rent a Car Skopje Airport
+              <Typography
+                variant="h1"
+                sx={{
+                  fontSize: { xs: "2.5rem", sm: "3.25rem", md: "4rem" },
+                  lineHeight: 1.05,
+                  maxWidth: 600,
+                }}
+              >
+                Your journey starts with the right car.
               </Typography>
 
               <Typography variant="h6" sx={{ mt: 3 }}>
                 Fast airport delivery. No hidden fees. 24/7 support.
               </Typography>
 
-              <Stack direction="row" spacing={3} sx={{ mt: 5 }}>
+              <Stack
+                direction="row"
+                spacing={1.5}
+                sx={{ mt: 4, flexWrap: "wrap" }}
+              >
                 <Button
                   variant="contained"
                   color="secondary"

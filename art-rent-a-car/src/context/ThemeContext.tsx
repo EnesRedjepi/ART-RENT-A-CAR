@@ -1,25 +1,14 @@
-import { createContext, useMemo, useState, ReactNode, useEffect } from "react";
+import { useMemo, useState } from "react";
+import type { ReactNode } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-
-interface ThemeContextType {
-  toggleTheme: () => void;
-  mode: "light" | "dark";
-}
-
-export const ThemeContext = createContext<ThemeContextType>({
-  toggleTheme: () => {},
-  mode: "dark",
-});
+import { ThemeContext } from "./theme-context";
 
 export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [mode, setMode] = useState<"light" | "dark">("dark");
-
-  // Load saved theme
-  useEffect(() => {
+  const [mode, setMode] = useState<"light" | "dark">(() => {
     const saved = localStorage.getItem("themeMode") as "light" | "dark" | null;
-    if (saved) setMode(saved);
-  }, []);
+    return saved === "light" ? "light" : "dark";
+  });
 
   const toggleTheme = () => {
     const newMode = mode === "dark" ? "light" : "dark";
@@ -33,38 +22,41 @@ export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
         palette: {
           mode,
           primary: {
-            main: mode === "dark" ? "#00e5ff" : "#111111",
+            main: mode === "dark" ? "#65B99B" : "#176B56",
+          },
+          secondary: {
+            main: mode === "dark" ? "#E4B35B" : "#A96F18",
           },
           background: {
-            default: mode === "dark" ? "#0b0f19" : "#f5f7fa",
-            paper:
-              mode === "dark"
-                ? "rgba(255, 255, 255, 0.06)"
-                : "rgba(255, 255, 255, 0.8)",
+            default: mode === "dark" ? "#111816" : "#F3F5F2",
+            paper: mode === "dark" ? "#1B2420" : "#FFFFFF",
           },
         },
         shape: {
-          borderRadius: 20,
+          borderRadius: 8,
         },
         typography: {
-          fontFamily: "Inter, sans-serif",
+          fontFamily: "Poppins, sans-serif",
+          h1: { fontWeight: 700, lineHeight: 1.08 },
+          h2: { fontWeight: 700, lineHeight: 1.15 },
+          h3: { fontWeight: 700, lineHeight: 1.15 },
+          button: { fontWeight: 600, textTransform: "none" },
         },
         components: {
-          MuiPaper: {
+          MuiCard: {
             styleOverrides: {
               root: {
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                transition: "all 0.3s ease",
+                borderRadius: 8,
+                border: `1px solid ${mode === "dark" ? "rgba(255,255,255,0.08)" : "rgba(20,40,32,0.1)"}`,
+                boxShadow: "none",
               },
             },
           },
           MuiButton: {
             styleOverrides: {
               root: {
-                borderRadius: 14,
-                textTransform: "none",
-                fontWeight: 600,
+                borderRadius: 6,
+                minHeight: 44,
               },
             },
           },

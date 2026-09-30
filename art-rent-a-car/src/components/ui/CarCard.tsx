@@ -1,24 +1,28 @@
-import { Card, CardContent, Typography, Button, Box, Chip } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Box,
+  Chip,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import type { Car } from "../../types/Car";
 
-const CarCard = ({ car }: any) => {
+const CarCard = ({ car }: { car: Car }) => {
   const navigate = useNavigate();
-  const params = new URLSearchParams(window.location.search);
-  const pickup = params.get("pickup");
-  const dropoff = params.get("return");
 
   return (
     <Card
       sx={{
-        borderRadius: 4,
-        cursor: "pointer",
-        transition: "0.3s",
         height: "100%",
         display: "flex",
         flexDirection: "column",
+        overflow: "hidden",
+        transition: "transform 180ms ease, box-shadow 180ms ease",
         "&:hover": {
-          transform: "translateY(-6px)",
-          boxShadow: "0 16px 40px rgba(0,0,0,0.2)",
+          transform: "translateY(-3px)",
+          boxShadow: "0 12px 28px rgba(0,0,0,0.1)",
         },
       }}
     >
@@ -30,10 +34,8 @@ const CarCard = ({ car }: any) => {
           alignItems: "center",
           justifyContent: "center",
           bgcolor: "#ffffff",
-          borderTopLeftRadius: 16,
-          borderTopRightRadius: 16,
           overflow: "hidden",
-          p: 2,
+          p: 2.5,
         }}
       >
         <img
@@ -75,73 +77,25 @@ const CarCard = ({ car }: any) => {
             {car.airConditioning && <Chip label="A/C" size="small" />}
           </Box>
 
-          <Typography variant="h5" fontWeight={700} color="primary">
-            €{car.pricePerDay} <Typography component="span" variant="body2" color="text.secondary">/ day</Typography>
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "baseline", gap: 0.75 }}>
+            <Typography variant="h5" fontWeight={700} color="primary">
+              €{car.pricePerDay}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              / day
+            </Typography>
+          </Box>
         </Box>
 
-        {/* BUTTONS */}
         <Box sx={{ mt: 3 }}>
           <Button
             fullWidth
             variant="contained"
-            size="large"
+            size="medium"
             onClick={() => navigate(`/fleet/${car.slug}`)}
           >
-            View Details
+            View details and reserve
           </Button>
-
-          <Box sx={{ mt: 1.5, display: "flex", gap: 1.5 }}>
-            <Button
-              variant="outlined"
-              size="large"
-              sx={{ flex: 1 }}
-              onClick={() => {
-                const days =
-                  pickup && dropoff
-                    ? Math.round(
-                        (new Date(dropoff).getTime() - new Date(pickup).getTime()) /
-                          (1000 * 60 * 60 * 24),
-                      )
-                    : 0;
-                const total = days > 0 ? days * car.pricePerDay : null;
-                const msg = pickup && dropoff && total
-                  ? `New Reservation\n\nCar: ${car.name}\nPickup: ${pickup}\nReturn: ${dropoff}\nDays: ${days}\nTotal: €${total}`
-                  : `Hello, I'm interested in renting the ${car.name}`;
-                window.open(
-                  "https://wa.me/+38975400462?text=" + encodeURIComponent(msg),
-                  "_blank",
-                );
-              }}
-            >
-              WhatsApp
-            </Button>
-
-            <Button
-              variant="outlined"
-              size="large"
-              sx={{ flex: 1 }}
-              onClick={() => {
-                const days =
-                  pickup && dropoff
-                    ? Math.round(
-                        (new Date(dropoff).getTime() - new Date(pickup).getTime()) /
-                          (1000 * 60 * 60 * 24),
-                      )
-                    : 0;
-                const total = days > 0 ? days * car.pricePerDay : null;
-                const msg = pickup && dropoff && total
-                  ? `New Reservation\n\nCar: ${car.name}\nPickup: ${pickup}\nReturn: ${dropoff}\nDays: ${days}\nTotal: €${total}`
-                  : `Hello, I'm interested in renting the ${car.name}`;
-                window.open(
-                  "viber://chat?number=%2B38975400462&text=" + encodeURIComponent(msg),
-                  "_blank",
-                );
-              }}
-            >
-              Viber
-            </Button>
-          </Box>
         </Box>
       </CardContent>
     </Card>
