@@ -1,0 +1,69 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model PagedResult<ProductListItem>
+@{
+    ViewData["Title"] = L["Products"];
+    var filter = (ProductFilterViewModel)ViewBag.Filter;
+    var categories = (IReadOnlyList<SelectListItem>)ViewBag.Categories;
+    var returnUrl = $"{Context.Request.Path}{Context.Request.QueryString}";
+}
+
+<div class="d-flex flex-wrap justify-content-between gap-2 mb-3">
+    <form method="get" class="row g-2 align-items-end">
+        <div class="col-auto"><input name="search" value="@filter.Search" class="form-control" placeholder="@L["Search name, SKU, brand"]" /></div>
+        <div class="col-auto">
+            <select name="categoryId" class="form-select">
+                <option value="">@L["All categories"]</option>
+                @foreach (var category in categories)
+                {
+                    <option value="@category.Value" selected="@(category.Value == filter.CategoryId?.ToString())">@category.Text</option>
+                }
+            </select>
+        </div>
+        <div class="col-auto">
+            <select name="sort" class="form-select">
+                <option value="Newest" selected="@(filter.Sort == ProductSort.Newest)">@L["Newest"]</option>
+                <option value="NameAscending" selected="@(filter.Sort == ProductSort.NameAscending)">@L["Name"]</option>
+                <option value="PriceAscending" selected="@(filter.Sort == ProductSort.PriceAscending)">@L["Price: low to high"]</option>
+                <option value="PriceDescending" selected="@(filter.Sort == ProductSort.PriceDescending)">@L["Price: high to low"]</option>
+                <option value="StockAscending" selected="@(filter.Sort == ProductSort.StockAscending)">@L["Stock: low to high"]</option>
+            </select>
+        </div>
+        <div class="col-auto"><button class="btn btn-dark" type="submit">@L["Filter"]</button></div>
+    </form>
+    <a class="btn btn-clay" asp-action="Create">@L["New product"]</a>
+</div>
+
+<div class="panel p-0">
+    <div class="table-responsive">
+        <table class="table align-middle mb-0">
+            <thead><tr><th></th><th>@L["Product"]</th><th>@L["Category"]</th><th class="text-end">@L["Retail"]</th><th class="text-end">@L["Wholesale"]</th><th class="text-end">@L["Stock"]</th><th>@L["Status"]</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var product in Model.Items)
+                {
+                    <tr>
+                        <td><img class="table-thumb" src="@Url.ProductImage(product.PrimaryImageFileName)" alt="" /></td>
+                        <td><a asp-action="Edit" asp-route-id="@product.Id">@product.Name</a><div class="small text-muted">@product.Sku</div></td>
+                        <td>@product.CategoryName</td>
+                        <td class="text-end">@product.Price.ToString("C")</td>
+                        <td class="text-end">@product.WholesalePrice.ToString("C") <span class="small text-muted">@L["from {0}", product.MinimumWholesaleQuantity]</span></td>
+                        <td class="text-end"><span class="@(product.StockQuantity == 0 ? "text-danger fw-bold" : product.IsLowStock ? "text-warning fw-bold" : "")">@product.StockQuantity</span></td>
+                        <td><span class="badge-soft @(product.IsActive ? "badge-success" : "badge-danger")">@(product.IsActive ? L["Active"] : L["Inactive"])</span></td>
+                        <td class="text-end text-nowrap">
+                            <a class="btn btn-sm btn-outline-dark" asp-action="Edit" asp-route-id="@product.Id">@L["Edit"]</a>
+                            <form asp-action="SetActive" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@product.Id" />
+                                <input type="hidden" name="isActive" value="@((!product.IsActive).ToString().ToLowerInvariant())" />
+                                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                                <button type="submit" class="btn btn-sm btn-outline-secondary">@(product.IsActive ? L["Deactivate"] : L["Activate"])</button>
+                            </form>
+                            <form asp-action="Delete" asp-route-id="@product.Id" method="post" class="d-inline" onsubmit="return confirm(@L["Delete this product permanently?"].JsString());">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">@L["Delete"]</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<partial name="_Pagination" model="(Model.Page, Model.TotalPages)" />

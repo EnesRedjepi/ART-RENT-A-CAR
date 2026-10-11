@@ -1,0 +1,10 @@
+bin/
+obj/
+*.db
+*.db-shm
+*.db-wal
+Logs/
+uploads/
+.vs/
+.claude/
+__pycache__/

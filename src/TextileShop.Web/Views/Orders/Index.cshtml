@@ -1,0 +1,46 @@
+@model PagedResult<OrderListItem>
+@{
+    ViewData["Title"] = L["My orders"];
+}
+
+<partial name="_AccountNav" model="@("orders")" />
+
+<header class="catalog-hero cart-hero">
+    <h1>@L["Order history"]</h1>
+</header>
+
+@if (Model.Items.Count == 0)
+{
+    <div class="empty-state cart-empty">
+        <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+        <h2 class="h5">@L["You have not placed any orders yet"]</h2>
+        <a class="btn btn-clay btn-lg" asp-controller="Products" asp-action="Index">@L["Start shopping"]</a>
+    </div>
+}
+else
+{
+    <ul class="order-list">
+        @foreach (var order in Model.Items)
+        {
+            <li class="order-card">
+                <div class="order-card-main">
+                    <a class="order-number" asp-action="Details" asp-route-id="@order.Id">@order.OrderNumber</a>
+                    <div class="order-meta">
+                        <span>@order.OrderDate.ToLocalTime().ToString("d MMM yyyy", CultureInfo.CurrentUICulture)</span>
+                        <span aria-hidden="true">&middot;</span>
+                        <span>@L["Items"]: @order.ItemCount</span>
+                    </div>
+                    <div class="order-badges">
+                        <span class="@StatusStyles.BadgeClass(order.Status)">@L[order.Status.ToString()]</span>
+                        <span class="@StatusStyles.BadgeClass(order.PaymentStatus)">@L[order.PaymentStatus.ToString()]</span>
+                    </div>
+                </div>
+                <div class="order-card-side">
+                    <div class="order-total">@order.TotalAmount.ToString("C")</div>
+                    <a class="btn btn-outline-dark" asp-action="Details" asp-route-id="@order.Id">@L["Details"]</a>
+                </div>
+            </li>
+        }
+    </ul>
+    <partial name="_Pagination" model="(Model.Page, Model.TotalPages)" />
+}

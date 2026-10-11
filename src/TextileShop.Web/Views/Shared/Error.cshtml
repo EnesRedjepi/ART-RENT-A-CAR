@@ -1,0 +1,24 @@
+@model ErrorViewModel
+@{
+    var notFound = Model.StatusCode == 404;
+    ViewData["Title"] = notFound ? L["Page not found"].Value : L["Something went wrong"].Value;
+}
+
+<div class="error-page">
+    <div class="error-art" aria-hidden="true">
+        <span class="error-code">@Model.StatusCode</span>
+        <span class="error-thread"></span>
+    </div>
+    <h1>@ViewData["Title"]</h1>
+    <p class="error-text">
+        @(notFound ? L["The page you are looking for does not exist or was moved."].Value : L["An unexpected error occurred. Our team has been notified."].Value)
+    </p>
+    <div class="error-actions">
+        <a class="btn btn-clay btn-lg" asp-controller="Home" asp-action="Index">@L["Back to the shop"]</a>
+        <a class="btn btn-outline-dark btn-lg" asp-controller="Products" asp-action="Index">@L["Shop the collection"]</a>
+    </div>
+    @if (!string.IsNullOrEmpty(Model.RequestId))
+    {
+        <p class="error-ref">@L["Reference:"] <code>@Model.RequestId</code></p>
+    }
+</div>

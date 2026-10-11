@@ -1,0 +1,22 @@
+@using TextileShop.Web.Localization
+@model string
+@{
+    var current = SupportedLanguages.Current;
+    var returnUrl = $"{Context.Request.Path}{Context.Request.QueryString}";
+}
+
+<div class="dropdown language-switcher">
+    <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="@L["Language"]: @current.NativeName" title="@current.NativeName"><img class="lang-flag" src="~/images/flags/@(current.Code).svg" alt="" width="24" height="16" /></button>
+    <ul class="dropdown-menu @(Model == "shop" ? "dropdown-menu-xl-end" : "")">
+        @foreach (var language in SupportedLanguages.All)
+        {
+            <li>
+                <form asp-area="" asp-controller="Language" asp-action="Set" method="post">
+                    <input type="hidden" name="culture" value="@language.Code" />
+                    <input type="hidden" name="returnUrl" value="@returnUrl" />
+                    <button type="submit" class="dropdown-item @(language.Code == current.Code ? "active" : "")" lang="@language.Code"><img class="lang-flag" src="~/images/flags/@(language.Code).svg" alt="" width="24" height="16" /><span>@language.NativeName</span></button>
+                </form>
+            </li>
+        }
+    </ul>
+</div>

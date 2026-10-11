@@ -1,0 +1,64 @@
+@model PagedResult<OrderListItem>
+@{
+    ViewData["Title"] = L["Orders"];
+    var filter = (OrderFilterViewModel)ViewBag.Filter;
+    var filtersActive = !string.IsNullOrWhiteSpace(filter.Search) || filter.Status is not null || filter.PaymentStatus is not null || filter.From is not null || filter.To is not null;
+}
+
+<button class="btn btn-outline-dark w-100 mb-3 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#orderFilters" aria-expanded="@(filtersActive ? "true" : "false")" aria-controls="orderFilters">@L["Filter"]</button>
+<div id="orderFilters" class="collapse d-lg-block @(filtersActive ? "show" : "")">
+<form method="get" class="row g-2 align-items-end mb-3">
+    <div class="col-md-3"><label class="form-label small">@L["Search"]</label><input name="search" value="@filter.Search" class="form-control" placeholder="@L["Order no., customer, email"]" /></div>
+    <div class="col-md-2">
+        <label class="form-label small">@L["Status"]</label>
+        <select name="status" class="form-select">
+            <option value="">@L["All"]</option>
+            @foreach (var status in Enum.GetValues<OrderStatus>())
+            {
+                <option value="@status" selected="@(filter.Status == status)">@L[status.ToString()]</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label class="form-label small">@L["Payment"]</label>
+        <select name="paymentStatus" class="form-select">
+            <option value="">@L["All"]</option>
+            @foreach (var status in Enum.GetValues<PaymentStatus>())
+            {
+                <option value="@status" selected="@(filter.PaymentStatus == status)">@L[status.ToString()]</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2"><label class="form-label small">@L["From"]</label><input type="date" name="from" value="@filter.From?.ToString("yyyy-MM-dd")" class="form-control" /></div>
+    <div class="col-md-2"><label class="form-label small">@L["To"]</label><input type="date" name="to" value="@filter.To?.ToString("yyyy-MM-dd")" class="form-control" /></div>
+    <div class="col-md-auto d-grid"><button class="btn btn-dark" type="submit">@L["Filter"]</button></div>
+</form>
+</div>
+
+<div class="panel p-0">
+    <div class="table-responsive">
+        <table class="table align-middle mb-0">
+            <thead><tr><th>@L["Order"]</th><th>@L["Customer"]</th><th>@L["Date"]</th><th>@L["Items"]</th><th>@L["Status"]</th><th>@L["Payment"]</th><th class="text-end">@L["Total"]</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var order in Model.Items)
+                {
+                    <tr>
+                        <td><strong>@order.OrderNumber</strong></td>
+                        <td>@order.CustomerName<div class="small text-muted">@order.CustomerEmail</div></td>
+                        <td>@order.OrderDate.ToLocalTime().ToString("d MMM yyyy HH:mm", CultureInfo.CurrentUICulture)</td>
+                        <td>@order.ItemCount</td>
+                        <td><span class="@StatusStyles.BadgeClass(order.Status)">@L[order.Status.ToString()]</span></td>
+                        <td><span class="@StatusStyles.BadgeClass(order.PaymentStatus)">@L[order.PaymentStatus.ToString()]</span></td>
+                        <td class="text-end">@order.TotalAmount.ToString("C")</td>
+                        <td class="text-end"><a class="btn btn-sm btn-outline-dark" asp-action="Details" asp-route-id="@order.Id">@L["Open"]</a></td>
+                    </tr>
+                }
+                @if (Model.Items.Count == 0)
+                {
+                    <tr><td colspan="8" class="text-center text-muted py-4">@L["No orders found."]</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<partial name="_Pagination" model="(Model.Page, Model.TotalPages)" />

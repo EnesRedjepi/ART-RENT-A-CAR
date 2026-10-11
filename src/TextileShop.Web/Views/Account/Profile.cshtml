@@ -1,0 +1,39 @@
+@model ProfileViewModel
+@{
+    ViewData["Title"] = L["My profile"];
+}
+
+<partial name="_AccountNav" model="@("profile")" />
+
+<header class="catalog-hero cart-hero profile-hero">
+    <span class="admin-avatar profile-avatar" aria-hidden="true">@(string.IsNullOrWhiteSpace(Model.FullName) ? "?" : Model.FullName.Trim()[..1].ToUpperInvariant())</span>
+    <div>
+        <h1>@L["My profile"]</h1>
+        <p class="mb-0">@L["Account type:"] <strong>@L[Model.AccountType.ToString()]</strong></p>
+    </div>
+</header>
+
+<div class="form-card form-card-narrow checkout-step">
+    <form asp-action="Profile" method="post">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        <div class="mb-3">
+            <label class="form-label">@L["Email"]</label>
+            <input class="form-control" value="@Model.Email" disabled />
+        </div>
+        <div class="mb-3">
+            <label asp-for="FullName" class="form-label"></label>
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneNumber" class="form-label"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-clay btn-lg">@L["Save changes"]</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

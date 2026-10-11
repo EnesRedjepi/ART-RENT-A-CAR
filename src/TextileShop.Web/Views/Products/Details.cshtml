@@ -1,0 +1,111 @@
+@model ProductDetailsViewModel
+@{
+    var product = Model.Product;
+    ViewData["Title"] = product.Name;
+    var isCustomer = User.IsInRole(Roles.RetailCustomer) || User.IsInRole(Roles.WholesaleCustomer);
+    var returnUrl = $"{Context.Request.Path}{Context.Request.QueryString}";
+}
+
+<nav aria-label="@L["breadcrumb"]">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">@L["Home"]</a></li>
+        <li class="breadcrumb-item"><a asp-controller="Products" asp-action="Category" asp-route-slug="@product.CategorySlug">@product.CategoryName</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@product.Name</li>
+    </ol>
+</nav>
+
+<div class="row g-4 g-xl-5">
+    <div class="col-lg-6">
+        <div class="gallery">
+            <div class="gallery-main">
+                <img id="galleryMain" src="@Url.ProductImage(product.Images.FirstOrDefault()?.FileName)" alt="@product.Name" />
+            </div>
+            @if (product.Images.Count > 1)
+            {
+                <div class="gallery-thumbs">
+                    @foreach (var image in product.Images)
+                    {
+                        <button type="button" class="gallery-thumb" data-gallery-src="@Url.ProductImage(image.FileName)" aria-label="@L["Show image"]">
+                            <img src="@Url.ProductImage(image.FileName)" alt="" />
+                        </button>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-6 product-info">
+        <a class="product-card-category product-category-link" asp-controller="Products" asp-action="Category" asp-route-slug="@product.CategorySlug">@product.CategoryName</a>
+        <h1 class="product-title">@product.Name</h1>
+        <div class="product-price">@product.Price.ToString("C")</div>
+
+        @if (User.IsInRole(Roles.WholesaleCustomer))
+        {
+            <div class="wholesale-box">
+                <strong>@L["Your wholesale price: {0}", product.WholesalePrice.ToString("C")]</strong> @L["per piece when you order {0} or more.", product.MinimumWholesaleQuantity]
+            </div>
+        }
+
+        <p class="product-description">@product.Description</p>
+
+        <p class="stock-line @(product.InStock ? (product.IsLowStock ? "stock-low" : "stock-ok") : "stock-out")" role="status">
+            <span class="stock-dot" aria-hidden="true"></span>
+            @if (!product.InStock)
+            {
+                <text>@L["Out of stock"]</text>
+            }
+            else if (product.IsLowStock)
+            {
+                <text>@L["Only {0} left in stock", product.StockQuantity]</text>
+            }
+            else
+            {
+                <text>@L["In stock"]</text>
+            }
+        </p>
+
+        @if (product.InStock)
+        {
+            @if (isCustomer)
+            {
+                <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form">
+                    <input type="hidden" name="productId" value="@product.Id" />
+                    <input type="hidden" name="returnUrl" value="@returnUrl" />
+                    <input type="number" name="quantity" value="1" min="1" max="@product.StockQuantity" class="form-control quantity-input" aria-label="@L["Quantity"]" />
+                    <button type="submit" class="btn btn-clay btn-lg">@L["Add to cart"]</button>
+                </form>
+            }
+            else if (User.Identity?.IsAuthenticated == true)
+            {
+                <p class="text-muted">@L["Administrator accounts cannot place orders."]</p>
+            }
+            else
+            {
+                <a class="btn btn-clay btn-lg" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@returnUrl">@L["Log in to buy"]</a>
+            }
+        }
+
+        <dl class="spec-list spec-card">
+            <dt>@L["SKU"]</dt><dd>@product.Sku</dd>
+            @if (!string.IsNullOrWhiteSpace(product.Brand)) { <dt>@L["Brand"]</dt><dd>@product.Brand</dd> }
+            @if (!string.IsNullOrWhiteSpace(product.Material)) { <dt>@L["Material"]</dt><dd>@product.Material</dd> }
+            @if (!string.IsNullOrWhiteSpace(product.Size)) { <dt>@L["Size"]</dt><dd>@product.Size</dd> }
+            @if (!string.IsNullOrWhiteSpace(product.Color)) { <dt>@L["Color"]</dt><dd>@product.Color</dd> }
+        </dl>
+    </div>
+</div>
+
+@if (Model.RelatedProducts.Count > 0)
+{
+    <section class="home-section">
+        <h2 class="section-title">@L["You may also like"]</h2>
+        <div class="row g-4">
+            @foreach (var related in Model.RelatedProducts)
+            {
+                <div class="col-6 col-md-3">
+                    <partial name="_ProductCard" model="related" />
+                </div>
+            }
+        </div>
+    </section>
+}

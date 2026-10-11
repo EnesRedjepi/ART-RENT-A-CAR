@@ -1,0 +1,39 @@
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <div class="header-icons">
+        @if (User.IsInRole(Roles.Administrator))
+        {
+            <a class="header-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">@L["Admin dashboard"]</a>
+        }
+        else
+        {
+            @await Component.InvokeAsync("CartSummary")
+        }
+        <div class="dropdown">
+            <button class="header-icon-btn dropdown-toggle-none" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="@L["My account"]">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">@L["Profile"]</a></li>
+                @if (!User.IsInRole(Roles.Administrator))
+                {
+                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Address">@L["Delivery address"]</a></li>
+                    <li><a class="dropdown-item" asp-controller="Orders" asp-action="Index">@L["My orders"]</a></li>
+                }
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        <button type="submit" class="dropdown-item">@L["Log out"]</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+    <div class="header-auth">
+        <a class="header-link" asp-controller="Account" asp-action="Login">@L["Log in"]</a>
+        <a class="btn btn-light btn-sm header-register" asp-controller="Account" asp-action="Register">@L["Register"]</a>
+    </div>
+}

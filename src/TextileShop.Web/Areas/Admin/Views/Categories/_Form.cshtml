@@ -1,0 +1,40 @@
+@model CategoryFormViewModel
+
+<div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+<input type="hidden" asp-for="Id" />
+<div class="mb-3">
+    <label asp-for="Name" class="form-label"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<div class="row g-3 mt-1">
+<div class="col-12">
+    <h2 class="h6 mt-2 mb-1">@L["Translations"]</h2>
+    <p class="small text-muted mb-0">@L["Leave a field empty to show the English text in that language."]</p>
+</div>
+@for (var i = 0; i < Model.Translations.Count; i++)
+{
+    var language = SupportedLanguages.All.FirstOrDefault(candidate => candidate.Code == Model.Translations[i].Culture);
+    <div class="col-12">
+        <div class="border rounded p-3">
+            <input type="hidden" asp-for="Translations[i].Culture" />
+            <h3 class="h6">@(language?.NativeName ?? Model.Translations[i].Culture)</h3>
+            <div class="mb-2">
+                <label asp-for="Translations[i].Name" class="form-label">@L["Name"] (@language?.NativeName)</label>
+                <input asp-for="Translations[i].Name" class="form-control" />
+                <span asp-validation-for="Translations[i].Name" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Translations[i].Description" class="form-label">@L["Description"] (@language?.NativeName)</label>
+                <textarea asp-for="Translations[i].Description" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="Translations[i].Description" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+}
+</div>

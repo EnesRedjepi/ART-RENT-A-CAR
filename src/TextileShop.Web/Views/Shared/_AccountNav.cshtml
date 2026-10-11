@@ -1,0 +1,10 @@
+@model string
+
+<ul class="nav nav-pills account-nav mb-4">
+    <li class="nav-item"><a class="nav-link @(Model == "profile" ? "active" : "")" asp-controller="Account" asp-action="Profile">@L["Profile"]</a></li>
+    @if (!User.IsInRole(Roles.Administrator))
+    {
+        <li class="nav-item"><a class="nav-link @(Model == "address" ? "active" : "")" asp-controller="Account" asp-action="Address">@L["Delivery address"]</a></li>
+        <li class="nav-item"><a class="nav-link @(Model == "orders" ? "active" : "")" asp-controller="Orders" asp-action="Index">@L["Orders"]</a></li>
+    }
+</ul>

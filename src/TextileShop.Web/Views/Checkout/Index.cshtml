@@ -1,0 +1,54 @@
+@model CheckoutViewModel
+@{
+    ViewData["Title"] = L["Checkout"];
+}
+
+<header class="catalog-hero cart-hero">
+    <h1>@L["Checkout"]</h1>
+    <p class="mb-0">@L["Delivery address"] &middot; @L["Payment"]</p>
+</header>
+
+<form asp-action="Index" method="post">
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <section class="form-card checkout-step" aria-labelledby="step-address">
+                <h2 class="checkout-step-title" id="step-address"><span class="step-num" aria-hidden="true">1</span>@L["Delivery address"]</h2>
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                <partial name="_AddressFields" for="Address" />
+                <div class="mt-3">
+                    <label asp-for="Notes" class="form-label"></label>
+                    <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Notes" class="text-danger"></span>
+                </div>
+            </section>
+            <section class="form-card checkout-step mt-4" aria-labelledby="step-payment">
+                <h2 class="checkout-step-title" id="step-payment"><span class="step-num" aria-hidden="true">2</span>@L["Payment"]</h2>
+                <div class="payment-option">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="7" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v4h-7z"/><circle cx="6" cy="18" r="2"/><circle cx="19" cy="18" r="2"/></svg>
+                    <p class="mb-0">@L["Cash on delivery. You pay the courier when your order arrives."]</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="summary-card">
+                <h2 class="h5">@L["Your order"]</h2>
+                @foreach (var line in Model.Cart.Lines)
+                {
+                    <div class="summary-row checkout-line">
+                        <img src="@Url.ProductImage(line.ImageFileName)" alt="" loading="lazy" />
+                        <span class="checkout-line-name">@line.Quantity &times; @line.ProductName</span>
+                        <span class="checkout-line-total">@line.LineTotal.ToString("C")</span>
+                    </div>
+                }
+                <div class="summary-row summary-total"><span>@L["Total"]</span><span>@Model.Cart.Total.ToString("C")</span></div>
+                <button type="submit" class="btn btn-clay btn-lg w-100 mt-3">@L["Place order"]</button>
+                <a class="btn btn-link w-100 mt-1" asp-controller="Cart" asp-action="Index">&larr; @L["Back to cart"]</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

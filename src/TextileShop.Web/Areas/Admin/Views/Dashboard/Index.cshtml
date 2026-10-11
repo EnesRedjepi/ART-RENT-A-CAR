@@ -1,0 +1,109 @@
+@model DashboardStats
+@{
+    ViewData["Title"] = L["Dashboard"];
+    var maxRevenue = Model.RevenueByMonth.Max(month => month.Amount);
+    var maxSold = Model.TopProducts.Count == 0 ? 1 : Model.TopProducts.Max(product => product.QuantitySold);
+}
+
+<div class="row g-3 mb-4">
+    <div class="col-6 col-xl-3"><div class="stat-card"><span>@L["Total revenue"]</span><strong>@Model.TotalRevenue.ToString("C")</strong></div></div>
+    <div class="col-6 col-xl-3"><div class="stat-card"><span>@L["This month"]</span><strong>@Model.CurrentMonthRevenue.ToString("C")</strong></div></div>
+    <div class="col-6 col-xl-3"><div class="stat-card"><span>@L["Orders"]</span><strong>@Model.TotalOrders</strong><small>@L["{0} pending", Model.PendingOrders]</small></div></div>
+    <div class="col-6 col-xl-3"><div class="stat-card"><span>@L["Customers"]</span><strong>@Model.CustomerCount</strong><small>@L["{0} active products", Model.ActiveProducts]</small></div></div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-7">
+        <div class="panel">
+            <h2 class="panel-title">@L["Revenue, last 6 months"]</h2>
+            <div class="bar-chart">
+                @foreach (var month in Model.RevenueByMonth)
+                {
+                    var height = maxRevenue == 0 ? 0 : (int)Math.Round(month.Amount / maxRevenue * 100);
+                    <div class="bar-chart-item">
+                        <span class="bar-chart-value">@month.Amount.ToString("C0")</span>
+                        <div class="bar-chart-bar" style="height: @(height)%"></div>
+                        <span class="bar-chart-label">@DateTime.ParseExact(month.Label, "MMM yyyy", CultureInfo.InvariantCulture).ToString("MMM yyyy", CultureInfo.CurrentUICulture)</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="panel">
+            <h2 class="panel-title">@L["Orders by status"]</h2>
+            <ul class="list-unstyled mb-0">
+                @foreach (var entry in Model.OrdersByStatus)
+                {
+                    <li class="d-flex justify-content-between py-1">
+                        <a asp-controller="Orders" asp-action="Index" asp-route-status="@entry.Key"><span class="@StatusStyles.BadgeClass(entry.Key)">@L[entry.Key.ToString()]</span></a>
+                        <strong>@entry.Value</strong>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="panel">
+            <h2 class="panel-title">@L["Best sellers"]</h2>
+            @if (Model.TopProducts.Count == 0)
+            {
+                <p class="text-muted mb-0">@L["No sales yet."]</p>
+            }
+            @foreach (var product in Model.TopProducts)
+            {
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between"><span>@product.ProductName</span><span class="text-muted">@L["{0} sold", product.QuantitySold] &middot; @product.Revenue.ToString("C")</span></div>
+                    <div class="progress progress-thin"><div class="progress-bar" style="width: @(product.QuantitySold * 100 / maxSold)%"></div></div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel">
+            <h2 class="panel-title">@L["Low stock"]</h2>
+            @if (Model.LowStockProducts.Count == 0)
+            {
+                <p class="text-muted mb-0">@L["All products are well stocked."]</p>
+            }
+            else
+            {
+                <table class="table table-sm align-middle mb-0">
+                    <tbody>
+                        @foreach (var product in Model.LowStockProducts)
+                        {
+                            <tr>
+                                <td><a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id">@product.Name</a><div class="small text-muted">@product.Sku</div></td>
+                                <td class="text-end"><span class="badge-soft @(product.InStock ? "badge-warning" : "badge-danger")">@L["{0} left", product.StockQuantity]</span></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="panel">
+            <div class="d-flex justify-content-between"><h2 class="panel-title">@L["Recent orders"]</h2><a asp-controller="Orders" asp-action="Index">@L["All orders"]</a></div>
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead><tr><th>@L["Order"]</th><th>@L["Customer"]</th><th>@L["Date"]</th><th>@L["Status"]</th><th class="text-end">@L["Total"]</th></tr></thead>
+                    <tbody>
+                        @foreach (var order in Model.RecentOrders)
+                        {
+                            <tr>
+                                <td><a asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id">@order.OrderNumber</a></td>
+                                <td>@order.CustomerName</td>
+                                <td>@order.OrderDate.ToLocalTime().ToString("d MMM yyyy HH:mm", CultureInfo.CurrentUICulture)</td>
+                                <td><span class="@StatusStyles.BadgeClass(order.Status)">@L[order.Status.ToString()]</span></td>
+                                <td class="text-end">@order.TotalAmount.ToString("C")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

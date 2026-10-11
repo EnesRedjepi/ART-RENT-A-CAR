@@ -1,0 +1,11 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="No image available">
+  <defs>
+    <pattern id="weave" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="20" height="20" fill="#efe6d8"/>
+      <rect width="10" height="10" fill="#e6dac8"/>
+      <rect x="10" y="10" width="10" height="10" fill="#e6dac8"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="url(#weave)"/>
+  <text x="200" y="210" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#8a7d6b">My Home</text>
+</svg>

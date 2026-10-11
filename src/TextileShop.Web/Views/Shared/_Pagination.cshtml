@@ -1,0 +1,21 @@
+@model (int Page, int TotalPages)
+
+@if (Model.TotalPages > 1)
+{
+    <nav aria-label="@L["Pagination"]" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(Model.Page <= 1 ? "disabled" : "")">
+                <a class="page-link" href="@Url.WithPage(Model.Page - 1)">@L["Previous"]</a>
+            </li>
+            @for (var pageNumber = 1; pageNumber <= Model.TotalPages; pageNumber++)
+            {
+                <li class="page-item @(pageNumber == Model.Page ? "active" : "")">
+                    <a class="page-link" href="@Url.WithPage(pageNumber)">@pageNumber</a>
+                </li>
+            }
+            <li class="page-item @(Model.Page >= Model.TotalPages ? "disabled" : "")">
+                <a class="page-link" href="@Url.WithPage(Model.Page + 1)">@L["Next"]</a>
+            </li>
+        </ul>
+    </nav>
+}

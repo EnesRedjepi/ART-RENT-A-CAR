@@ -1,0 +1,22 @@
+@model AddressViewModel
+@{
+    ViewData["Title"] = L["Delivery address"];
+}
+
+<partial name="_AccountNav" model="@("address")" />
+
+<header class="catalog-hero cart-hero">
+    <h1>@L["Delivery address"]</h1>
+</header>
+
+<div class="form-card checkout-step">
+    <form asp-action="Address" method="post">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        <partial name="_AddressFields" model="Model" />
+        <button type="submit" class="btn btn-clay btn-lg mt-3">@L["Save address"]</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

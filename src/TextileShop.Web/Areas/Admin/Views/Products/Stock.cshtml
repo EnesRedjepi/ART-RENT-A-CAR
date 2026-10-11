@@ -1,0 +1,34 @@
+@model PagedResult<ProductListItem>
+@{
+    ViewData["Title"] = L["Stock levels"];
+}
+
+<p class="text-muted">@L["Products are listed from the lowest stock to the highest. Items with {0} or fewer units are highlighted.", InventoryRules.LowStockThreshold]</p>
+
+<div class="panel p-0">
+    <div class="table-responsive">
+        <table class="table align-middle mb-0">
+            <thead><tr><th>@L["Product"]</th><th>@L["Category"]</th><th>@L["Status"]</th><th class="text-end">@L["In stock"]</th><th class="text-end">@L["Set stock"]</th></tr></thead>
+            <tbody>
+                @foreach (var product in Model.Items)
+                {
+                    <tr class="@(product.IsLowStock ? "row-low-stock" : "")">
+                        <td><a asp-action="Edit" asp-route-id="@product.Id">@product.Name</a><div class="small text-muted">@product.Sku</div></td>
+                        <td>@product.CategoryName</td>
+                        <td><span class="badge-soft @(product.IsActive ? "badge-success" : "badge-danger")">@(product.IsActive ? L["Active"] : L["Inactive"])</span></td>
+                        <td class="text-end fw-bold">@product.StockQuantity</td>
+                        <td class="text-end">
+                            <form asp-action="UpdateStock" method="post" class="d-inline-flex gap-2">
+                                <input type="hidden" name="id" value="@product.Id" />
+                                <input type="hidden" name="page" value="@Model.Page" />
+                                <input type="number" name="stockQuantity" min="0" value="@product.StockQuantity" class="form-control form-control-sm stock-input" aria-label="@L["Stock quantity"]" />
+                                <button type="submit" class="btn btn-sm btn-dark">@L["Save"]</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<partial name="_Pagination" model="(Model.Page, Model.TotalPages)" />

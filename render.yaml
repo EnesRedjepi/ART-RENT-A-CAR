@@ -1,0 +1,26 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: textileshop
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    # A persistent disk requires a paid instance type (the free tier has no disk,
+    # so the SQLite db and uploaded images would be wiped on every restart/deploy).
+    plan: starter
+    healthCheckPath: /
+    disk:
+      name: data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__DefaultConnection
+        value: Data Source=/var/data/textileshop.db
+      - key: DataProtection__KeysPath
+        value: /var/data/keys
+      # Admin account created on first start. Render prompts for these when the Blueprint is applied.
+      - key: SeedAdministrator__Email
+        sync: false
+      - key: SeedAdministrator__Password
+        sync: false

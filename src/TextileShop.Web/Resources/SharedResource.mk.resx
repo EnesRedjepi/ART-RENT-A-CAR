@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="A category with this name already exists." xml:space="preserve">
+    <value>Веќе постои категорија со ова име.</value>
+  </data>
+  <data name="A product can have at most {0} images." xml:space="preserve">
+    <value>Еден производ може да има најмногу {0} слики.</value>
+  </data>
+  <data name="A value for the '{0}' parameter or property was not provided." xml:space="preserve">
+    <value>Не е дадена вредност за параметарот или својството „{0}“.</value>
+  </data>
+  <data name="A value is required." xml:space="preserve">
+    <value>Потребна е вредност.</value>
+  </data>
+  <data name="Access denied" xml:space="preserve">
+    <value>Пристапот е одбиен</value>
+  </data>
+  <data name="Account type" xml:space="preserve">
+    <value>Тип на сметка</value>
+  </data>
+  <data name="Account type changed to {0}." xml:space="preserve">
+    <value>Типот на сметката сега е: {0}.</value>
+  </data>
+  <data name="Account type:" xml:space="preserve">
+    <value>Тип на сметка:</value>
+  </data>
+  <data name="Account was not found." xml:space="preserve">
+    <value>Сметката не е пронајдена.</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Активирај</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Активен</value>
+  </data>
+  <data name="Active (visible in the shop)" xml:space="preserve">
+    <value>Активен (видлив во продавницата)</value>
+  </data>
+  <data name="Active products" xml:space="preserve">
+    <value>Активни производи</value>
+  </data>
+  <data name="Add to cart" xml:space="preserve">
+    <value>Додај во кошничка</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Адреса</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Админ</value>
+  </data>
+  <data name="Admin dashboard" xml:space="preserve">
+    <value>Админ табла</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Администратор</value>
+  </data>
+  <data name="Administrator accounts cannot be changed from the customer list." xml:space="preserve">
+    <value>Администраторските сметки не можат да се менуваат од листата на клиенти.</value>
+  </data>
+  <data name="Administrator accounts cannot place orders." xml:space="preserve">
+    <value>Администраторските сметки не можат да прават нарачки.</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Сите</value>
+  </data>
+  <data name="All account types" xml:space="preserve">
+    <value>Сите типови сметки</value>
+  </data>
+  <data name="All categories" xml:space="preserve">
+    <value>Сите категории</value>
+  </data>
+  <data name="All orders" xml:space="preserve">
+    <value>Сите нарачки</value>
+  </data>
+  <data name="All products" xml:space="preserve">
+    <value>Сите производи</value>
+  </data>
+  <data name="All products are well stocked." xml:space="preserve">
+    <value>Сите производи имаат доволна залиха.</value>
+  </data>
+  <data name="Already registered?" xml:space="preserve">
+    <value>Веќе сте регистрирани?</value>
+  </data>
+  <data name="An order that is {0} cannot be changed to {1}." xml:space="preserve">
+    <value>Нарачка со статус „{0}“ не може да се промени во „{1}“.</value>
+  </data>
+  <data name="An unexpected error occurred. Our team has been notified." xml:space="preserve">
+    <value>Се појави неочекувана грешка. Нашиот тим е известен.</value>
+  </data>
+  <data name="An unknown failure has occurred." xml:space="preserve">
+    <value>Се случи непозната грешка.</value>
+  </data>
+  <data name="Another product already uses this SKU." xml:space="preserve">
+    <value>Друг производ веќе го користи овој SKU.</value>
+  </data>
+  <data name="Any color" xml:space="preserve">
+    <value>Која било боја</value>
+  </data>
+  <data name="Any material" xml:space="preserve">
+    <value>Кој било материјал</value>
+  </data>
+  <data name="Apply filters" xml:space="preserve">
+    <value>Примени филтри</value>
+  </data>
+  <data name="At least 8 characters with upper case, lower case and a number." xml:space="preserve">
+    <value>Најмалку 8 знаци со големи букви, мали букви и број.</value>
+  </data>
+  <data name="Back to cart" xml:space="preserve">
+    <value>Назад во кошничката</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>Назад кон производите</value>
+  </data>
+  <data name="Back to the shop" xml:space="preserve">
+    <value>Назад во продавницата</value>
+  </data>
+  <data name="Best sellers" xml:space="preserve">
+    <value>Најпродавани</value>
+  </data>
+  <data name="Blankets · Sofa covers · Bed covers" xml:space="preserve">
+    <value>Ќебиња · Навлаки за кауч · Покривки за кревет</value>
+  </data>
+  <data name="Blankets, sofa covers, bed covers and home textiles for retail and wholesale." xml:space="preserve">
+    <value>Ќебиња, навлаки за кауч, покривки за кревет и домашен текстил на мало и на големо.</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Бренд</value>
+  </data>
+  <data name="breadcrumb" xml:space="preserve">
+    <value>навигациска патека</value>
+  </data>
+  <data name="Browse our collection and add something you like." xml:space="preserve">
+    <value>Разгледајте ја нашата колекција и додајте нешто што ви се допаѓа.</value>
+  </data>
+  <data name="Browse our full range of home textiles." xml:space="preserve">
+    <value>Разгледајте го нашиот целосен асортиман на домашен текстил.</value>
+  </data>
+  <data name="Buying for your business?" xml:space="preserve">
+    <value>Купувате за вашиот бизнис?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="Cancel order" xml:space="preserve">
+    <value>Откажи нарачка</value>
+  </data>
+  <data name="Cancel this order?" xml:space="preserve">
+    <value>Да се откаже оваа нарачка?</value>
+  </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>Откажана</value>
+  </data>
+  <data name="Cancelling an order returns its items to stock." xml:space="preserve">
+    <value>Откажувањето на нарачка ги враќа артиклите на залиха.</value>
+  </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Кошничка</value>
+  </data>
+  <data name="Cash on delivery. You pay the courier when your order arrives." xml:space="preserve">
+    <value>Плаќање при достава. Му плаќате на курирот кога ќе пристигне вашата нарачка.</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Категорија</value>
+  </data>
+  <data name="Category created." xml:space="preserve">
+    <value>Категоријата е создадена.</value>
+  </data>
+  <data name="Category deleted." xml:space="preserve">
+    <value>Категоријата е избришана.</value>
+  </data>
+  <data name="Category id" xml:space="preserve">
+    <value>ID на категорија</value>
+  </data>
+  <data name="Category name is required." xml:space="preserve">
+    <value>Името на категоријата е задолжително.</value>
+  </data>
+  <data name="Category saved." xml:space="preserve">
+    <value>Категоријата е зачувана.</value>
+  </data>
+  <data name="Category was not found." xml:space="preserve">
+    <value>Категоријата не е пронајдена.</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>Наплата</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Град</value>
+  </data>
+  <data name="City is required." xml:space="preserve">
+    <value>Градот е задолжителен.</value>
+  </data>
+  <data name="Clear filters" xml:space="preserve">
+    <value>Исчисти ги филтрите</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Боја</value>
+  </data>
+  <data name="Confirm password" xml:space="preserve">
+    <value>Потврди лозинка</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Потврдена</value>
+  </data>
+  <data name="Continue shopping" xml:space="preserve">
+    <value>Продолжи со купување</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Држава</value>
+  </data>
+  <data name="Country is required." xml:space="preserve">
+    <value>Државата е задолжителна.</value>
+  </data>
+  <data name="Create account" xml:space="preserve">
+    <value>Креирај сметка</value>
+  </data>
+  <data name="Create an account" xml:space="preserve">
+    <value>Креирај сметка</value>
+  </data>
+  <data name="Create category" xml:space="preserve">
+    <value>Креирај категорија</value>
+  </data>
+  <data name="Create product" xml:space="preserve">
+    <value>Креирај производ</value>
+  </data>
+  <data name="Create your account" xml:space="preserve">
+    <value>Креирајте ја вашата сметка</value>
+  </data>
+  <data name="Culture" xml:space="preserve">
+    <value>Јазик</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>Клиенти</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Табла</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Датум</value>
+  </data>
+  <data name="Deactivate" xml:space="preserve">
+    <value>Деактивирај</value>
+  </data>
+  <data name="Decrease quantity" xml:space="preserve">
+    <value>Намали количина</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Избриши</value>
+  </data>
+  <data name="Delete this category?" xml:space="preserve">
+    <value>Да се избрише оваа категорија?</value>
+  </data>
+  <data name="Delete this product permanently?" xml:space="preserve">
+    <value>Да се избрише овој производ трајно?</value>
+  </data>
+  <data name="Delivered" xml:space="preserve">
+    <value>Доставена</value>
+  </data>
+  <data name="Delivery address" xml:space="preserve">
+    <value>Адреса за достава</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Детали</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Уреди</value>
+  </data>
+  <data name="Edit {0}" xml:space="preserve">
+    <value>Уреди {0}</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Е-пошта</value>
+  </data>
+  <data name="Email '{0}' is already taken." xml:space="preserve">
+    <value>Е-поштата „{0}“ е веќе зафатена.</value>
+  </data>
+  <data name="Email '{0}' is invalid." xml:space="preserve">
+    <value>Е-поштата „{0}“ е невалидна.</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Филтрирај</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Од</value>
+  </data>
+  <data name="from {0}" xml:space="preserve">
+    <value>од {0}</value>
+  </data>
+  <data name="Full name" xml:space="preserve">
+    <value>Целосно име</value>
+  </data>
+  <data name="Get started" xml:space="preserve">
+    <value>Започнете</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Почетна</value>
+  </data>
+  <data name="Home textiles for every room" xml:space="preserve">
+    <value>Домашен текстил за секоја соба</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Image removed." xml:space="preserve">
+    <value>Сликата е отстранета.</value>
+  </data>
+  <data name="Image was not found." xml:space="preserve">
+    <value>Сликата не е пронајдена.</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Слики</value>
+  </data>
+  <data name="Images uploaded." xml:space="preserve">
+    <value>Сликите се прикачени.</value>
+  </data>
+  <data name="In stock" xml:space="preserve">
+    <value>На залиха</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>Неактивен</value>
+  </data>
+  <data name="Incorrect password." xml:space="preserve">
+    <value>Погрешна лозинка.</value>
+  </data>
+  <data name="Increase quantity" xml:space="preserve">
+    <value>Зголеми количина</value>
+  </data>
+  <data name="Invalid email or password." xml:space="preserve">
+    <value>Невалидна е-пошта или лозинка.</value>
+  </data>
+  <data name="Is active" xml:space="preserve">
+    <value>Е активен</value>
+  </data>
+  <data name="Item added to your cart." xml:space="preserve">
+    <value>Артиклот е додаден во вашата кошничка.</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Артикли</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Јазик</value>
+  </data>
+  <data name="Leave a field empty to show the English text in that language." xml:space="preserve">
+    <value>Оставете поле празно за да се прикаже англискиот текст на тој јазик.</value>
+  </data>
+  <data name="Log in" xml:space="preserve">
+    <value>Најава</value>
+  </data>
+  <data name="Log in to buy" xml:space="preserve">
+    <value>Најавете се за да купите</value>
+  </data>
+  <data name="Log out" xml:space="preserve">
+    <value>Одјава</value>
+  </data>
+  <data name="Low stock" xml:space="preserve">
+    <value>Мала залиха</value>
+  </data>
+  <data name="Make primary" xml:space="preserve">
+    <value>Направи примарна</value>
+  </data>
+  <data name="Material" xml:space="preserve">
+    <value>Материјал</value>
+  </data>
+  <data name="Max price" xml:space="preserve">
+    <value>Макс. цена</value>
+  </data>
+  <data name="Max €" xml:space="preserve">
+    <value>Макс. €</value>
+  </data>
+  <data name="Min price" xml:space="preserve">
+    <value>Мин. цена</value>
+  </data>
+  <data name="Min €" xml:space="preserve">
+    <value>Мин. €</value>
+  </data>
+  <data name="Minimum wholesale quantity" xml:space="preserve">
+    <value>Минимална количина за големо</value>
+  </data>
+  <data name="Minimum wholesale quantity must be at least 1." xml:space="preserve">
+    <value>Минималната количина за големо мора да биде најмалку 1.</value>
+  </data>
+  <data name="My account" xml:space="preserve">
+    <value>Мојата сметка</value>
+  </data>
+  <data name="My orders" xml:space="preserve">
+    <value>Моите нарачки</value>
+  </data>
+  <data name="My profile" xml:space="preserve">
+    <value>Мојот профил</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="Name, SKU or brand" xml:space="preserve">
+    <value>Име, SKU или бренд</value>
+  </data>
+  <data name="Name: A to Z" xml:space="preserve">
+    <value>Име: А–Ш</value>
+  </data>
+  <data name="New arrivals" xml:space="preserve">
+    <value>Нови производи</value>
+  </data>
+  <data name="New category" xml:space="preserve">
+    <value>Нова категорија</value>
+  </data>
+  <data name="New here?" xml:space="preserve">
+    <value>Нови сте овде?</value>
+  </data>
+  <data name="New product" xml:space="preserve">
+    <value>Нов производ</value>
+  </data>
+  <data name="New status" xml:space="preserve">
+    <value>Нов статус</value>
+  </data>
+  <data name="Newest" xml:space="preserve">
+    <value>Најнови</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Следна</value>
+  </data>
+  <data name="No images yet. Upload JPG, PNG or WEBP files up to 5 MB." xml:space="preserve">
+    <value>Сè уште нема слики. Прикачете JPG, PNG или WEBP датотеки до 5 MB.</value>
+  </data>
+  <data name="No orders found." xml:space="preserve">
+    <value>Не се пронајдени нарачки.</value>
+  </data>
+  <data name="No products match your filters" xml:space="preserve">
+    <value>Ниту еден производ не одговара на вашите филтри</value>
+  </data>
+  <data name="No sales yet." xml:space="preserve">
+    <value>Сè уште нема продажби.</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Забелешки</value>
+  </data>
+  <data name="Only pending orders can be cancelled. Please contact us for further help." xml:space="preserve">
+    <value>Може да се откажат само нарачки на чекање. Јавете ни се за дополнителна помош.</value>
+  </data>
+  <data name="Only {0} in stock. Please reduce the quantity." xml:space="preserve">
+    <value>Само {0} на залиха. Ве молиме намалете ја количината.</value>
+  </data>
+  <data name="Only {0} left" xml:space="preserve">
+    <value>Уште само {0} парчиња</value>
+  </data>
+  <data name="Only {0} left in stock" xml:space="preserve">
+    <value>Уште само {0} парчиња на залиха</value>
+  </data>
+  <data name="Only {0} units of {1} are in stock." xml:space="preserve">
+    <value>Само {0} парчиња од „{1}“ се на залиха.</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Отвори</value>
+  </data>
+  <data name="Optimistic concurrency failure, object has been modified." xml:space="preserve">
+    <value>Грешка во истовремен пристап, објектот е изменет.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Нарачка</value>
+  </data>
+  <data name="Order confirmed" xml:space="preserve">
+    <value>Нарачката е потврдена</value>
+  </data>
+  <data name="Order history" xml:space="preserve">
+    <value>Историја на нарачки</value>
+  </data>
+  <data name="Order no., customer, email" xml:space="preserve">
+    <value>Бр. на нарачка, клиент, е-пошта</value>
+  </data>
+  <data name="Order notes" xml:space="preserve">
+    <value>Забелешки за нарачката</value>
+  </data>
+  <data name="Order status changed to {0}." xml:space="preserve">
+    <value>Статусот на нарачката сега е: {0}.</value>
+  </data>
+  <data name="Order summary" xml:space="preserve">
+    <value>Преглед на нарачката</value>
+  </data>
+  <data name="Order total" xml:space="preserve">
+    <value>Вкупно за нарачката</value>
+  </data>
+  <data name="Order was not found." xml:space="preserve">
+    <value>Нарачката не е пронајдена.</value>
+  </data>
+  <data name="Order {0}" xml:space="preserve">
+    <value>Нарачка {0}</value>
+  </data>
+  <data name="Order {0}+ for wholesale price" xml:space="preserve">
+    <value>Нарачајте {0}+ за цена на големо</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Нарачки</value>
+  </data>
+  <data name="Orders by status" xml:space="preserve">
+    <value>Нарачки по статус</value>
+  </data>
+  <data name="Out of stock" xml:space="preserve">
+    <value>Нема на залиха</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Страница</value>
+  </data>
+  <data name="Page not found" xml:space="preserve">
+    <value>Страницата не е пронајдена</value>
+  </data>
+  <data name="Pagination" xml:space="preserve">
+    <value>Страници</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Платено</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Лозинка</value>
+  </data>
+  <data name="Passwords must be at least {0} characters." xml:space="preserve">
+    <value>Лозинките мора да имаат најмалку {0} знаци.</value>
+  </data>
+  <data name="Passwords must have at least one digit ('0'-'9')." xml:space="preserve">
+    <value>Лозинките мора да содржат најмалку една цифра ('0'-'9').</value>
+  </data>
+  <data name="Passwords must have at least one lowercase ('a'-'z')." xml:space="preserve">
+    <value>Лозинките мора да содржат најмалку една мала буква ('a'-'z').</value>
+  </data>
+  <data name="Passwords must have at least one non alphanumeric character." xml:space="preserve">
+    <value>Лозинките мора да содржат најмалку еден не-алфанумерички знак.</value>
+  </data>
+  <data name="Passwords must have at least one uppercase ('A'-'Z')." xml:space="preserve">
+    <value>Лозинките мора да содржат најмалку една голема буква ('A'-'Z').</value>
+  </data>
+  <data name="Passwords must use at least {0} different characters." xml:space="preserve">
+    <value>Лозинките мора да користат најмалку {0} различни знаци.</value>
+  </data>
+  <data name="Pay on delivery · Wholesale pricing for business customers" xml:space="preserve">
+    <value>Плаќање при достава · Цени на големо за деловни клиенти</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Плаќање</value>
+  </data>
+  <data name="Payment (cash on delivery)" xml:space="preserve">
+    <value>Плаќање (при достава)</value>
+  </data>
+  <data name="Payment is collected on delivery." xml:space="preserve">
+    <value>Плаќањето се врши при достава.</value>
+  </data>
+  <data name="Payment status" xml:space="preserve">
+    <value>Статус на плаќање</value>
+  </data>
+  <data name="Payment status changed to {0}." xml:space="preserve">
+    <value>Статусот на плаќањето сега е: {0}.</value>
+  </data>
+  <data name="Payment: {0}" xml:space="preserve">
+    <value>Плаќање: {0}</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>На чекање</value>
+  </data>
+  <data name="per piece when you order {0} or more." xml:space="preserve">
+    <value>по парче кога нарачувате {0} или повеќе.</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="Phone number" xml:space="preserve">
+    <value>Телефонски број</value>
+  </data>
+  <data name="Phone number is required." xml:space="preserve">
+    <value>Телефонскиот број е задолжителен.</value>
+  </data>
+  <data name="Place order" xml:space="preserve">
+    <value>Направи нарачка</value>
+  </data>
+  <data name="Placed on" xml:space="preserve">
+    <value>Нарачано на</value>
+  </data>
+  <data name="Placed {0}" xml:space="preserve">
+    <value>Нарачано на {0}</value>
+  </data>
+  <data name="Please choose at least one image." xml:space="preserve">
+    <value>Ве молиме изберете најмалку една слика.</value>
+  </data>
+  <data name="Please have {0} ready on delivery." xml:space="preserve">
+    <value>Ве молиме подгответе {0} при достава.</value>
+  </data>
+  <data name="Please select a category." xml:space="preserve">
+    <value>Ве молиме изберете категорија.</value>
+  </data>
+  <data name="Postal code" xml:space="preserve">
+    <value>Поштенски број</value>
+  </data>
+  <data name="Postal code is required." xml:space="preserve">
+    <value>Поштенскиот број е задолжителен.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Претходна</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="Price: high to low" xml:space="preserve">
+    <value>Цена: од највисока кон најниска</value>
+  </data>
+  <data name="Price: low to high" xml:space="preserve">
+    <value>Цена: од најниска кон највисока</value>
+  </data>
+  <data name="Primary" xml:space="preserve">
+    <value>Примарна</value>
+  </data>
+  <data name="Primary image updated." xml:space="preserve">
+    <value>Примарната слика е ажурирана.</value>
+  </data>
+  <data name="Proceed to checkout" xml:space="preserve">
+    <value>Продолжи кон наплата</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Во обработка</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Производ</value>
+  </data>
+  <data name="Product activated." xml:space="preserve">
+    <value>Производот е активиран.</value>
+  </data>
+  <data name="Product created. You can now upload images." xml:space="preserve">
+    <value>Производот е создаден. Сега можете да прикачите слики.</value>
+  </data>
+  <data name="Product deactivated." xml:space="preserve">
+    <value>Производот е деактивиран.</value>
+  </data>
+  <data name="Product deleted." xml:space="preserve">
+    <value>Производот е избришан.</value>
+  </data>
+  <data name="Product name is required." xml:space="preserve">
+    <value>Името на производот е задолжително.</value>
+  </data>
+  <data name="Product saved." xml:space="preserve">
+    <value>Производот е зачуван.</value>
+  </data>
+  <data name="Product was not found." xml:space="preserve">
+    <value>Производот не е пронајден.</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Производи</value>
+  </data>
+  <data name="Products are listed from the lowest stock to the highest. Items with {0} or fewer units are highlighted." xml:space="preserve">
+    <value>Производите се подредени од најмала до најголема залиха. Артиклите со {0} или помалку единици се истакнати.</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Профил</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Количина</value>
+  </data>
+  <data name="Quantity must be between 1 and {0}." xml:space="preserve">
+    <value>Количината мора да биде помеѓу 1 и {0}.</value>
+  </data>
+  <data name="Recent orders" xml:space="preserve">
+    <value>Скорешни нарачки</value>
+  </data>
+  <data name="Recipient name" xml:space="preserve">
+    <value>Име на примач</value>
+  </data>
+  <data name="Recipient name is required." xml:space="preserve">
+    <value>Името на примачот е задолжително.</value>
+  </data>
+  <data name="Reference:" xml:space="preserve">
+    <value>Референца:</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Рефундирано</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Регистрирај се</value>
+  </data>
+  <data name="Registered" xml:space="preserve">
+    <value>Регистриран</value>
+  </data>
+  <data name="Remember me" xml:space="preserve">
+    <value>Запомни ме</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Отстрани</value>
+  </data>
+  <data name="Remove this image?" xml:space="preserve">
+    <value>Да се отстрани оваа слика?</value>
+  </data>
+  <data name="Request id" xml:space="preserve">
+    <value>ID на барање</value>
+  </data>
+  <data name="Resolve stock issues to continue" xml:space="preserve">
+    <value>Решете ги проблемите со залихата за да продолжите</value>
+  </data>
+  <data name="Retail" xml:space="preserve">
+    <value>На мало</value>
+  </data>
+  <data name="Retail price (€)" xml:space="preserve">
+    <value>Малопродажна цена (€)</value>
+  </data>
+  <data name="Retail price must be greater than zero." xml:space="preserve">
+    <value>Малопродажната цена мора да биде поголема од нула.</value>
+  </data>
+  <data name="Revenue, last 6 months" xml:space="preserve">
+    <value>Приход, последните 6 месеци</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Зачувај</value>
+  </data>
+  <data name="Save address" xml:space="preserve">
+    <value>Зачувај адреса</value>
+  </data>
+  <data name="Save changes" xml:space="preserve">
+    <value>Зачувај промени</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Пребарај</value>
+  </data>
+  <data name="Search blankets, covers, curtains..." xml:space="preserve">
+    <value>Пребарај ќебиња, навлаки, завеси...</value>
+  </data>
+  <data name="Search name or email" xml:space="preserve">
+    <value>Пребарај име или е-пошта</value>
+  </data>
+  <data name="Search name, SKU, brand" xml:space="preserve">
+    <value>Пребарај име, SKU, бренд</value>
+  </data>
+  <data name="Search products" xml:space="preserve">
+    <value>Пребарај производи</value>
+  </data>
+  <data name="Select a category" xml:space="preserve">
+    <value>Избери категорија</value>
+  </data>
+  <data name="Set stock" xml:space="preserve">
+    <value>Постави залиха</value>
+  </data>
+  <data name="Shipped" xml:space="preserve">
+    <value>Испратена</value>
+  </data>
+  <data name="Shop all" xml:space="preserve">
+    <value>Продавница</value>
+  </data>
+  <data name="Shop by category" xml:space="preserve">
+    <value>Купувајте по категорија</value>
+  </data>
+  <data name="Shop in retail quantities or order wholesale for your own business. Quality fabrics from our network of shops, now available online." xml:space="preserve">
+    <value>Купувајте на мало или нарачајте на големо за вашиот бизнис. Квалитетни ткаенини од нашата мрежа на продавници, сега достапни онлајн.</value>
+  </data>
+  <data name="Shop the collection" xml:space="preserve">
+    <value>Погледнете ја колекцијата</value>
+  </data>
+  <data name="Shopping cart" xml:space="preserve">
+    <value>Кошничка за купување</value>
+  </data>
+  <data name="Show image" xml:space="preserve">
+    <value>Прикажи слика</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Големина</value>
+  </data>
+  <data name="SKU" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="SKU is required." xml:space="preserve">
+    <value>SKU е задолжителен.</value>
+  </data>
+  <data name="Slug" xml:space="preserve">
+    <value>Адреса (URL)</value>
+  </data>
+  <data name="Something went wrong" xml:space="preserve">
+    <value>Нешто тргна наопаку</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Подреди</value>
+  </data>
+  <data name="Sort by" xml:space="preserve">
+    <value>Подреди по</value>
+  </data>
+  <data name="Start shopping" xml:space="preserve">
+    <value>Започни со купување</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="Status code" xml:space="preserve">
+    <value>Код на статус</value>
+  </data>
+  <data name="Stock" xml:space="preserve">
+    <value>Залиха</value>
+  </data>
+  <data name="Stock levels" xml:space="preserve">
+    <value>Нивоа на залиха</value>
+  </data>
+  <data name="Stock levels changed while you were checking out. Please review your cart and try again." xml:space="preserve">
+    <value>Нивоата на залиха се променија додека плаќавте. Ве молиме прегледајте ја кошничката и обидете се повторно.</value>
+  </data>
+  <data name="Stock quantity" xml:space="preserve">
+    <value>Количина на залиха</value>
+  </data>
+  <data name="Stock quantity cannot be negative." xml:space="preserve">
+    <value>Количината на залиха не може да биде негативна.</value>
+  </data>
+  <data name="Stock updated." xml:space="preserve">
+    <value>Залихата е ажурирана.</value>
+  </data>
+  <data name="Stock: low to high" xml:space="preserve">
+    <value>Залиха: од најмала кон најголема</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Улица</value>
+  </data>
+  <data name="Street and number" xml:space="preserve">
+    <value>Улица и број</value>
+  </data>
+  <data name="Street is required." xml:space="preserve">
+    <value>Улицата е задолжителна.</value>
+  </data>
+  <data name="Subtotal" xml:space="preserve">
+    <value>Меѓузбир</value>
+  </data>
+  <data name="Thank you for your order!" xml:space="preserve">
+    <value>Ви благодариме за нарачката!</value>
+  </data>
+  <data name="The field must be a number." xml:space="preserve">
+    <value>Полето мора да биде број.</value>
+  </data>
+  <data name="The field {0} must be a number." xml:space="preserve">
+    <value>Полето {0} мора да биде број.</value>
+  </data>
+  <data name="The field {0} must be a string with a maximum length of {1}." xml:space="preserve">
+    <value>Полето {0} може да има најмногу {1} знаци.</value>
+  </data>
+  <data name="The field {0} must be a string with a minimum length of {2} and a maximum length of {1}." xml:space="preserve">
+    <value>Полето {0} мора да има од {2} до {1} знаци.</value>
+  </data>
+  <data name="The field {0} must be between {1} and {2}." xml:space="preserve">
+    <value>Полето {0} мора да биде помеѓу {1} и {2}.</value>
+  </data>
+  <data name="The item is not in your cart." xml:space="preserve">
+    <value>Артиклот не е во вашата кошничка.</value>
+  </data>
+  <data name="The order was changed by someone else. Please reload and try again." xml:space="preserve">
+    <value>Нарачката е променета од некој друг. Ве молиме освежете ја страницата и обидете се повторно.</value>
+  </data>
+  <data name="The page you are looking for does not exist or was moved." xml:space="preserve">
+    <value>Страницата што ја барате не постои или е преместена.</value>
+  </data>
+  <data name="The passwords do not match." xml:space="preserve">
+    <value>Лозинките не се совпаѓаат.</value>
+  </data>
+  <data name="The product was changed by someone else. Please reload and try again." xml:space="preserve">
+    <value>Производот е променет од некој друг. Ве молиме освежете ја страницата и обидете се повторно.</value>
+  </data>
+  <data name="The provided value is invalid." xml:space="preserve">
+    <value>Дадената вредност е невалидна.</value>
+  </data>
+  <data name="The selected category does not exist." xml:space="preserve">
+    <value>Избраната категорија не постои.</value>
+  </data>
+  <data name="The value '{0}' is invalid." xml:space="preserve">
+    <value>Вредноста „{0}“ е невалидна.</value>
+  </data>
+  <data name="The value '{0}' is not valid for {1}." xml:space="preserve">
+    <value>Вредноста „{0}“ не е валидна за {1}.</value>
+  </data>
+  <data name="The value '{0}' is not valid." xml:space="preserve">
+    <value>Вредноста „{0}“ не е валидна.</value>
+  </data>
+  <data name="The value provided for {0} is invalid." xml:space="preserve">
+    <value>Вредноста дадена за {0} е невалидна.</value>
+  </data>
+  <data name="The {0} field is not a valid e-mail address." xml:space="preserve">
+    <value>Полето {0} не содржи валидна адреса на е-пошта.</value>
+  </data>
+  <data name="The {0} field is not a valid phone number." xml:space="preserve">
+    <value>Полето {0} не содржи валиден телефонски број.</value>
+  </data>
+  <data name="The {0} field is required." xml:space="preserve">
+    <value>Полето {0} е задолжително.</value>
+  </data>
+  <data name="This account is temporarily locked. Please try again later." xml:space="preserve">
+    <value>Оваа сметка е привремено заклучена. Ве молиме обидете се подоцна.</value>
+  </data>
+  <data name="This category still contains products and cannot be deleted." xml:space="preserve">
+    <value>Оваа категорија сè уште содржи производи и не може да се избрише.</value>
+  </data>
+  <data name="This month" xml:space="preserve">
+    <value>Овој месец</value>
+  </data>
+  <data name="This order is closed." xml:space="preserve">
+    <value>Оваа нарачка е затворена.</value>
+  </data>
+  <data name="This product appears in existing orders. Deactivate it instead of deleting it." xml:space="preserve">
+    <value>Овој производ се појавува во постоечки нарачки. Деактивирајте го наместо да го бришете.</value>
+  </data>
+  <data name="This product is no longer available." xml:space="preserve">
+    <value>Овој производ повеќе не е достапен.</value>
+  </data>
+  <data name="This product is no longer available. Please remove it." xml:space="preserve">
+    <value>Овој производ повеќе не е достапен. Ве молиме отстранете го.</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>До</value>
+  </data>
+  <data name="Toggle night mode" xml:space="preserve">
+    <value>Ноќен режим</value>
+  </data>
+  <data name="Toggle navigation" xml:space="preserve">
+    <value>Прикажи/сокриј навигација</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Вкупно</value>
+  </data>
+  <data name="Total revenue" xml:space="preserve">
+    <value>Вкупен приход</value>
+  </data>
+  <data name="Translations" xml:space="preserve">
+    <value>Преводи</value>
+  </data>
+  <data name="Try removing some filters or searching for something else." xml:space="preserve">
+    <value>Обидете се да отстраните некои филтри или да пребарате нешто друго.</value>
+  </data>
+  <data name="Unit price" xml:space="preserve">
+    <value>Единечна цена</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Ажурирај</value>
+  </data>
+  <data name="Upload images" xml:space="preserve">
+    <value>Прикачи слики</value>
+  </data>
+  <data name="User name '{0}' is already taken." xml:space="preserve">
+    <value>Корисничкото име „{0}“ е веќе зафатено.</value>
+  </data>
+  <data name="User name '{0}' is invalid, can only contain letters or digits." xml:space="preserve">
+    <value>Корисничкото име „{0}“ е невалидно, може да содржи само букви или цифри.</value>
+  </data>
+  <data name="View all" xml:space="preserve">
+    <value>Види сè</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>Погледни нарачка</value>
+  </data>
+  <data name="View shop" xml:space="preserve">
+    <value>Погледни продавница</value>
+  </data>
+  <data name="Warm, durable textiles for every room of the home" xml:space="preserve">
+    <value>Топол и издржлив текстил за секоја соба во домот</value>
+  </data>
+  <data name="Welcome back" xml:space="preserve">
+    <value>Добредојдовте назад</value>
+  </data>
+  <data name="Welcome! Your account has been created." xml:space="preserve">
+    <value>Добредојдовте! Вашата сметка е креирана.</value>
+  </data>
+  <data name="Wholesale" xml:space="preserve">
+    <value>На големо</value>
+  </data>
+  <data name="Wholesale customers get special prices on larger quantities. Register and contact us to have your account upgraded." xml:space="preserve">
+    <value>Клиентите на големо добиваат посебни цени за поголеми количини. Регистрирајте се и јавете ни се за да ја надградиме вашата сметка.</value>
+  </data>
+  <data name="Wholesale price" xml:space="preserve">
+    <value>Цена на големо</value>
+  </data>
+  <data name="Wholesale price (€)" xml:space="preserve">
+    <value>Цена на големо (€)</value>
+  </data>
+  <data name="Wholesale price cannot be higher than the retail price." xml:space="preserve">
+    <value>Цената на големо не може да биде повисока од малопродажната цена.</value>
+  </data>
+  <data name="Wholesale price must be greater than zero and not higher than the retail price." xml:space="preserve">
+    <value>Цената на големо мора да биде поголема од нула и не повисока од малопродажната цена.</value>
+  </data>
+  <data name="Wholesale {0} from {1} pcs" xml:space="preserve">
+    <value>На големо {0} од {1} парчиња</value>
+  </data>
+  <data name="You have not placed any orders yet" xml:space="preserve">
+    <value>Сè уште немате направено нарачки</value>
+  </data>
+  <data name="You may also like" xml:space="preserve">
+    <value>Може да ви се допаднат и</value>
+  </data>
+  <data name="Your account does not have permission to view this page." xml:space="preserve">
+    <value>Вашата сметка нема дозвола да ја види оваа страница.</value>
+  </data>
+  <data name="Your cart is empty" xml:space="preserve">
+    <value>Вашата кошничка е празна</value>
+  </data>
+  <data name="Your cart is empty." xml:space="preserve">
+    <value>Вашата кошничка е празна.</value>
+  </data>
+  <data name="Your delivery address was saved." xml:space="preserve">
+    <value>Вашата адреса за достава е зачувана.</value>
+  </data>
+  <data name="Your order" xml:space="preserve">
+    <value>Вашата нарачка</value>
+  </data>
+  <data name="Your order number is" xml:space="preserve">
+    <value>Бројот на вашата нарачка е</value>
+  </data>
+  <data name="Your order was cancelled." xml:space="preserve">
+    <value>Вашата нарачка е откажана.</value>
+  </data>
+  <data name="Your profile was updated." xml:space="preserve">
+    <value>Вашиот профил е ажуриран.</value>
+  </data>
+  <data name="Your wholesale price: {0}" xml:space="preserve">
+    <value>Вашата цена на големо: {0}</value>
+  </data>
+  <data name="{0} active products" xml:space="preserve">
+    <value>{0} активни производи</value>
+  </data>
+  <data name="{0} is no longer available. Please remove it from your cart." xml:space="preserve">
+    <value>{0} повеќе не е достапен. Ве молиме отстранете го од кошничката.</value>
+  </data>
+  <data name="{0} left" xml:space="preserve">
+    <value>{0} на залиха</value>
+  </data>
+  <data name="{0} pending" xml:space="preserve">
+    <value>{0} на чекање</value>
+  </data>
+  <data name="{0} product found" xml:space="preserve">
+    <value>Пронајден е {0} производ</value>
+  </data>
+  <data name="{0} products" xml:space="preserve">
+    <value>{0} производи</value>
+  </data>
+  <data name="{0} products found" xml:space="preserve">
+    <value>Пронајдени се {0} производи</value>
+  </data>
+  <data name="{0} sold" xml:space="preserve">
+    <value>Продадено: {0}</value>
+  </data>
+  <data name="{0}: images must be 5 MB or smaller." xml:space="preserve">
+    <value>{0}: сликите мора да бидат 5 MB или помали.</value>
+  </data>
+  <data name="{0}: only JPG, PNG and WEBP images are allowed." xml:space="preserve">
+    <value>{0}: се дозволени само слики JPG, PNG и WEBP.</value>
+  </data>
+  <data name="← Back to orders" xml:space="preserve">
+    <value>← Назад кон нарачките</value>
+  </data>
+  <data name="Why shop with us" xml:space="preserve">
+    <value>Зошто да купувате кај нас</value>
+  </data>
+  <data name="Pay on delivery" xml:space="preserve">
+    <value>Плаќање при достава</value>
+  </data>
+  <data name="Pay when your order arrives" xml:space="preserve">
+    <value>Платете кога ќе пристигне нарачката</value>
+  </data>
+  <data name="Wholesale pricing" xml:space="preserve">
+    <value>Цени на големо</value>
+  </data>
+  <data name="Better prices on larger quantities" xml:space="preserve">
+    <value>Подобри цени за поголеми количини</value>
+  </data>
+  <data name="Quality fabrics" xml:space="preserve">
+    <value>Квалитетни ткаенини</value>
+  </data>
+  <data name="Durable textiles from trusted shops" xml:space="preserve">
+    <value>Издржлив текстил од проверени продавници</value>
+  </data>
+  <data name="For business customers" xml:space="preserve">
+    <value>За деловни клиенти</value>
+  </data>
+</root>

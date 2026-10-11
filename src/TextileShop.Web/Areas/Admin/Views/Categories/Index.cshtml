@@ -1,0 +1,31 @@
+@model IReadOnlyList<CategoryModel>
+@{
+    ViewData["Title"] = L["Categories"];
+}
+
+<div class="d-flex justify-content-end mb-3"><a class="btn btn-clay" asp-action="Create">@L["New category"]</a></div>
+
+<div class="panel p-0">
+    <div class="table-responsive">
+        <table class="table align-middle mb-0">
+            <thead><tr><th>@L["Name"]</th><th>@L["Slug"]</th><th>@L["Description"]</th><th class="text-end">@L["Active products"]</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td><strong>@category.Name</strong></td>
+                        <td class="text-muted">@category.Slug</td>
+                        <td>@category.Description</td>
+                        <td class="text-end">@category.ProductCount</td>
+                        <td class="text-end text-nowrap">
+                            <a class="btn btn-sm btn-outline-dark" asp-action="Edit" asp-route-id="@category.Id">@L["Edit"]</a>
+                            <form asp-action="Delete" asp-route-id="@category.Id" method="post" class="d-inline" onsubmit="return confirm(@L["Delete this category?"].JsString());">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">@L["Delete"]</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+@model CategoryFormViewModel
+@{
+    ViewData["Title"] = L["New category"];
+}
+
+<div class="panel panel-narrow">
+    <form asp-action="Create" method="post">
+        <partial name="_Form" model="Model" />
+        <button type="submit" class="btn btn-clay">@L["Create category"]</button>
+        <a class="btn btn-outline-dark" asp-action="Index">@L["Cancel"]</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

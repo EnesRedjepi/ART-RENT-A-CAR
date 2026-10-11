@@ -1,0 +1,18 @@
+@model ProductFormViewModel
+@{
+    ViewData["Title"] = L["New product"];
+}
+
+<div class="panel">
+    <form asp-action="Create" method="post">
+        <partial name="_Form" model="Model" />
+        <div class="mt-4 d-flex gap-2">
+            <button type="submit" class="btn btn-clay">@L["Create product"]</button>
+            <a class="btn btn-outline-dark" asp-action="Index">@L["Cancel"]</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

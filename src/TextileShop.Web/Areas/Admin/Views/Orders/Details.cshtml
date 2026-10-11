@@ -1,0 +1,68 @@
+@model OrderDetails
+@{
+    ViewData["Title"] = L["Order {0}", Model.OrderNumber];
+}
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="panel">
+            <partial name="_OrderItemsTable" model="Model" />
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel">
+            <h2 class="panel-title">@L["Status"]</h2>
+            <p><span class="@StatusStyles.BadgeClass(Model.Status)">@L[Model.Status.ToString()]</span></p>
+            @if (Model.AllowedNextStatuses.Count > 0)
+            {
+                <form asp-action="UpdateStatus" asp-route-id="@Model.Id" method="post" class="d-flex gap-2">
+                    <select name="status" class="form-select" aria-label="@L["New status"]">
+                        @foreach (var status in Model.AllowedNextStatuses)
+                        {
+                            <option value="@status">@L[status.ToString()]</option>
+                        }
+                    </select>
+                    <button type="submit" class="btn btn-dark">@L["Update"]</button>
+                </form>
+                <p class="small text-muted mt-2">@L["Cancelling an order returns its items to stock."]</p>
+            }
+            else
+            {
+                <p class="small text-muted">@L["This order is closed."]</p>
+            }
+
+            <h2 class="panel-title mt-4">@L["Payment (cash on delivery)"]</h2>
+            <p><span class="@StatusStyles.BadgeClass(Model.PaymentStatus)">@L[Model.PaymentStatus.ToString()]</span></p>
+            <form asp-action="UpdatePayment" asp-route-id="@Model.Id" method="post" class="d-flex gap-2">
+                <select name="paymentStatus" class="form-select" aria-label="@L["Payment status"]">
+                    @foreach (var status in Enum.GetValues<PaymentStatus>())
+                    {
+                        <option value="@status" selected="@(status == Model.PaymentStatus)">@L[status.ToString()]</option>
+                    }
+                </select>
+                <button type="submit" class="btn btn-outline-dark">@L["Save"]</button>
+            </form>
+        </div>
+
+        <div class="panel mt-4">
+            <h2 class="panel-title">@L["Customer"]</h2>
+            <p class="mb-1"><strong>@Model.CustomerName</strong></p>
+            <p class="text-muted">@Model.CustomerEmail</p>
+            <h2 class="panel-title">@L["Delivery address"]</h2>
+            <address class="mb-3">
+                @Model.ShippingAddress.RecipientName<br />
+                @Model.ShippingAddress.Street<br />
+                @Model.ShippingAddress.PostalCode @Model.ShippingAddress.City<br />
+                @Model.ShippingAddress.Country<br />
+                @Model.ShippingAddress.PhoneNumber
+            </address>
+            <p class="small text-muted mb-0">@L["Placed {0}", Model.OrderDate.ToLocalTime().ToString("d MMM yyyy HH:mm", CultureInfo.CurrentUICulture)]</p>
+            @if (!string.IsNullOrWhiteSpace(Model.Notes))
+            {
+                <h2 class="panel-title mt-3">@L["Notes"]</h2>
+                <p class="mb-0">@Model.Notes</p>
+            }
+        </div>
+        <a class="btn btn-link mt-2" asp-action="Index">@L["← Back to orders"]</a>
+    </div>
+</div>

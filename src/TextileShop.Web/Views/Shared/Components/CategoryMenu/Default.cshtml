@@ -1,0 +1,20 @@
+@model IReadOnlyList<CategoryModel>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Categories"]</a>
+    <ul class="dropdown-menu">
+        @foreach (var category in Model)
+        {
+            <li><a class="dropdown-item" asp-controller="Products" asp-action="Category" asp-route-slug="@category.Slug">@category.Name</a></li>
+        }
+    </ul>
+</li>
+
+@foreach (var slug in new[] { "bed-covers", "sofa-covers", "blankets" })
+{
+    var featured = Model.FirstOrDefault(c => c.Slug == slug);
+    if (featured is not null)
+    {
+        <li class="nav-item"><a class="nav-link" asp-controller="Products" asp-action="Category" asp-route-slug="@featured.Slug">@featured.Name</a></li>
+    }
+}

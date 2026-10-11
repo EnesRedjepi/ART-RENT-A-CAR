@@ -1,0 +1,20 @@
+@model OrderDetails
+@{
+    ViewData["Title"] = L["Order confirmed"];
+}
+
+<div class="confirm-hero">
+    <span class="confirm-check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </span>
+    <h1>@L["Thank you for your order!"]</h1>
+    <p class="lead mb-0">@L["Your order number is"] <strong>@Model.OrderNumber</strong>. @L["Please have {0} ready on delivery.", Model.TotalAmount.ToString("C")]</p>
+</div>
+
+<div class="form-card checkout-step">
+    <partial name="_OrderItemsTable" model="Model" />
+    <div class="d-flex flex-wrap gap-2">
+        <a class="btn btn-clay btn-lg" asp-controller="Orders" asp-action="Details" asp-route-id="@Model.Id">@L["View order"]</a>
+        <a class="btn btn-outline-dark btn-lg" asp-controller="Products" asp-action="Index">@L["Continue shopping"]</a>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+@model CatalogViewModel
+@{
+    var category = Model.CurrentCategory;
+    ViewData["Title"] = category?.Name ?? L["All products"].Value;
+    var filter = Model.Filter;
+    var filtersActive = !string.IsNullOrWhiteSpace(filter.Search) || (category is null && filter.CategoryId is not null)
+        || !string.IsNullOrEmpty(filter.Material) || !string.IsNullOrEmpty(filter.Color)
+        || filter.MinPrice is not null || filter.MaxPrice is not null || filter.Sort != ProductSort.Newest;
+}
+
+<header class="catalog-hero">
+    <h1>@(category?.Name ?? L["All products"].Value)</h1>
+    <p class="mb-0">@(category?.Description ?? L["Browse our full range of home textiles."].Value)</p>
+</header>
+
+<div class="row g-4">
+    <aside class="col-lg-3">
+        <button class="btn btn-outline-dark w-100 d-lg-none filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#filterPanel" aria-expanded="@(filtersActive ? "true" : "false")" aria-controls="filterPanel">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
+            @L["Filter"]
+        </button>
+        <div id="filterPanel" class="collapse d-lg-block @(filtersActive ? "show" : "") mt-3 mt-lg-0">
+        <form method="get" class="filter-panel filter-sticky">
+            <h2 class="h6 text-uppercase filter-title">@L["Filter"]</h2>
+            <div class="mb-3">
+                <label class="form-label" for="search">@L["Search"]</label>
+                <input id="search" name="search" value="@filter.Search" class="form-control" placeholder="@L["Name, SKU or brand"]" />
+            </div>
+            @if (category is null)
+            {
+                <div class="mb-3">
+                    <label class="form-label" for="categoryId">@L["Category"]</label>
+                    <select id="categoryId" name="categoryId" class="form-select">
+                        <option value="">@L["All categories"]</option>
+                        @foreach (var item in Model.Categories)
+                        {
+                            <option value="@item.Id" selected="@(filter.CategoryId == item.Id)">@item.Name</option>
+                        }
+                    </select>
+                </div>
+            }
+            <div class="mb-3">
+                <label class="form-label" for="material">@L["Material"]</label>
+                <select id="material" name="material" class="form-select">
+                    <option value="">@L["Any material"]</option>
+                    @foreach (var material in Model.Options.Materials)
+                    {
+                        <option value="@material.Value" selected="@(filter.Material == material.Value)">@material.Label</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="color">@L["Color"]</label>
+                <select id="color" name="color" class="form-select">
+                    <option value="">@L["Any color"]</option>
+                    @foreach (var color in Model.Options.Colors)
+                    {
+                        <option value="@color.Value" selected="@(filter.Color == color.Value)">@color.Label</option>
+                    }
+                </select>
+            </div>
+            <div class="row g-2 mb-3">
+                <div class="col-6">
+                    <label class="form-label" for="minPrice">@L["Min €"]</label>
+                    <input id="minPrice" name="minPrice" value="@filter.MinPrice" type="number" min="0" step="0.01" class="form-control" />
+                </div>
+                <div class="col-6">
+                    <label class="form-label" for="maxPrice">@L["Max €"]</label>
+                    <input id="maxPrice" name="maxPrice" value="@filter.MaxPrice" type="number" min="0" step="0.01" class="form-control" />
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="sort">@L["Sort by"]</label>
+                <select id="sort" name="sort" class="form-select">
+                    <option value="Newest" selected="@(filter.Sort == ProductSort.Newest)">@L["Newest"]</option>
+                    <option value="PriceAscending" selected="@(filter.Sort == ProductSort.PriceAscending)">@L["Price: low to high"]</option>
+                    <option value="PriceDescending" selected="@(filter.Sort == ProductSort.PriceDescending)">@L["Price: high to low"]</option>
+                    <option value="NameAscending" selected="@(filter.Sort == ProductSort.NameAscending)">@L["Name: A to Z"]</option>
+                </select>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-dark">@L["Apply filters"]</button>
+                <a class="btn btn-link" href="@(category is null ? Url.Action("Index", "Products") : Url.Action("Category", "Products", new { slug = category.Slug }))">@L["Clear filters"]</a>
+            </div>
+        </form>
+        </div>
+    </aside>
+
+    <section class="col-lg-9">
+        <div class="results-bar">
+            <p class="results-count mb-0" role="status">@L[Model.Products.TotalCount == 1 ? "{0} product found" : "{0} products found", Model.Products.TotalCount]</p>
+            @if (filtersActive)
+            {
+                <a class="link-clay" href="@(category is null ? Url.Action("Index", "Products") : Url.Action("Category", "Products", new { slug = category.Slug }))">@L["Clear filters"]</a>
+            }
+        </div>
+        @if (Model.Products.Items.Count == 0)
+        {
+            <div class="empty-state">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                <h2 class="h5">@L["No products match your filters"]</h2>
+                <p class="text-muted">@L["Try removing some filters or searching for something else."]</p>
+                <a class="btn btn-clay" href="@(category is null ? Url.Action("Index", "Products") : Url.Action("Category", "Products", new { slug = category.Slug }))">@L["Clear filters"]</a>
+            </div>
+        }
+        else
+        {
+            <div class="row g-4">
+                @foreach (var product in Model.Products.Items)
+                {
+                    <div class="col-6 col-xl-4">
+                        <partial name="_ProductCard" model="product" />
+                    </div>
+                }
+            </div>
+            <partial name="_Pagination" model="(Model.Products.Page, Model.Products.TotalPages)" />
+        }
+    </section>
+</div>

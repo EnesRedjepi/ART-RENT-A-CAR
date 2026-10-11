@@ -1,0 +1,50 @@
+@model OrderDetails
+@{
+    ViewData["Title"] = L["Order {0}", Model.OrderNumber];
+}
+
+<partial name="_AccountNav" model="@("orders")" />
+
+<header class="catalog-hero cart-hero order-hero">
+    <div>
+        <h1>@L["Order {0}", Model.OrderNumber]</h1>
+        <p class="mb-0">@Model.OrderDate.ToLocalTime().ToString("d MMMM yyyy, HH:mm", CultureInfo.CurrentUICulture)</p>
+    </div>
+    <div class="order-badges">
+        <span class="@StatusStyles.BadgeClass(Model.Status)">@L[Model.Status.ToString()]</span>
+        <span class="@StatusStyles.BadgeClass(Model.PaymentStatus)">@L["Payment: {0}", L[Model.PaymentStatus.ToString()].Value]</span>
+    </div>
+</header>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="form-card checkout-step">
+            <partial name="_OrderItemsTable" model="Model" />
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="summary-card">
+            <h2 class="order-side-title">@L["Placed on"]</h2>
+            <p>@Model.OrderDate.ToLocalTime().ToString("d MMMM yyyy, HH:mm", CultureInfo.CurrentUICulture)</p>
+            <h2 class="order-side-title">@L["Delivery address"]</h2>
+            <address class="mb-3">
+                @Model.ShippingAddress.RecipientName<br />
+                @Model.ShippingAddress.Street<br />
+                @Model.ShippingAddress.PostalCode @Model.ShippingAddress.City<br />
+                @Model.ShippingAddress.Country<br />
+                @Model.ShippingAddress.PhoneNumber
+            </address>
+            @if (!string.IsNullOrWhiteSpace(Model.Notes))
+            {
+                <h2 class="order-side-title">@L["Notes"]</h2>
+                <p>@Model.Notes</p>
+            }
+            @if (Model.CanBeCancelledByCustomer)
+            {
+                <form asp-action="Cancel" asp-route-id="@Model.Id" method="post" onsubmit="return confirm(@L["Cancel this order?"].JsString());">
+                    <button type="submit" class="btn btn-outline-danger btn-lg w-100">@L["Cancel order"]</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>

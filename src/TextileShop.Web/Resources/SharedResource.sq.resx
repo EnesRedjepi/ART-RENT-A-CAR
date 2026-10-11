@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="A category with this name already exists." xml:space="preserve">
+    <value>Ekziston tashmë një kategori me këtë emër.</value>
+  </data>
+  <data name="A product can have at most {0} images." xml:space="preserve">
+    <value>Një produkt mund të ketë më së shumti {0} imazhe.</value>
+  </data>
+  <data name="A value for the '{0}' parameter or property was not provided." xml:space="preserve">
+    <value>Nuk u dha vlerë për parametrin ose vetinë '{0}'.</value>
+  </data>
+  <data name="A value is required." xml:space="preserve">
+    <value>Kërkohet një vlerë.</value>
+  </data>
+  <data name="Access denied" xml:space="preserve">
+    <value>Qasja u refuzua</value>
+  </data>
+  <data name="Account type" xml:space="preserve">
+    <value>Lloji i llogarisë</value>
+  </data>
+  <data name="Account type changed to {0}." xml:space="preserve">
+    <value>Lloji i llogarisë tani është: {0}.</value>
+  </data>
+  <data name="Account type:" xml:space="preserve">
+    <value>Lloji i llogarisë:</value>
+  </data>
+  <data name="Account was not found." xml:space="preserve">
+    <value>Llogaria nuk u gjet.</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Aktivizo</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="Active (visible in the shop)" xml:space="preserve">
+    <value>Aktiv (i dukshëm në dyqan)</value>
+  </data>
+  <data name="Active products" xml:space="preserve">
+    <value>Produkte aktive</value>
+  </data>
+  <data name="Add to cart" xml:space="preserve">
+    <value>Shto në shportë</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="Admin dashboard" xml:space="preserve">
+    <value>Paneli i administratorit</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Administrator accounts cannot be changed from the customer list." xml:space="preserve">
+    <value>Llogaritë e administratorëve nuk mund të ndryshohen nga lista e klientëve.</value>
+  </data>
+  <data name="Administrator accounts cannot place orders." xml:space="preserve">
+    <value>Llogaritë e administratorëve nuk mund të bëjnë porosi.</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Të gjitha</value>
+  </data>
+  <data name="All account types" xml:space="preserve">
+    <value>Të gjitha llojet e llogarive</value>
+  </data>
+  <data name="All categories" xml:space="preserve">
+    <value>Të gjitha kategoritë</value>
+  </data>
+  <data name="All orders" xml:space="preserve">
+    <value>Të gjitha porositë</value>
+  </data>
+  <data name="All products" xml:space="preserve">
+    <value>Të gjitha produktet</value>
+  </data>
+  <data name="All products are well stocked." xml:space="preserve">
+    <value>Të gjitha produktet kanë stok të mjaftueshëm.</value>
+  </data>
+  <data name="Already registered?" xml:space="preserve">
+    <value>Jeni regjistruar tashmë?</value>
+  </data>
+  <data name="An order that is {0} cannot be changed to {1}." xml:space="preserve">
+    <value>Një porosi me statusin "{0}" nuk mund të ndryshohet në "{1}".</value>
+  </data>
+  <data name="An unexpected error occurred. Our team has been notified." xml:space="preserve">
+    <value>Ndodhi një gabim i papritur. Ekipi ynë është njoftuar.</value>
+  </data>
+  <data name="An unknown failure has occurred." xml:space="preserve">
+    <value>Ndodhi një gabim i panjohur.</value>
+  </data>
+  <data name="Another product already uses this SKU." xml:space="preserve">
+    <value>Një produkt tjetër e përdor tashmë këtë SKU.</value>
+  </data>
+  <data name="Any color" xml:space="preserve">
+    <value>Çdo ngjyrë</value>
+  </data>
+  <data name="Any material" xml:space="preserve">
+    <value>Çdo material</value>
+  </data>
+  <data name="Apply filters" xml:space="preserve">
+    <value>Apliko filtrat</value>
+  </data>
+  <data name="At least 8 characters with upper case, lower case and a number." xml:space="preserve">
+    <value>Të paktën 8 karaktere me shkronja të mëdha, të vogla dhe një numër.</value>
+  </data>
+  <data name="Back to cart" xml:space="preserve">
+    <value>Kthehu te shporta</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>Kthehu te produktet</value>
+  </data>
+  <data name="Back to the shop" xml:space="preserve">
+    <value>Kthehu në dyqan</value>
+  </data>
+  <data name="Best sellers" xml:space="preserve">
+    <value>Më të shiturat</value>
+  </data>
+  <data name="Blankets · Sofa covers · Bed covers" xml:space="preserve">
+    <value>Batanije · Mbulesa divani · Mbulesa shtrati</value>
+  </data>
+  <data name="Blankets, sofa covers, bed covers and home textiles for retail and wholesale." xml:space="preserve">
+    <value>Batanije, mbulesa divani, mbulesa shtrati dhe tekstile për shtëpi, me pakicë dhe me shumicë.</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Marka</value>
+  </data>
+  <data name="breadcrumb" xml:space="preserve">
+    <value>rruga e navigimit</value>
+  </data>
+  <data name="Browse our collection and add something you like." xml:space="preserve">
+    <value>Shfletoni koleksionin tonë dhe shtoni diçka që ju pëlqen.</value>
+  </data>
+  <data name="Browse our full range of home textiles." xml:space="preserve">
+    <value>Shfletoni gamën tonë të plotë të tekstileve për shtëpi.</value>
+  </data>
+  <data name="Buying for your business?" xml:space="preserve">
+    <value>Po blini për biznesin tuaj?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulo</value>
+  </data>
+  <data name="Cancel order" xml:space="preserve">
+    <value>Anulo porosinë</value>
+  </data>
+  <data name="Cancel this order?" xml:space="preserve">
+    <value>Të anulohet kjo porosi?</value>
+  </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>Anuluar</value>
+  </data>
+  <data name="Cancelling an order returns its items to stock." xml:space="preserve">
+    <value>Anulimi i një porosie i kthen artikujt në stok.</value>
+  </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Shporta</value>
+  </data>
+  <data name="Cash on delivery. You pay the courier when your order arrives." xml:space="preserve">
+    <value>Pagesa në dorëzim. Paguani postierin kur mbërrin porosia juaj.</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Kategoritë</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategoria</value>
+  </data>
+  <data name="Category created." xml:space="preserve">
+    <value>Kategoria u krijua.</value>
+  </data>
+  <data name="Category deleted." xml:space="preserve">
+    <value>Kategoria u fshi.</value>
+  </data>
+  <data name="Category id" xml:space="preserve">
+    <value>ID e kategorisë</value>
+  </data>
+  <data name="Category name is required." xml:space="preserve">
+    <value>Emri i kategorisë është i detyrueshëm.</value>
+  </data>
+  <data name="Category saved." xml:space="preserve">
+    <value>Kategoria u ruajt.</value>
+  </data>
+  <data name="Category was not found." xml:space="preserve">
+    <value>Kategoria nuk u gjet.</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>Përfundimi i blerjes</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Qyteti</value>
+  </data>
+  <data name="City is required." xml:space="preserve">
+    <value>Qyteti është i detyrueshëm.</value>
+  </data>
+  <data name="Clear filters" xml:space="preserve">
+    <value>Pastro filtrat</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Mbyll</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Ngjyra</value>
+  </data>
+  <data name="Confirm password" xml:space="preserve">
+    <value>Konfirmo fjalëkalimin</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Konfirmuar</value>
+  </data>
+  <data name="Continue shopping" xml:space="preserve">
+    <value>Vazhdo blerjen</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Shteti</value>
+  </data>
+  <data name="Country is required." xml:space="preserve">
+    <value>Shteti është i detyrueshëm.</value>
+  </data>
+  <data name="Create account" xml:space="preserve">
+    <value>Krijo llogari</value>
+  </data>
+  <data name="Create an account" xml:space="preserve">
+    <value>Krijo një llogari</value>
+  </data>
+  <data name="Create category" xml:space="preserve">
+    <value>Krijo kategori</value>
+  </data>
+  <data name="Create product" xml:space="preserve">
+    <value>Krijo produkt</value>
+  </data>
+  <data name="Create your account" xml:space="preserve">
+    <value>Krijoni llogarinë tuaj</value>
+  </data>
+  <data name="Culture" xml:space="preserve">
+    <value>Gjuha</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Klienti</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>Klientët</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Paneli</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Deactivate" xml:space="preserve">
+    <value>Çaktivizo</value>
+  </data>
+  <data name="Decrease quantity" xml:space="preserve">
+    <value>Zvogëlo sasinë</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Fshi</value>
+  </data>
+  <data name="Delete this category?" xml:space="preserve">
+    <value>Të fshihet kjo kategori?</value>
+  </data>
+  <data name="Delete this product permanently?" xml:space="preserve">
+    <value>Të fshihet përgjithmonë ky produkt?</value>
+  </data>
+  <data name="Delivered" xml:space="preserve">
+    <value>Dorëzuar</value>
+  </data>
+  <data name="Delivery address" xml:space="preserve">
+    <value>Adresa e dorëzimit</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Përshkrimi</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detajet</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Ndrysho</value>
+  </data>
+  <data name="Edit {0}" xml:space="preserve">
+    <value>Ndrysho {0}</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Email '{0}' is already taken." xml:space="preserve">
+    <value>Email-i '{0}' është marrë tashmë.</value>
+  </data>
+  <data name="Email '{0}' is invalid." xml:space="preserve">
+    <value>Email-i '{0}' është i pavlefshëm.</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtro</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Nga</value>
+  </data>
+  <data name="from {0}" xml:space="preserve">
+    <value>nga {0}</value>
+  </data>
+  <data name="Full name" xml:space="preserve">
+    <value>Emri i plotë</value>
+  </data>
+  <data name="Get started" xml:space="preserve">
+    <value>Fillo tani</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Ballina</value>
+  </data>
+  <data name="Home textiles for every room" xml:space="preserve">
+    <value>Tekstile për shtëpi për çdo dhomë</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Image removed." xml:space="preserve">
+    <value>Imazhi u hoq.</value>
+  </data>
+  <data name="Image was not found." xml:space="preserve">
+    <value>Imazhi nuk u gjet.</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Imazhet</value>
+  </data>
+  <data name="Images uploaded." xml:space="preserve">
+    <value>Imazhet u ngarkuan.</value>
+  </data>
+  <data name="In stock" xml:space="preserve">
+    <value>Në stok</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>Joaktiv</value>
+  </data>
+  <data name="Incorrect password." xml:space="preserve">
+    <value>Fjalëkalim i pasaktë.</value>
+  </data>
+  <data name="Increase quantity" xml:space="preserve">
+    <value>Rrit sasinë</value>
+  </data>
+  <data name="Invalid email or password." xml:space="preserve">
+    <value>Email ose fjalëkalim i pavlefshëm.</value>
+  </data>
+  <data name="Is active" xml:space="preserve">
+    <value>Është aktiv</value>
+  </data>
+  <data name="Item added to your cart." xml:space="preserve">
+    <value>Artikulli u shtua në shportën tuaj.</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Artikuj</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Gjuha</value>
+  </data>
+  <data name="Leave a field empty to show the English text in that language." xml:space="preserve">
+    <value>Lëreni një fushë bosh për të shfaqur tekstin anglisht në atë gjuhë.</value>
+  </data>
+  <data name="Log in" xml:space="preserve">
+    <value>Hyr</value>
+  </data>
+  <data name="Log in to buy" xml:space="preserve">
+    <value>Hyr për të blerë</value>
+  </data>
+  <data name="Log out" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="Low stock" xml:space="preserve">
+    <value>Stok i ulët</value>
+  </data>
+  <data name="Make primary" xml:space="preserve">
+    <value>Bëje kryesor</value>
+  </data>
+  <data name="Material" xml:space="preserve">
+    <value>Materiali</value>
+  </data>
+  <data name="Max price" xml:space="preserve">
+    <value>Çmimi maks.</value>
+  </data>
+  <data name="Max €" xml:space="preserve">
+    <value>Maks. €</value>
+  </data>
+  <data name="Min price" xml:space="preserve">
+    <value>Çmimi min.</value>
+  </data>
+  <data name="Min €" xml:space="preserve">
+    <value>Min. €</value>
+  </data>
+  <data name="Minimum wholesale quantity" xml:space="preserve">
+    <value>Sasia minimale për shumicë</value>
+  </data>
+  <data name="Minimum wholesale quantity must be at least 1." xml:space="preserve">
+    <value>Sasia minimale për shumicë duhet të jetë të paktën 1.</value>
+  </data>
+  <data name="My account" xml:space="preserve">
+    <value>Llogaria ime</value>
+  </data>
+  <data name="My orders" xml:space="preserve">
+    <value>Porositë e mia</value>
+  </data>
+  <data name="My profile" xml:space="preserve">
+    <value>Profili im</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Emri</value>
+  </data>
+  <data name="Name, SKU or brand" xml:space="preserve">
+    <value>Emri, SKU ose marka</value>
+  </data>
+  <data name="Name: A to Z" xml:space="preserve">
+    <value>Emri: A–Zh</value>
+  </data>
+  <data name="New arrivals" xml:space="preserve">
+    <value>Të rejat</value>
+  </data>
+  <data name="New category" xml:space="preserve">
+    <value>Kategori e re</value>
+  </data>
+  <data name="New here?" xml:space="preserve">
+    <value>Jeni i ri këtu?</value>
+  </data>
+  <data name="New product" xml:space="preserve">
+    <value>Produkt i ri</value>
+  </data>
+  <data name="New status" xml:space="preserve">
+    <value>Statusi i ri</value>
+  </data>
+  <data name="Newest" xml:space="preserve">
+    <value>Më të rejat</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Tjetra</value>
+  </data>
+  <data name="No images yet. Upload JPG, PNG or WEBP files up to 5 MB." xml:space="preserve">
+    <value>Ende nuk ka imazhe. Ngarkoni skedarë JPG, PNG ose WEBP deri në 5 MB.</value>
+  </data>
+  <data name="No orders found." xml:space="preserve">
+    <value>Nuk u gjetën porosi.</value>
+  </data>
+  <data name="No products match your filters" xml:space="preserve">
+    <value>Asnjë produkt nuk përputhet me filtrat tuaj</value>
+  </data>
+  <data name="No sales yet." xml:space="preserve">
+    <value>Ende nuk ka shitje.</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Shënime</value>
+  </data>
+  <data name="Only pending orders can be cancelled. Please contact us for further help." xml:space="preserve">
+    <value>Vetëm porositë në pritje mund të anulohen. Na kontaktoni për ndihmë të mëtejshme.</value>
+  </data>
+  <data name="Only {0} in stock. Please reduce the quantity." xml:space="preserve">
+    <value>Vetëm {0} në stok. Ju lutemi zvogëloni sasinë.</value>
+  </data>
+  <data name="Only {0} left" xml:space="preserve">
+    <value>Vetëm {0} copë të mbetura</value>
+  </data>
+  <data name="Only {0} left in stock" xml:space="preserve">
+    <value>Vetëm {0} copë të mbetura në stok</value>
+  </data>
+  <data name="Only {0} units of {1} are in stock." xml:space="preserve">
+    <value>Vetëm {0} copë nga {1} janë në stok.</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Hap</value>
+  </data>
+  <data name="Optimistic concurrency failure, object has been modified." xml:space="preserve">
+    <value>Dështim i njëkohshmërisë, objekti është modifikuar.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Porosia</value>
+  </data>
+  <data name="Order confirmed" xml:space="preserve">
+    <value>Porosia u konfirmua</value>
+  </data>
+  <data name="Order history" xml:space="preserve">
+    <value>Historiku i porosive</value>
+  </data>
+  <data name="Order no., customer, email" xml:space="preserve">
+    <value>Nr. i porosisë, klienti, email</value>
+  </data>
+  <data name="Order notes" xml:space="preserve">
+    <value>Shënime për porosinë</value>
+  </data>
+  <data name="Order status changed to {0}." xml:space="preserve">
+    <value>Statusi i porosisë tani është: {0}.</value>
+  </data>
+  <data name="Order summary" xml:space="preserve">
+    <value>Përmbledhja e porosisë</value>
+  </data>
+  <data name="Order total" xml:space="preserve">
+    <value>Totali i porosisë</value>
+  </data>
+  <data name="Order was not found." xml:space="preserve">
+    <value>Porosia nuk u gjet.</value>
+  </data>
+  <data name="Order {0}" xml:space="preserve">
+    <value>Porosia {0}</value>
+  </data>
+  <data name="Order {0}+ for wholesale price" xml:space="preserve">
+    <value>Porosit {0}+ për çmim shumice</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Porositë</value>
+  </data>
+  <data name="Orders by status" xml:space="preserve">
+    <value>Porositë sipas statusit</value>
+  </data>
+  <data name="Out of stock" xml:space="preserve">
+    <value>Pa stok</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Faqja</value>
+  </data>
+  <data name="Page not found" xml:space="preserve">
+    <value>Faqja nuk u gjet</value>
+  </data>
+  <data name="Pagination" xml:space="preserve">
+    <value>Faqosja</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paguar</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Fjalëkalimi</value>
+  </data>
+  <data name="Passwords must be at least {0} characters." xml:space="preserve">
+    <value>Fjalëkalimet duhet të kenë të paktën {0} karaktere.</value>
+  </data>
+  <data name="Passwords must have at least one digit ('0'-'9')." xml:space="preserve">
+    <value>Fjalëkalimet duhet të kenë të paktën një shifër ('0'-'9').</value>
+  </data>
+  <data name="Passwords must have at least one lowercase ('a'-'z')." xml:space="preserve">
+    <value>Fjalëkalimet duhet të kenë të paktën një shkronjë të vogël ('a'-'z').</value>
+  </data>
+  <data name="Passwords must have at least one non alphanumeric character." xml:space="preserve">
+    <value>Fjalëkalimet duhet të kenë të paktën një karakter jo-alfanumerik.</value>
+  </data>
+  <data name="Passwords must have at least one uppercase ('A'-'Z')." xml:space="preserve">
+    <value>Fjalëkalimet duhet të kenë të paktën një shkronjë të madhe ('A'-'Z').</value>
+  </data>
+  <data name="Passwords must use at least {0} different characters." xml:space="preserve">
+    <value>Fjalëkalimet duhet të përdorin të paktën {0} karaktere të ndryshme.</value>
+  </data>
+  <data name="Pay on delivery · Wholesale pricing for business customers" xml:space="preserve">
+    <value>Pagesa në dorëzim · Çmime shumice për klientët biznes</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Pagesa</value>
+  </data>
+  <data name="Payment (cash on delivery)" xml:space="preserve">
+    <value>Pagesa (në dorëzim)</value>
+  </data>
+  <data name="Payment is collected on delivery." xml:space="preserve">
+    <value>Pagesa bëhet në dorëzim.</value>
+  </data>
+  <data name="Payment status" xml:space="preserve">
+    <value>Statusi i pagesës</value>
+  </data>
+  <data name="Payment status changed to {0}." xml:space="preserve">
+    <value>Statusi i pagesës tani është: {0}.</value>
+  </data>
+  <data name="Payment: {0}" xml:space="preserve">
+    <value>Pagesa: {0}</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Në pritje</value>
+  </data>
+  <data name="per piece when you order {0} or more." xml:space="preserve">
+    <value>për copë kur porosisni {0} ose më shumë.</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefoni</value>
+  </data>
+  <data name="Phone number" xml:space="preserve">
+    <value>Numri i telefonit</value>
+  </data>
+  <data name="Phone number is required." xml:space="preserve">
+    <value>Numri i telefonit është i detyrueshëm.</value>
+  </data>
+  <data name="Place order" xml:space="preserve">
+    <value>Bëj porosinë</value>
+  </data>
+  <data name="Placed on" xml:space="preserve">
+    <value>Porositur më</value>
+  </data>
+  <data name="Placed {0}" xml:space="preserve">
+    <value>Porositur më {0}</value>
+  </data>
+  <data name="Please choose at least one image." xml:space="preserve">
+    <value>Ju lutemi zgjidhni të paktën një imazh.</value>
+  </data>
+  <data name="Please have {0} ready on delivery." xml:space="preserve">
+    <value>Ju lutemi përgatitni {0} në momentin e dorëzimit.</value>
+  </data>
+  <data name="Please select a category." xml:space="preserve">
+    <value>Ju lutemi zgjidhni një kategori.</value>
+  </data>
+  <data name="Postal code" xml:space="preserve">
+    <value>Kodi postar</value>
+  </data>
+  <data name="Postal code is required." xml:space="preserve">
+    <value>Kodi postar është i detyrueshëm.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>E mëparshme</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Çmimi</value>
+  </data>
+  <data name="Price: high to low" xml:space="preserve">
+    <value>Çmimi: nga më i larti te më i ulëti</value>
+  </data>
+  <data name="Price: low to high" xml:space="preserve">
+    <value>Çmimi: nga më i ulëti te më i larti</value>
+  </data>
+  <data name="Primary" xml:space="preserve">
+    <value>Kryesor</value>
+  </data>
+  <data name="Primary image updated." xml:space="preserve">
+    <value>Imazhi kryesor u përditësua.</value>
+  </data>
+  <data name="Proceed to checkout" xml:space="preserve">
+    <value>Vazhdo te pagesa</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Në përpunim</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Produkti</value>
+  </data>
+  <data name="Product activated." xml:space="preserve">
+    <value>Produkti u aktivizua.</value>
+  </data>
+  <data name="Product created. You can now upload images." xml:space="preserve">
+    <value>Produkti u krijua. Tani mund të ngarkoni imazhe.</value>
+  </data>
+  <data name="Product deactivated." xml:space="preserve">
+    <value>Produkti u çaktivizua.</value>
+  </data>
+  <data name="Product deleted." xml:space="preserve">
+    <value>Produkti u fshi.</value>
+  </data>
+  <data name="Product name is required." xml:space="preserve">
+    <value>Emri i produktit është i detyrueshëm.</value>
+  </data>
+  <data name="Product saved." xml:space="preserve">
+    <value>Produkti u ruajt.</value>
+  </data>
+  <data name="Product was not found." xml:space="preserve">
+    <value>Produkti nuk u gjet.</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Produktet</value>
+  </data>
+  <data name="Products are listed from the lowest stock to the highest. Items with {0} or fewer units are highlighted." xml:space="preserve">
+    <value>Produktet renditen nga stoku më i ulët te më i larti. Artikujt me {0} ose më pak njësi janë të theksuar.</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profili</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Sasia</value>
+  </data>
+  <data name="Quantity must be between 1 and {0}." xml:space="preserve">
+    <value>Sasia duhet të jetë midis 1 dhe {0}.</value>
+  </data>
+  <data name="Recent orders" xml:space="preserve">
+    <value>Porositë e fundit</value>
+  </data>
+  <data name="Recipient name" xml:space="preserve">
+    <value>Emri i marrësit</value>
+  </data>
+  <data name="Recipient name is required." xml:space="preserve">
+    <value>Emri i marrësit është i detyrueshëm.</value>
+  </data>
+  <data name="Reference:" xml:space="preserve">
+    <value>Referenca:</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Rimbursuar</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Regjistrohu</value>
+  </data>
+  <data name="Registered" xml:space="preserve">
+    <value>Regjistruar</value>
+  </data>
+  <data name="Remember me" xml:space="preserve">
+    <value>Më mbaj mend</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Hiq</value>
+  </data>
+  <data name="Remove this image?" xml:space="preserve">
+    <value>Të hiqet ky imazh?</value>
+  </data>
+  <data name="Request id" xml:space="preserve">
+    <value>ID e kërkesës</value>
+  </data>
+  <data name="Resolve stock issues to continue" xml:space="preserve">
+    <value>Zgjidhni problemet e stokut për të vazhduar</value>
+  </data>
+  <data name="Retail" xml:space="preserve">
+    <value>Pakicë</value>
+  </data>
+  <data name="Retail price (€)" xml:space="preserve">
+    <value>Çmimi me pakicë (€)</value>
+  </data>
+  <data name="Retail price must be greater than zero." xml:space="preserve">
+    <value>Çmimi me pakicë duhet të jetë më i madh se zero.</value>
+  </data>
+  <data name="Revenue, last 6 months" xml:space="preserve">
+    <value>Të ardhurat, 6 muajt e fundit</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Ruaj</value>
+  </data>
+  <data name="Save address" xml:space="preserve">
+    <value>Ruaj adresën</value>
+  </data>
+  <data name="Save changes" xml:space="preserve">
+    <value>Ruaj ndryshimet</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Kërko</value>
+  </data>
+  <data name="Search blankets, covers, curtains..." xml:space="preserve">
+    <value>Kërko batanije, mbulesa, perde...</value>
+  </data>
+  <data name="Search name or email" xml:space="preserve">
+    <value>Kërko emrin ose email-in</value>
+  </data>
+  <data name="Search name, SKU, brand" xml:space="preserve">
+    <value>Kërko emrin, SKU, markën</value>
+  </data>
+  <data name="Search products" xml:space="preserve">
+    <value>Kërko produkte</value>
+  </data>
+  <data name="Select a category" xml:space="preserve">
+    <value>Zgjidh një kategori</value>
+  </data>
+  <data name="Set stock" xml:space="preserve">
+    <value>Cakto stokun</value>
+  </data>
+  <data name="Shipped" xml:space="preserve">
+    <value>Dërguar</value>
+  </data>
+  <data name="Shop all" xml:space="preserve">
+    <value>Dyqani</value>
+  </data>
+  <data name="Shop by category" xml:space="preserve">
+    <value>Bli sipas kategorisë</value>
+  </data>
+  <data name="Shop in retail quantities or order wholesale for your own business. Quality fabrics from our network of shops, now available online." xml:space="preserve">
+    <value>Blini me pakicë ose porositni me shumicë për biznesin tuaj. Pëlhura cilësore nga rrjeti ynë i dyqaneve, tani të disponueshme online.</value>
+  </data>
+  <data name="Shop the collection" xml:space="preserve">
+    <value>Shiko koleksionin</value>
+  </data>
+  <data name="Shopping cart" xml:space="preserve">
+    <value>Shporta e blerjeve</value>
+  </data>
+  <data name="Show image" xml:space="preserve">
+    <value>Shfaq imazhin</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Madhësia</value>
+  </data>
+  <data name="SKU" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="SKU is required." xml:space="preserve">
+    <value>SKU është i detyrueshëm.</value>
+  </data>
+  <data name="Slug" xml:space="preserve">
+    <value>Adresa (URL)</value>
+  </data>
+  <data name="Something went wrong" xml:space="preserve">
+    <value>Diçka shkoi keq</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Rendit</value>
+  </data>
+  <data name="Sort by" xml:space="preserve">
+    <value>Rendit sipas</value>
+  </data>
+  <data name="Start shopping" xml:space="preserve">
+    <value>Fillo blerjen</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Statusi</value>
+  </data>
+  <data name="Status code" xml:space="preserve">
+    <value>Kodi i statusit</value>
+  </data>
+  <data name="Stock" xml:space="preserve">
+    <value>Stoku</value>
+  </data>
+  <data name="Stock levels" xml:space="preserve">
+    <value>Nivelet e stokut</value>
+  </data>
+  <data name="Stock levels changed while you were checking out. Please review your cart and try again." xml:space="preserve">
+    <value>Nivelet e stokut ndryshuan gjatë përfundimit të blerjes. Ju lutemi rishikoni shportën dhe provoni përsëri.</value>
+  </data>
+  <data name="Stock quantity" xml:space="preserve">
+    <value>Sasia në stok</value>
+  </data>
+  <data name="Stock quantity cannot be negative." xml:space="preserve">
+    <value>Sasia në stok nuk mund të jetë negative.</value>
+  </data>
+  <data name="Stock updated." xml:space="preserve">
+    <value>Stoku u përditësua.</value>
+  </data>
+  <data name="Stock: low to high" xml:space="preserve">
+    <value>Stoku: nga më i ulëti te më i larti</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Rruga</value>
+  </data>
+  <data name="Street and number" xml:space="preserve">
+    <value>Rruga dhe numri</value>
+  </data>
+  <data name="Street is required." xml:space="preserve">
+    <value>Rruga është e detyrueshme.</value>
+  </data>
+  <data name="Subtotal" xml:space="preserve">
+    <value>Nëntotali</value>
+  </data>
+  <data name="Thank you for your order!" xml:space="preserve">
+    <value>Faleminderit për porosinë tuaj!</value>
+  </data>
+  <data name="The field must be a number." xml:space="preserve">
+    <value>Fusha duhet të jetë numër.</value>
+  </data>
+  <data name="The field {0} must be a number." xml:space="preserve">
+    <value>Fusha {0} duhet të jetë numër.</value>
+  </data>
+  <data name="The field {0} must be a string with a maximum length of {1}." xml:space="preserve">
+    <value>Fusha {0} duhet të ketë më së shumti {1} karaktere.</value>
+  </data>
+  <data name="The field {0} must be a string with a minimum length of {2} and a maximum length of {1}." xml:space="preserve">
+    <value>Fusha {0} duhet të ketë nga {2} deri në {1} karaktere.</value>
+  </data>
+  <data name="The field {0} must be between {1} and {2}." xml:space="preserve">
+    <value>Fusha {0} duhet të jetë midis {1} dhe {2}.</value>
+  </data>
+  <data name="The item is not in your cart." xml:space="preserve">
+    <value>Artikulli nuk është në shportën tuaj.</value>
+  </data>
+  <data name="The order was changed by someone else. Please reload and try again." xml:space="preserve">
+    <value>Porosia u ndryshua nga dikush tjetër. Ju lutemi rifreskoni faqen dhe provoni përsëri.</value>
+  </data>
+  <data name="The page you are looking for does not exist or was moved." xml:space="preserve">
+    <value>Faqja që po kërkoni nuk ekziston ose është zhvendosur.</value>
+  </data>
+  <data name="The passwords do not match." xml:space="preserve">
+    <value>Fjalëkalimet nuk përputhen.</value>
+  </data>
+  <data name="The product was changed by someone else. Please reload and try again." xml:space="preserve">
+    <value>Produkti u ndryshua nga dikush tjetër. Ju lutemi rifreskoni faqen dhe provoni përsëri.</value>
+  </data>
+  <data name="The provided value is invalid." xml:space="preserve">
+    <value>Vlera e dhënë është e pavlefshme.</value>
+  </data>
+  <data name="The selected category does not exist." xml:space="preserve">
+    <value>Kategoria e zgjedhur nuk ekziston.</value>
+  </data>
+  <data name="The value '{0}' is invalid." xml:space="preserve">
+    <value>Vlera '{0}' është e pavlefshme.</value>
+  </data>
+  <data name="The value '{0}' is not valid for {1}." xml:space="preserve">
+    <value>Vlera '{0}' nuk është e vlefshme për {1}.</value>
+  </data>
+  <data name="The value '{0}' is not valid." xml:space="preserve">
+    <value>Vlera '{0}' nuk është e vlefshme.</value>
+  </data>
+  <data name="The value provided for {0} is invalid." xml:space="preserve">
+    <value>Vlera e dhënë për {0} është e pavlefshme.</value>
+  </data>
+  <data name="The {0} field is not a valid e-mail address." xml:space="preserve">
+    <value>Fusha {0} nuk përmban një adresë të vlefshme email-i.</value>
+  </data>
+  <data name="The {0} field is not a valid phone number." xml:space="preserve">
+    <value>Fusha {0} nuk përmban një numër telefoni të vlefshëm.</value>
+  </data>
+  <data name="The {0} field is required." xml:space="preserve">
+    <value>Fusha {0} është e detyrueshme.</value>
+  </data>
+  <data name="This account is temporarily locked. Please try again later." xml:space="preserve">
+    <value>Kjo llogari është e bllokuar përkohësisht. Ju lutemi provoni më vonë.</value>
+  </data>
+  <data name="This category still contains products and cannot be deleted." xml:space="preserve">
+    <value>Kjo kategori ende përmban produkte dhe nuk mund të fshihet.</value>
+  </data>
+  <data name="This month" xml:space="preserve">
+    <value>Këtë muaj</value>
+  </data>
+  <data name="This order is closed." xml:space="preserve">
+    <value>Kjo porosi është mbyllur.</value>
+  </data>
+  <data name="This product appears in existing orders. Deactivate it instead of deleting it." xml:space="preserve">
+    <value>Ky produkt shfaqet në porosi ekzistuese. Çaktivizojeni në vend që ta fshini.</value>
+  </data>
+  <data name="This product is no longer available." xml:space="preserve">
+    <value>Ky produkt nuk është më i disponueshëm.</value>
+  </data>
+  <data name="This product is no longer available. Please remove it." xml:space="preserve">
+    <value>Ky produkt nuk është më i disponueshëm. Ju lutemi hiqeni.</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Deri</value>
+  </data>
+  <data name="Toggle night mode" xml:space="preserve">
+    <value>Modaliteti i natës</value>
+  </data>
+  <data name="Toggle navigation" xml:space="preserve">
+    <value>Hap/mbyll navigimin</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Totali</value>
+  </data>
+  <data name="Total revenue" xml:space="preserve">
+    <value>Të ardhurat totale</value>
+  </data>
+  <data name="Translations" xml:space="preserve">
+    <value>Përkthimet</value>
+  </data>
+  <data name="Try removing some filters or searching for something else." xml:space="preserve">
+    <value>Provoni të hiqni disa filtra ose të kërkoni diçka tjetër.</value>
+  </data>
+  <data name="Unit price" xml:space="preserve">
+    <value>Çmimi për njësi</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Përditëso</value>
+  </data>
+  <data name="Upload images" xml:space="preserve">
+    <value>Ngarko imazhe</value>
+  </data>
+  <data name="User name '{0}' is already taken." xml:space="preserve">
+    <value>Emri i përdoruesit '{0}' është marrë tashmë.</value>
+  </data>
+  <data name="User name '{0}' is invalid, can only contain letters or digits." xml:space="preserve">
+    <value>Emri i përdoruesit '{0}' është i pavlefshëm, mund të përmbajë vetëm shkronja ose shifra.</value>
+  </data>
+  <data name="View all" xml:space="preserve">
+    <value>Shiko të gjitha</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>Shiko porosinë</value>
+  </data>
+  <data name="View shop" xml:space="preserve">
+    <value>Shiko dyqanin</value>
+  </data>
+  <data name="Warm, durable textiles for every room of the home" xml:space="preserve">
+    <value>Tekstile të ngrohta dhe të qëndrueshme për çdo dhomë të shtëpisë</value>
+  </data>
+  <data name="Welcome back" xml:space="preserve">
+    <value>Mirë se u ktheve</value>
+  </data>
+  <data name="Welcome! Your account has been created." xml:space="preserve">
+    <value>Mirë se vini! Llogaria juaj u krijua.</value>
+  </data>
+  <data name="Wholesale" xml:space="preserve">
+    <value>Shumicë</value>
+  </data>
+  <data name="Wholesale customers get special prices on larger quantities. Register and contact us to have your account upgraded." xml:space="preserve">
+    <value>Klientët me shumicë marrin çmime speciale për sasi më të mëdha. Regjistrohuni dhe na kontaktoni për të përmirësuar llogarinë tuaj.</value>
+  </data>
+  <data name="Wholesale price" xml:space="preserve">
+    <value>Çmimi me shumicë</value>
+  </data>
+  <data name="Wholesale price (€)" xml:space="preserve">
+    <value>Çmimi me shumicë (€)</value>
+  </data>
+  <data name="Wholesale price cannot be higher than the retail price." xml:space="preserve">
+    <value>Çmimi me shumicë nuk mund të jetë më i lartë se çmimi me pakicë.</value>
+  </data>
+  <data name="Wholesale price must be greater than zero and not higher than the retail price." xml:space="preserve">
+    <value>Çmimi me shumicë duhet të jetë më i madh se zero dhe jo më i lartë se çmimi me pakicë.</value>
+  </data>
+  <data name="Wholesale {0} from {1} pcs" xml:space="preserve">
+    <value>Shumicë {0} nga {1} copë</value>
+  </data>
+  <data name="You have not placed any orders yet" xml:space="preserve">
+    <value>Nuk keni bërë ende asnjë porosi</value>
+  </data>
+  <data name="You may also like" xml:space="preserve">
+    <value>Mund t'ju pëlqejnë gjithashtu</value>
+  </data>
+  <data name="Your account does not have permission to view this page." xml:space="preserve">
+    <value>Llogaria juaj nuk ka leje për ta parë këtë faqe.</value>
+  </data>
+  <data name="Your cart is empty" xml:space="preserve">
+    <value>Shporta juaj është bosh</value>
+  </data>
+  <data name="Your cart is empty." xml:space="preserve">
+    <value>Shporta juaj është bosh.</value>
+  </data>
+  <data name="Your delivery address was saved." xml:space="preserve">
+    <value>Adresa juaj e dorëzimit u ruajt.</value>
+  </data>
+  <data name="Your order" xml:space="preserve">
+    <value>Porosia juaj</value>
+  </data>
+  <data name="Your order number is" xml:space="preserve">
+    <value>Numri i porosisë suaj është</value>
+  </data>
+  <data name="Your order was cancelled." xml:space="preserve">
+    <value>Porosia juaj u anulua.</value>
+  </data>
+  <data name="Your profile was updated." xml:space="preserve">
+    <value>Profili juaj u përditësua.</value>
+  </data>
+  <data name="Your wholesale price: {0}" xml:space="preserve">
+    <value>Çmimi juaj me shumicë: {0}</value>
+  </data>
+  <data name="{0} active products" xml:space="preserve">
+    <value>{0} produkte aktive</value>
+  </data>
+  <data name="{0} is no longer available. Please remove it from your cart." xml:space="preserve">
+    <value>{0} nuk është më i disponueshëm. Ju lutemi hiqeni nga shporta.</value>
+  </data>
+  <data name="{0} left" xml:space="preserve">
+    <value>{0} copë të mbetura</value>
+  </data>
+  <data name="{0} pending" xml:space="preserve">
+    <value>{0} në pritje</value>
+  </data>
+  <data name="{0} product found" xml:space="preserve">
+    <value>{0} produkt u gjet</value>
+  </data>
+  <data name="{0} products" xml:space="preserve">
+    <value>{0} produkte</value>
+  </data>
+  <data name="{0} products found" xml:space="preserve">
+    <value>{0} produkte u gjetën</value>
+  </data>
+  <data name="{0} sold" xml:space="preserve">
+    <value>Të shitura: {0}</value>
+  </data>
+  <data name="{0}: images must be 5 MB or smaller." xml:space="preserve">
+    <value>{0}: imazhet duhet të jenë 5 MB ose më të vogla.</value>
+  </data>
+  <data name="{0}: only JPG, PNG and WEBP images are allowed." xml:space="preserve">
+    <value>{0}: lejohen vetëm imazhe JPG, PNG dhe WEBP.</value>
+  </data>
+  <data name="← Back to orders" xml:space="preserve">
+    <value>← Kthehu te porositë</value>
+  </data>
+  <data name="Why shop with us" xml:space="preserve">
+    <value>Pse të blini te ne</value>
+  </data>
+  <data name="Pay on delivery" xml:space="preserve">
+    <value>Pagesa në dorëzim</value>
+  </data>
+  <data name="Pay when your order arrives" xml:space="preserve">
+    <value>Paguani kur të mbërrijë porosia</value>
+  </data>
+  <data name="Wholesale pricing" xml:space="preserve">
+    <value>Çmime shumice</value>
+  </data>
+  <data name="Better prices on larger quantities" xml:space="preserve">
+    <value>Çmime më të mira për sasi më të mëdha</value>
+  </data>
+  <data name="Quality fabrics" xml:space="preserve">
+    <value>Pëlhura cilësore</value>
+  </data>
+  <data name="Durable textiles from trusted shops" xml:space="preserve">
+    <value>Tekstile të qëndrueshme nga dyqane të besuara</value>
+  </data>
+  <data name="For business customers" xml:space="preserve">
+    <value>Për klientët biznes</value>
+  </data>
+</root>

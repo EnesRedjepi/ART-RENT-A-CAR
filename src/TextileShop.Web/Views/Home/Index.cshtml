@@ -1,0 +1,86 @@
+@model HomeViewModel
+@{
+    ViewData["Title"] = L["Home textiles for every room"];
+    var heroShot = Model.NewArrivals.FirstOrDefault(p => !string.IsNullOrEmpty(p.PrimaryImageFileName));
+    var featured = Model.NewArrivals.Take(8).ToList();
+}
+
+<section class="hero" aria-labelledby="hero-title">
+    @if (heroShot is not null)
+    {
+        <div class="hero-media" aria-hidden="true"><img src="@Url.ProductImage(heroShot.PrimaryImageFileName)" alt="" /></div>
+    }
+    <div class="hero-content">
+        <h1 id="hero-title">@L["Warm, durable textiles for every room of the home"]</h1>
+        <p>@L["Shop in retail quantities or order wholesale for your own business. Quality fabrics from our network of shops, now available online."]</p>
+        <div class="hero-actions">
+            <a class="btn btn-clay" asp-controller="Products" asp-action="Index">@L["Shop the collection"]
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            @if (User.Identity?.IsAuthenticated != true)
+            {
+                <a class="btn btn-outline-clay" asp-controller="Account" asp-action="Register">@L["Create an account"]</a>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="trust-strip" aria-label="@L["Why shop with us"]">
+    <div class="trust-item">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="7" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v4h-7z"/><circle cx="6" cy="18" r="2"/><circle cx="19" cy="18" r="2"/></svg>
+        <div><strong>@L["Pay on delivery"]</strong><span>@L["Pay when your order arrives"]</span></div>
+    </div>
+    <div class="trust-item">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+        <div><strong>@L["Wholesale pricing"]</strong><span>@L["Better prices on larger quantities"]</span></div>
+    </div>
+    <div class="trust-item">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 6.5 7 .9-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.9z"/></svg>
+        <div><strong>@L["Quality fabrics"]</strong><span>@L["Durable textiles from trusted shops"]</span></div>
+    </div>
+</section>
+
+<section class="home-section" aria-labelledby="new-title">
+    <div class="section-head">
+        <h2 class="section-title" id="new-title">@L["New arrivals"]</h2>
+        <a asp-controller="Products" asp-action="Index" class="link-clay">@L["View all"] &rarr;</a>
+    </div>
+    <div class="row g-4">
+        @foreach (var product in featured)
+        {
+            <div class="col-6 col-md-4 col-lg-3">
+                <partial name="_ProductCard" model="product" />
+            </div>
+        }
+    </div>
+</section>
+
+<section class="home-section" aria-labelledby="cat-title">
+    <div class="section-head">
+        <h2 class="section-title" id="cat-title">@L["Shop by category"]</h2>
+    </div>
+    <div class="category-grid @(Model.Categories.Count > 2 ? "category-grid-many" : "")">
+        @foreach (var category in Model.Categories)
+        {
+            var shot = Model.NewArrivals.FirstOrDefault(p => p.CategoryName == category.Name && !string.IsNullOrEmpty(p.PrimaryImageFileName));
+            <a class="category-card" asp-controller="Products" asp-action="Category" asp-route-slug="@category.Slug">
+                <span class="category-card-media @(shot is null ? "category-card-media-empty" : "")">
+                    @if (shot is not null)
+                    {
+                        <img src="@Url.ProductImage(shot.PrimaryImageFileName)" alt="" loading="lazy" />
+                    }
+                </span>
+                <span class="category-card-name">@category.Name</span>
+                <span class="category-card-meta">@L["{0} products", category.ProductCount]</span>
+            </a>
+        }
+    </div>
+</section>
+
+<section class="wholesale-banner">
+    <div>
+        <span class="hero-eyebrow">@L["For business customers"]</span>
+        <h2>@L["Buying for your business?"]</h2>
+        <p class="mb-0">@L["Wholesale customers get special prices on larger quantities. Register and contact us to have your account upgraded."]</p>
+    </div>
+    <a class="btn btn-light btn-lg" asp-controller="Account" asp-action="Register">@L["Get started"]</a>
+</section>

@@ -1,0 +1,16 @@
+@model CategoryFormViewModel
+@{
+    ViewData["Title"] = L["Edit {0}", Model.Name];
+}
+
+<div class="panel panel-narrow">
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+        <partial name="_Form" model="Model" />
+        <button type="submit" class="btn btn-clay">@L["Save changes"]</button>
+        <a class="btn btn-outline-dark" asp-action="Index">@L["Cancel"]</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

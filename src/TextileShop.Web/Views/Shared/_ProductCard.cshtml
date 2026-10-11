@@ -1,0 +1,24 @@
+@model ProductListItem
+
+<article class="product-card h-100">
+    <a class="product-card-image" asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id">
+        <img src="@Url.ProductImage(Model.PrimaryImageFileName)" alt="@Model.Name" loading="lazy" />
+        @if (!Model.InStock)
+        {
+            <span class="product-flag flag-out">@L["Out of stock"]</span>
+        }
+        else if (Model.IsLowStock)
+        {
+            <span class="product-flag flag-low">@L["Only {0} left", Model.StockQuantity]</span>
+        }
+    </a>
+    <div class="product-card-body">
+        <div class="product-card-category">@Model.CategoryName</div>
+        <h3 class="product-card-title"><a asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id">@Model.Name</a></h3>
+        <div class="product-card-price">@Model.Price.ToString("C")</div>
+        @if (User.IsInRole(Roles.WholesaleCustomer))
+        {
+            <div class="wholesale-hint">@L["Wholesale {0} from {1} pcs", Model.WholesalePrice.ToString("C"), Model.MinimumWholesaleQuantity]</div>
+        }
+    </div>
+</article>

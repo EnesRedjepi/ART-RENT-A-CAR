@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = L["Access denied"];
+}
+
+<div class="error-page">
+    <div class="error-art" aria-hidden="true">
+        <span class="error-code">403</span>
+        <span class="error-thread"></span>
+    </div>
+    <h1>@L["Access denied"]</h1>
+    <p class="error-text">@L["Your account does not have permission to view this page."]</p>
+    <div class="error-actions">
+        <a class="btn btn-clay btn-lg" asp-controller="Home" asp-action="Index">@L["Back to the shop"]</a>
+    </div>
+</div>
