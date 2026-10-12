@@ -37,6 +37,11 @@ try
     }
 
     Money.MkdPerEur = builder.Configuration.GetValue("Currency:MkdPerEur", Money.MkdPerEur);
+    var defaultCurrency = builder.Configuration["Currency:Default"];
+    if (Money.IsSupported(defaultCurrency))
+    {
+        Money.Default = defaultCurrency!.ToUpperInvariant();
+    }
 
     builder.Services.AddAppLocalization();
     builder.Services.AddControllersWithViews().AddAppLocalization();
@@ -78,7 +83,7 @@ try
     {
         var chosen = context.Request.Cookies[Money.CookieName];
         var isAdmin = context.Request.Path.StartsWithSegments("/Admin", StringComparison.OrdinalIgnoreCase);
-        Money.Current = !isAdmin && Money.IsSupported(chosen) ? chosen!.ToUpperInvariant() : Money.Euro;
+        Money.Current = isAdmin ? Money.Euro : Money.IsSupported(chosen) ? chosen!.ToUpperInvariant() : Money.Default;
         await next();
     });
 

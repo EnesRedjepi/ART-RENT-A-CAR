@@ -14,7 +14,10 @@ public static class Money
 
     private static readonly AsyncLocal<string?> current = new();
 
-    public static readonly IReadOnlyList<string> Currencies = new[] { Euro, Denar };
+    public static readonly IReadOnlyList<string> Currencies = new[] { Denar, Euro };
+
+    /// <summary>Currency shown to visitors who have not chosen one. Overridden by the Currency:Default setting.</summary>
+    public static string Default { get; set; } = Denar;
 
     /// <summary>Denars per euro. Overridden by the Currency:MkdPerEur setting.</summary>
     public static decimal MkdPerEur { get; set; } = 61.5m;
