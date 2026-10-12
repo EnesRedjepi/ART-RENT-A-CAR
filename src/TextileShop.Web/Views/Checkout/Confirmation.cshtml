@@ -8,7 +8,8 @@
         <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
     </span>
     <h1>@L["Thank you for your order!"]</h1>
-    <p class="lead mb-0">@L["Your order number is"] <strong>@Model.OrderNumber</strong>. @L["Please have {0} ready on delivery.", Model.TotalAmount.ToString("C")]</p>
+    <p class="lead mb-0">@L["Your order number is"] <strong>@Model.OrderNumber</strong>. @L["Please have {0} ready on delivery.", Model.TotalAmount.ToMoney()]</p>
+    <partial name="_CurrencyNote" />
 </div>
 
 <div class="form-card checkout-step">

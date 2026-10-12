@@ -38,10 +38,11 @@
                     <div class="summary-row checkout-line">
                         <img src="@Url.ProductImage(line.ImageFileName)" alt="" loading="lazy" />
                         <span class="checkout-line-name">@line.Quantity &times; @line.ProductName</span>
-                        <span class="checkout-line-total">@line.LineTotal.ToString("C")</span>
+                        <span class="checkout-line-total">@line.LineTotal.ToMoney()</span>
                     </div>
                 }
-                <div class="summary-row summary-total"><span>@L["Total"]</span><span>@Model.Cart.Total.ToString("C")</span></div>
+                <div class="summary-row summary-total"><span>@L["Total"]</span><span>@Model.Cart.Total.ToMoney()</span></div>
+                <partial name="_CurrencyNote" />
                 <button type="submit" class="btn btn-clay btn-lg w-100 mt-3">@L["Place order"]</button>
                 <a class="btn btn-link w-100 mt-1" asp-controller="Cart" asp-action="Index">&larr; @L["Back to cart"]</a>
             </div>

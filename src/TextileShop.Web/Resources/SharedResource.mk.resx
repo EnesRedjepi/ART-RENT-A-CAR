@@ -970,6 +970,12 @@
   <data name="Toggle night mode" xml:space="preserve">
     <value>Ноќен режим</value>
   </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Валута</value>
+  </data>
+  <data name="Prices in denars are converted from euros at 1 EUR = {0} MKD." xml:space="preserve">
+    <value>Цените во денари се претворени од евра по курс 1 EUR = {0} MKD.</value>
+  </data>
   <data name="Toggle navigation" xml:space="preserve">
     <value>Прикажи/сокриј навигација</value>
   </data>

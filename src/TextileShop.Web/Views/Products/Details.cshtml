@@ -37,12 +37,12 @@
     <div class="col-lg-6 product-info">
         <a class="product-card-category product-category-link" asp-controller="Products" asp-action="Category" asp-route-slug="@product.CategorySlug">@product.CategoryName</a>
         <h1 class="product-title">@product.Name</h1>
-        <div class="product-price">@product.Price.ToString("C")</div>
+        <div class="product-price">@product.Price.ToMoney()</div>
 
         @if (User.IsInRole(Roles.WholesaleCustomer))
         {
             <div class="wholesale-box">
-                <strong>@L["Your wholesale price: {0}", product.WholesalePrice.ToString("C")]</strong> @L["per piece when you order {0} or more.", product.MinimumWholesaleQuantity]
+                <strong>@L["Your wholesale price: {0}", product.WholesalePrice.ToMoney()]</strong> @L["per piece when you order {0} or more.", product.MinimumWholesaleQuantity]
             </div>
         }
 

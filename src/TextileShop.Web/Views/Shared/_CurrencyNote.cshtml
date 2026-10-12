@@ -1,0 +1,5 @@
+@using TextileShop.Web.Localization
+@if (Money.IsDenar)
+{
+    <p class="summary-note small text-muted mb-0">@L["Prices in denars are converted from euros at 1 EUR = {0} MKD.", Money.MkdPerEur.ToString("0.##", CultureInfo.CurrentCulture)]</p>
+}

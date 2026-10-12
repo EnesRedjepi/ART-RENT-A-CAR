@@ -17,9 +17,9 @@
                 <tr>
                     <td>@item.ProductName</td>
                     <td class="text-muted sku-col">@item.Sku</td>
-                    <td class="text-end">@item.UnitPrice.ToString("C")</td>
+                    <td class="text-end">@item.UnitPrice.ToMoney()</td>
                     <td class="text-end">@item.Quantity</td>
-                    <td class="text-end">@item.TotalPrice.ToString("C")</td>
+                    <td class="text-end">@item.TotalPrice.ToMoney()</td>
                 </tr>
             }
         </tbody>
@@ -27,7 +27,7 @@
             <tr>
                 <th colspan="4" class="text-end total-label-wide">@L["Order total"]</th>
                 <th colspan="3" class="text-end total-label-narrow">@L["Order total"]</th>
-                <th class="text-end">@Model.TotalAmount.ToString("C")</th>
+                <th class="text-end">@Model.TotalAmount.ToMoney()</th>
             </tr>
         </tfoot>
     </table>

@@ -15,10 +15,10 @@
     <div class="product-card-body">
         <div class="product-card-category">@Model.CategoryName</div>
         <h3 class="product-card-title"><a asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id">@Model.Name</a></h3>
-        <div class="product-card-price">@Model.Price.ToString("C")</div>
+        <div class="product-card-price">@Model.Price.ToMoney()</div>
         @if (User.IsInRole(Roles.WholesaleCustomer))
         {
-            <div class="wholesale-hint">@L["Wholesale {0} from {1} pcs", Model.WholesalePrice.ToString("C"), Model.MinimumWholesaleQuantity]</div>
+            <div class="wholesale-hint">@L["Wholesale {0} from {1} pcs", Model.WholesalePrice.ToMoney(), Model.MinimumWholesaleQuantity]</div>
         }
     </div>
 </article>

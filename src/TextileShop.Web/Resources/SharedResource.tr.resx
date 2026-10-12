@@ -970,6 +970,12 @@
   <data name="Toggle night mode" xml:space="preserve">
     <value>Gece modu</value>
   </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Para birimi</value>
+  </data>
+  <data name="Prices in denars are converted from euros at 1 EUR = {0} MKD." xml:space="preserve">
+    <value>Denar cinsinden fiyatlar euro'dan 1 EUR = {0} MKD kuruyla çevrilmiştir.</value>
+  </data>
   <data name="Toggle navigation" xml:space="preserve">
     <value>Gezinmeyi aç/kapat</value>
   </data>

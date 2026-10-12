@@ -61,12 +61,12 @@
             </div>
             <div class="row g-2 mb-3">
                 <div class="col-6">
-                    <label class="form-label" for="minPrice">@L["Min €"]</label>
-                    <input id="minPrice" name="minPrice" value="@filter.MinPrice" type="number" min="0" step="0.01" class="form-control" />
+                    <label class="form-label" for="minPrice">@L["Min €"].Value.Replace("€", Money.Symbol)</label>
+                    <input id="minPrice" name="minPrice" value="@filter.MinPrice" type="number" min="0" step="@(Money.IsDenar ? "1" : "0.01")" class="form-control" />
                 </div>
                 <div class="col-6">
-                    <label class="form-label" for="maxPrice">@L["Max €"]</label>
-                    <input id="maxPrice" name="maxPrice" value="@filter.MaxPrice" type="number" min="0" step="0.01" class="form-control" />
+                    <label class="form-label" for="maxPrice">@L["Max €"].Value.Replace("€", Money.Symbol)</label>
+                    <input id="maxPrice" name="maxPrice" value="@filter.MaxPrice" type="number" min="0" step="@(Money.IsDenar ? "1" : "0.01")" class="form-control" />
                 </div>
             </div>
             <div class="mb-3">

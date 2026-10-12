@@ -36,7 +36,7 @@ else
                     </div>
                 </div>
                 <div class="order-card-side">
-                    <div class="order-total">@order.TotalAmount.ToString("C")</div>
+                    <div class="order-total">@order.TotalAmount.ToMoney()</div>
                     <a class="btn btn-outline-dark" asp-action="Details" asp-route-id="@order.Id">@L["Details"]</a>
                 </div>
             </li>

@@ -1,3 +1,4 @@
+using TextileShop.Web.Localization;
 using TextileShop.Services.Common;
 using TextileShop.Services.Models;
 
@@ -27,8 +28,8 @@ public class ProductFilterViewModel
         CategoryId = CategoryId,
         Material = Material,
         Color = Color,
-        MinPrice = MinPrice,
-        MaxPrice = MaxPrice,
+        MinPrice = MinPrice is null ? null : Money.ToEuroLowerBound(MinPrice.Value),
+        MaxPrice = MaxPrice is null ? null : Money.ToEuroUpperBound(MaxPrice.Value),
         Sort = Sort,
         Page = Page,
         PageSize = pageSize

@@ -36,6 +36,8 @@ try
             .SetApplicationName("TextileShop");
     }
 
+    Money.MkdPerEur = builder.Configuration.GetValue("Currency:MkdPerEur", Money.MkdPerEur);
+
     builder.Services.AddAppLocalization();
     builder.Services.AddControllersWithViews().AddAppLocalization();
     builder.Services.AddInfrastructure(builder.Configuration);
@@ -70,6 +72,16 @@ try
 
     app.UseStaticFiles();
     app.UseAppLocalization();
+
+    // Storefront shows prices in the visitor's chosen currency; the admin area always works in euros.
+    app.Use(async (context, next) =>
+    {
+        var chosen = context.Request.Cookies[Money.CookieName];
+        var isAdmin = context.Request.Path.StartsWithSegments("/Admin", StringComparison.OrdinalIgnoreCase);
+        Money.Current = !isAdmin && Money.IsSupported(chosen) ? chosen!.ToUpperInvariant() : Money.Euro;
+        await next();
+    });
+
     app.UseRouting();
     app.UseAuthentication();
     app.UseAuthorization();

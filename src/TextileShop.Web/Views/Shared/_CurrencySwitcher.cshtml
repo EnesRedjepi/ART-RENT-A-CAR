@@ -1,0 +1,20 @@
+@using TextileShop.Web.Localization
+@{
+    var returnUrl = $"{Context.Request.Path}{Context.Request.QueryString}";
+}
+
+<div class="dropdown language-switcher currency-switcher">
+    <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="@L["Currency"]">@Money.Current</button>
+    <ul class="dropdown-menu dropdown-menu-xl-end">
+        @foreach (var currency in Money.Currencies)
+        {
+            <li>
+                <form asp-area="" asp-controller="Currency" asp-action="Set" method="post">
+                    <input type="hidden" name="currency" value="@currency" />
+                    <input type="hidden" name="returnUrl" value="@returnUrl" />
+                    <button type="submit" class="dropdown-item @(currency == Money.Current ? "active" : "")">@(currency == Money.Euro ? "EUR (€)" : "MKD (ден.)")</button>
+                </form>
+            </li>
+        }
+    </ul>
+</div>
