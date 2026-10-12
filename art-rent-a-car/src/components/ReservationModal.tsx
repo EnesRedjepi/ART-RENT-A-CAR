@@ -7,23 +7,19 @@ import {
   Stack,
 } from "@mui/material";
 import { useState } from "react";
+import type { Car } from "../types/Car";
 
-export default function ReservationModal({ open, onClose, car }) {
+export default function ReservationModal({
+  open,
+  onClose,
+  car,
+}: {
+  open: boolean;
+  onClose: () => void;
+  car: Car;
+}) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [selectedCar, setSelectedCar] = useState(null);
-  <Button variant="contained" fullWidth onClick={() => setSelectedCar(car)}>
-    Reserve
-  </Button>;
-  {
-    selectedCar && (
-      <ReservationModal
-        open={true}
-        car={selectedCar}
-        onClose={() => setSelectedCar(null)}
-      />
-    );
-  }
 
   const handleSubmit = () => {
     const booking = {
