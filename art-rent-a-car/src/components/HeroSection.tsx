@@ -70,7 +70,7 @@ export default function HeroSection() {
           <DatePicker
             label="Pickup Date"
             value={pickupDate}
-            onChange={(v) => setPickupDate(v)}
+            onChange={(v) => v && setPickupDate(v)}
             sx={{ width: "100%", mb: 2 }}
             slotProps={{
               textField: {
@@ -88,7 +88,7 @@ export default function HeroSection() {
           <DatePicker
             label="Return Date"
             value={returnDate}
-            onChange={(v) => setReturnDate(v)}
+            onChange={(v) => v && setReturnDate(v)}
             sx={{ width: "100%", mb: 2 }}
             slotProps={{
               textField: {

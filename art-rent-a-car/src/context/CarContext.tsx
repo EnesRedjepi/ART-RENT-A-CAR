@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, useState } from "react";
+import type { ReactNode } from "react";
 import type { Car } from "../types/Car";
 
 interface CarContextType {
@@ -14,6 +15,7 @@ export const CarProvider = ({ children }: { children: ReactNode }) => {
     {
       id: 1,
       name: "VW Golf 7",
+      slug: "vw-golf-7",
       image: "/images/golf-7.jpg",
       description: "Comfortable and economical city car.",
       pricePerDay: 35,
@@ -28,6 +30,7 @@ export const CarProvider = ({ children }: { children: ReactNode }) => {
     {
       id: 2,
       name: "Peugeot 208",
+      slug: "peugeot-208",
       image: "/images/peugeot-208(edited).png",
       description: "Reliable and fuel-efficient family car.",
       pricePerDay: 40,
@@ -42,6 +45,7 @@ export const CarProvider = ({ children }: { children: ReactNode }) => {
     {
       id: 3,
       name: "Citroen C3",
+      slug: "citroen-c3",
       image: "/images/citroen-c3.jpg",
       description: "Compact and stylish city car.",
       pricePerDay: 30,
@@ -56,6 +60,7 @@ export const CarProvider = ({ children }: { children: ReactNode }) => {
     {
       id: 4,
       name: "Peugeot 301",
+      slug: "peugeot-301",
       image: "/images/peugeot-301.jpg",
       description: "Comfortable and economical city car.",
       pricePerDay: 35,
@@ -70,6 +75,7 @@ export const CarProvider = ({ children }: { children: ReactNode }) => {
     {
       id: 5,
       name: "Skoda Fabia",
+      slug: "skoda-fabia",
       image: "/images/skoda-fabia.jpg",
       description: "Reliable and fuel-efficient family car.",
       pricePerDay: 40,
@@ -84,6 +90,7 @@ export const CarProvider = ({ children }: { children: ReactNode }) => {
     {
       id: 6,
       name: "Skoda Fabia 2",
+      slug: "skoda-fabia-2",
       image: "/images/skoda-fabia-2.jpg",
       description: "Compact and stylish city car.",
       pricePerDay: 30,
@@ -98,6 +105,7 @@ export const CarProvider = ({ children }: { children: ReactNode }) => {
     {
       id: 7,
       name: "Skoda Octavia",
+      slug: "skoda-octavia",
       image: "/images/skoda-octavia.jpg",
       description: "Comfortable and economical city car.",
       pricePerDay: 35,
@@ -112,6 +120,7 @@ export const CarProvider = ({ children }: { children: ReactNode }) => {
     {
       id: 8,
       name: "Skoda Scala",
+      slug: "skoda-scala",
       image: "/images/skoda-scala.jpg",
       description: "Reliable and fuel-efficient family car.",
       pricePerDay: 40,
